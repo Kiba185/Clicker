@@ -13,7 +13,7 @@ namespace Clicker
             InitializeComponent();
         }
         //admin režim
-        string admin_heslo = "1234";
+        string admin_heslo = "4321";
         bool admin_rezim = false;
 
         //Baterka
