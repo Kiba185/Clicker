@@ -1847,5 +1847,25 @@ namespace Clicker
         {
 
         }
+
+        private void button36_Click_1(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button37_Click_1(object sender, EventArgs e)
+        {
+
+        }
+
+        private void panel66_Paint_1(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void label32_Click_1(object sender, EventArgs e)
+        {
+
+        }
     }
 }

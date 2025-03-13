@@ -30,20 +30,21 @@ namespace Clicker
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Clicker));
-            this.imageList1 = new System.Windows.Forms.ImageList(this.components);
-            this.colorDialog1 = new System.Windows.Forms.ColorDialog();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.panel66 = new System.Windows.Forms.Panel();
+            this.button37 = new System.Windows.Forms.Button();
+            this.button36 = new System.Windows.Forms.Button();
+            this.label32 = new System.Windows.Forms.Label();
             this.button32 = new System.Windows.Forms.Button();
             this.button31 = new System.Windows.Forms.Button();
+            this.panel85 = new System.Windows.Forms.Panel();
+            this.label43 = new System.Windows.Forms.Label();
+            this.button15 = new System.Windows.Forms.Button();
             this.panel84 = new System.Windows.Forms.Panel();
             this.label29 = new System.Windows.Forms.Label();
             this.button14 = new System.Windows.Forms.Button();
             this.textBox1 = new System.Windows.Forms.TextBox();
-            this.panel85 = new System.Windows.Forms.Panel();
-            this.label43 = new System.Windows.Forms.Label();
-            this.button15 = new System.Windows.Forms.Button();
             this.label42 = new System.Windows.Forms.Label();
             this.button13 = new System.Windows.Forms.Button();
             this.label28 = new System.Windows.Forms.Label();
@@ -63,6 +64,7 @@ namespace Clicker
             this.panel70 = new System.Windows.Forms.Panel();
             this.panel71 = new System.Windows.Forms.Panel();
             this.label36 = new System.Windows.Forms.Label();
+            this.panel11 = new System.Windows.Forms.Panel();
             this.panel33 = new System.Windows.Forms.Panel();
             this.panel34 = new System.Windows.Forms.Panel();
             this.panel40 = new System.Windows.Forms.Panel();
@@ -98,6 +100,7 @@ namespace Clicker
             this.panel15 = new System.Windows.Forms.Panel();
             this.label6 = new System.Windows.Forms.Label();
             this.panel18 = new System.Windows.Forms.Panel();
+            this.panel12 = new System.Windows.Forms.Panel();
             this.panel13 = new System.Windows.Forms.Panel();
             this.label5 = new System.Windows.Forms.Label();
             this.panel14 = new System.Windows.Forms.Panel();
@@ -105,12 +108,24 @@ namespace Clicker
             this.label4 = new System.Windows.Forms.Label();
             this.panel16 = new System.Windows.Forms.Panel();
             this.panel52 = new System.Windows.Forms.Panel();
-            this.label24 = new System.Windows.Forms.Label();
+            this.panel62 = new System.Windows.Forms.Panel();
+            this.panel63 = new System.Windows.Forms.Panel();
             this.numericUpDown4 = new System.Windows.Forms.NumericUpDown();
+            this.button24 = new System.Windows.Forms.Button();
+            this.panel87 = new System.Windows.Forms.Panel();
+            this.panel88 = new System.Windows.Forms.Panel();
             this.numericUpDown3 = new System.Windows.Forms.NumericUpDown();
+            this.button23 = new System.Windows.Forms.Button();
+            this.panel86 = new System.Windows.Forms.Panel();
+            this.panel61 = new System.Windows.Forms.Panel();
+            this.button22 = new System.Windows.Forms.Button();
             this.numericUpDown2 = new System.Windows.Forms.NumericUpDown();
-            this.numericUpDown1 = new System.Windows.Forms.NumericUpDown();
+            this.panel80 = new System.Windows.Forms.Panel();
+            this.label24 = new System.Windows.Forms.Label();
             this.panel65 = new System.Windows.Forms.Panel();
+            this.panel64 = new System.Windows.Forms.Panel();
+            this.button21 = new System.Windows.Forms.Button();
+            this.numericUpDown1 = new System.Windows.Forms.NumericUpDown();
             this.panel3 = new System.Windows.Forms.Panel();
             this.panel82 = new System.Windows.Forms.Panel();
             this.button30 = new System.Windows.Forms.Button();
@@ -130,12 +145,21 @@ namespace Clicker
             this.button16 = new System.Windows.Forms.Button();
             this.label30 = new System.Windows.Forms.Label();
             this.autoClick = new System.Windows.Forms.Button();
+            this.panel6 = new System.Windows.Forms.Panel();
+            this.panel5 = new System.Windows.Forms.Panel();
             this.panel51 = new System.Windows.Forms.Panel();
             this.label25 = new System.Windows.Forms.Label();
+            this.panel81 = new System.Windows.Forms.Panel();
             this.button28 = new System.Windows.Forms.Button();
             this.button27 = new System.Windows.Forms.Button();
             this.button26 = new System.Windows.Forms.Button();
             this.button25 = new System.Windows.Forms.Button();
+            this.panel56 = new System.Windows.Forms.Panel();
+            this.panel55 = new System.Windows.Forms.Panel();
+            this.panel57 = new System.Windows.Forms.Panel();
+            this.panel58 = new System.Windows.Forms.Panel();
+            this.panel54 = new System.Windows.Forms.Panel();
+            this.panel53 = new System.Windows.Forms.Panel();
             this.panel48 = new System.Windows.Forms.Panel();
             this.label41 = new System.Windows.Forms.Label();
             this.label40 = new System.Windows.Forms.Label();
@@ -147,62 +171,41 @@ namespace Clicker
             this.label18 = new System.Windows.Forms.Label();
             this.label17 = new System.Windows.Forms.Label();
             this.label16 = new System.Windows.Forms.Label();
-            this.button6 = new System.Windows.Forms.Button();
-            this.button34 = new System.Windows.Forms.Button();
-            this.button33 = new System.Windows.Forms.Button();
-            this.radioButton4 = new System.Windows.Forms.RadioButton();
-            this.panel83 = new System.Windows.Forms.Panel();
-            this.energy10 = new System.Windows.Forms.Panel();
-            this.label27 = new System.Windows.Forms.Label();
-            this.radioButton3 = new System.Windows.Forms.RadioButton();
-            this.radioButton2 = new System.Windows.Forms.RadioButton();
-            this.radioButton1 = new System.Windows.Forms.RadioButton();
-            this.panel42 = new System.Windows.Forms.Panel();
-            this.label15 = new System.Windows.Forms.Label();
-            this.panel41 = new System.Windows.Forms.Panel();
-            this.label2 = new System.Windows.Forms.Label();
-            this.label1 = new System.Windows.Forms.Label();
-            this.tlacitko = new System.Windows.Forms.Button();
-            this.panel86 = new System.Windows.Forms.Panel();
-            this.panel87 = new System.Windows.Forms.Panel();
-            this.panel62 = new System.Windows.Forms.Panel();
-            this.panel11 = new System.Windows.Forms.Panel();
-            this.panel12 = new System.Windows.Forms.Panel();
-            this.panel63 = new System.Windows.Forms.Panel();
-            this.button24 = new System.Windows.Forms.Button();
-            this.panel88 = new System.Windows.Forms.Panel();
-            this.button23 = new System.Windows.Forms.Button();
-            this.panel61 = new System.Windows.Forms.Panel();
-            this.button22 = new System.Windows.Forms.Button();
-            this.panel80 = new System.Windows.Forms.Panel();
-            this.panel64 = new System.Windows.Forms.Panel();
-            this.button21 = new System.Windows.Forms.Button();
-            this.panel6 = new System.Windows.Forms.Panel();
-            this.panel5 = new System.Windows.Forms.Panel();
-            this.panel81 = new System.Windows.Forms.Panel();
-            this.panel56 = new System.Windows.Forms.Panel();
-            this.panel55 = new System.Windows.Forms.Panel();
-            this.panel57 = new System.Windows.Forms.Panel();
-            this.panel58 = new System.Windows.Forms.Panel();
-            this.panel54 = new System.Windows.Forms.Panel();
-            this.panel53 = new System.Windows.Forms.Panel();
             this.panel50 = new System.Windows.Forms.Panel();
             this.panel49 = new System.Windows.Forms.Panel();
+            this.button6 = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
             this.button35 = new System.Windows.Forms.Button();
             this.button8 = new System.Windows.Forms.Button();
             this.button10 = new System.Windows.Forms.Button();
             this.button9 = new System.Windows.Forms.Button();
             this.button4 = new System.Windows.Forms.Button();
+            this.button34 = new System.Windows.Forms.Button();
             this.button7 = new System.Windows.Forms.Button();
+            this.button33 = new System.Windows.Forms.Button();
+            this.radioButton4 = new System.Windows.Forms.RadioButton();
+            this.panel83 = new System.Windows.Forms.Panel();
+            this.energy10 = new System.Windows.Forms.Panel();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.label27 = new System.Windows.Forms.Label();
+            this.radioButton3 = new System.Windows.Forms.RadioButton();
+            this.radioButton2 = new System.Windows.Forms.RadioButton();
+            this.radioButton1 = new System.Windows.Forms.RadioButton();
+            this.panel42 = new System.Windows.Forms.Panel();
+            this.label15 = new System.Windows.Forms.Label();
             this.panel43 = new System.Windows.Forms.Panel();
+            this.panel41 = new System.Windows.Forms.Panel();
+            this.label2 = new System.Windows.Forms.Label();
             this.panel9 = new System.Windows.Forms.Panel();
+            this.label1 = new System.Windows.Forms.Label();
             this.panel8 = new System.Windows.Forms.Panel();
             this.panel7 = new System.Windows.Forms.Panel();
+            this.tlacitko = new System.Windows.Forms.Button();
+            this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
             this.panel1.SuspendLayout();
-            this.panel84.SuspendLayout();
+            this.panel66.SuspendLayout();
             this.panel85.SuspendLayout();
+            this.panel84.SuspendLayout();
             this.panel10.SuspendLayout();
             this.panel78.SuspendLayout();
             this.panel75.SuspendLayout();
@@ -222,11 +225,14 @@ namespace Clicker
             this.panel13.SuspendLayout();
             this.panel17.SuspendLayout();
             this.panel52.SuspendLayout();
+            this.panel62.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown4)).BeginInit();
+            this.panel87.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown3)).BeginInit();
+            this.panel86.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown2)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
             this.panel65.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
             this.panel3.SuspendLayout();
             this.panel82.SuspendLayout();
             this.panel59.SuspendLayout();
@@ -236,16 +242,7 @@ namespace Clicker
             this.panel83.SuspendLayout();
             this.panel42.SuspendLayout();
             this.panel41.SuspendLayout();
-            this.panel86.SuspendLayout();
-            this.panel87.SuspendLayout();
-            this.panel62.SuspendLayout();
             this.SuspendLayout();
-            // 
-            // imageList1
-            // 
-            this.imageList1.ColorDepth = System.Windows.Forms.ColorDepth.Depth8Bit;
-            this.imageList1.ImageSize = new System.Drawing.Size(16, 16);
-            this.imageList1.TransparentColor = System.Drawing.Color.Transparent;
             // 
             // panel1
             // 
@@ -254,9 +251,9 @@ namespace Clicker
             | System.Windows.Forms.AnchorStyles.Right)));
             this.panel1.BackColor = System.Drawing.Color.LightGray;
             this.panel1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.panel1.Controls.Add(this.panel66);
             this.panel1.Controls.Add(this.button32);
             this.panel1.Controls.Add(this.button31);
-            this.panel1.Controls.Add(this.panel84);
             this.panel1.Controls.Add(this.panel85);
             this.panel1.Controls.Add(this.label42);
             this.panel1.Controls.Add(this.button13);
@@ -294,6 +291,50 @@ namespace Clicker
             this.panel1.TabIndex = 0;
             this.panel1.Paint += new System.Windows.Forms.PaintEventHandler(this.panel1_Paint);
             // 
+            // panel66
+            // 
+            this.panel66.Controls.Add(this.button37);
+            this.panel66.Controls.Add(this.button36);
+            this.panel66.Controls.Add(this.label32);
+            this.panel66.Location = new System.Drawing.Point(3, 3);
+            this.panel66.Name = "panel66";
+            this.panel66.Size = new System.Drawing.Size(834, 526);
+            this.panel66.TabIndex = 41;
+            this.panel66.Paint += new System.Windows.Forms.PaintEventHandler(this.panel66_Paint_1);
+            // 
+            // button37
+            // 
+            this.button37.Font = new System.Drawing.Font("Agency FB", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button37.Location = new System.Drawing.Point(332, 313);
+            this.button37.Name = "button37";
+            this.button37.Size = new System.Drawing.Size(132, 39);
+            this.button37.TabIndex = 2;
+            this.button37.Text = "Load game";
+            this.button37.UseVisualStyleBackColor = true;
+            this.button37.Click += new System.EventHandler(this.button37_Click_1);
+            // 
+            // button36
+            // 
+            this.button36.Font = new System.Drawing.Font("Agency FB", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button36.Location = new System.Drawing.Point(332, 253);
+            this.button36.Name = "button36";
+            this.button36.Size = new System.Drawing.Size(132, 39);
+            this.button36.TabIndex = 1;
+            this.button36.Text = "New game";
+            this.button36.UseVisualStyleBackColor = true;
+            this.button36.Click += new System.EventHandler(this.button36_Click_1);
+            // 
+            // label32
+            // 
+            this.label32.AutoSize = true;
+            this.label32.Font = new System.Drawing.Font("Agency FB", 48F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label32.Location = new System.Drawing.Point(301, 135);
+            this.label32.Name = "label32";
+            this.label32.Size = new System.Drawing.Size(192, 77);
+            this.label32.TabIndex = 0;
+            this.label32.Text = "Clicker";
+            this.label32.Click += new System.EventHandler(this.label32_Click_1);
+            // 
             // button32
             // 
             this.button32.Location = new System.Drawing.Point(603, 107);
@@ -316,13 +357,47 @@ namespace Clicker
             this.button31.Visible = false;
             this.button31.Click += new System.EventHandler(this.button31_Click_1);
             // 
+            // panel85
+            // 
+            this.panel85.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.panel85.Controls.Add(this.label43);
+            this.panel85.Controls.Add(this.button15);
+            this.panel85.Controls.Add(this.panel84);
+            this.panel85.Location = new System.Drawing.Point(823, 100);
+            this.panel85.Name = "panel85";
+            this.panel85.Size = new System.Drawing.Size(232, 152);
+            this.panel85.TabIndex = 40;
+            this.panel85.Visible = false;
+            this.panel85.Paint += new System.Windows.Forms.PaintEventHandler(this.panel85_Paint);
+            // 
+            // label43
+            // 
+            this.label43.AutoSize = true;
+            this.label43.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.label43.Location = new System.Drawing.Point(61, 33);
+            this.label43.Name = "label43";
+            this.label43.Size = new System.Drawing.Size(112, 24);
+            this.label43.TabIndex = 2;
+            this.label43.Text = "Admin režm";
+            this.label43.Click += new System.EventHandler(this.label43_Click);
+            // 
+            // button15
+            // 
+            this.button15.Location = new System.Drawing.Point(78, 85);
+            this.button15.Name = "button15";
+            this.button15.Size = new System.Drawing.Size(75, 23);
+            this.button15.TabIndex = 1;
+            this.button15.Text = "EXIT";
+            this.button15.UseVisualStyleBackColor = true;
+            this.button15.Click += new System.EventHandler(this.button15_Click_1);
+            // 
             // panel84
             // 
             this.panel84.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.panel84.Controls.Add(this.label29);
             this.panel84.Controls.Add(this.button14);
             this.panel84.Controls.Add(this.textBox1);
-            this.panel84.Location = new System.Drawing.Point(814, 120);
+            this.panel84.Location = new System.Drawing.Point(5, 17);
             this.panel84.Name = "panel84";
             this.panel84.Size = new System.Drawing.Size(232, 152);
             this.panel84.TabIndex = 39;
@@ -357,39 +432,6 @@ namespace Clicker
             this.textBox1.Size = new System.Drawing.Size(100, 20);
             this.textBox1.TabIndex = 0;
             this.textBox1.TextChanged += new System.EventHandler(this.textBox1_TextChanged_1);
-            // 
-            // panel85
-            // 
-            this.panel85.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.panel85.Controls.Add(this.label43);
-            this.panel85.Controls.Add(this.button15);
-            this.panel85.Location = new System.Drawing.Point(823, 100);
-            this.panel85.Name = "panel85";
-            this.panel85.Size = new System.Drawing.Size(232, 152);
-            this.panel85.TabIndex = 40;
-            this.panel85.Visible = false;
-            this.panel85.Paint += new System.Windows.Forms.PaintEventHandler(this.panel85_Paint);
-            // 
-            // label43
-            // 
-            this.label43.AutoSize = true;
-            this.label43.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.label43.Location = new System.Drawing.Point(61, 33);
-            this.label43.Name = "label43";
-            this.label43.Size = new System.Drawing.Size(112, 24);
-            this.label43.TabIndex = 2;
-            this.label43.Text = "Admin režm";
-            this.label43.Click += new System.EventHandler(this.label43_Click);
-            // 
-            // button15
-            // 
-            this.button15.Location = new System.Drawing.Point(78, 85);
-            this.button15.Name = "button15";
-            this.button15.Size = new System.Drawing.Size(75, 23);
-            this.button15.TabIndex = 1;
-            this.button15.Text = "EXIT";
-            this.button15.UseVisualStyleBackColor = true;
-            this.button15.Click += new System.EventHandler(this.button15_Click_1);
             // 
             // label42
             // 
@@ -629,6 +671,17 @@ namespace Clicker
             this.label36.Text = "Získej 100 surovin";
             this.label36.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.label36.Click += new System.EventHandler(this.label36_Click);
+            // 
+            // panel11
+            // 
+            this.panel11.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.panel11.BackgroundImage = global::Clicker.Properties.Resources.nápis_achievements_černá;
+            this.panel11.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.panel11.Location = new System.Drawing.Point(143, 51);
+            this.panel11.Name = "panel11";
+            this.panel11.Size = new System.Drawing.Size(306, 67);
+            this.panel11.TabIndex = 2;
+            this.panel11.Paint += new System.Windows.Forms.PaintEventHandler(this.panel11_Paint);
             // 
             // panel33
             // 
@@ -1023,6 +1076,17 @@ namespace Clicker
             this.panel18.TabIndex = 6;
             this.panel18.Paint += new System.Windows.Forms.PaintEventHandler(this.panel18_Paint);
             // 
+            // panel12
+            // 
+            this.panel12.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.panel12.BackgroundImage = global::Clicker.Properties.Resources._3135783;
+            this.panel12.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.panel12.Location = new System.Drawing.Point(5, 3);
+            this.panel12.Name = "panel12";
+            this.panel12.Size = new System.Drawing.Size(132, 148);
+            this.panel12.TabIndex = 3;
+            this.panel12.Paint += new System.Windows.Forms.PaintEventHandler(this.panel12_Paint);
+            // 
             // panel13
             // 
             this.panel13.Anchor = System.Windows.Forms.AnchorStyles.Top;
@@ -1113,16 +1177,27 @@ namespace Clicker
             this.panel52.Visible = false;
             this.panel52.Paint += new System.Windows.Forms.PaintEventHandler(this.panel52_Paint);
             // 
-            // label24
+            // panel62
             // 
-            this.label24.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.label24.Font = new System.Drawing.Font("Agency FB", 48F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label24.Location = new System.Drawing.Point(197, 44);
-            this.label24.Name = "label24";
-            this.label24.Size = new System.Drawing.Size(237, 79);
-            this.label24.TabIndex = 18;
-            this.label24.Text = "Storage";
-            this.label24.Click += new System.EventHandler(this.label24_Click_1);
+            this.panel62.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.panel62.BackColor = System.Drawing.Color.Transparent;
+            this.panel62.Controls.Add(this.panel63);
+            this.panel62.Controls.Add(this.numericUpDown4);
+            this.panel62.Controls.Add(this.button24);
+            this.panel62.Location = new System.Drawing.Point(249, 322);
+            this.panel62.Name = "panel62";
+            this.panel62.Size = new System.Drawing.Size(175, 102);
+            this.panel62.TabIndex = 20;
+            // 
+            // panel63
+            // 
+            this.panel63.BackColor = System.Drawing.Color.Transparent;
+            this.panel63.BackgroundImage = global::Clicker.Properties.Resources.prkna;
+            this.panel63.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.panel63.Location = new System.Drawing.Point(7, 10);
+            this.panel63.Name = "panel63";
+            this.panel63.Size = new System.Drawing.Size(82, 82);
+            this.panel63.TabIndex = 7;
             // 
             // numericUpDown4
             // 
@@ -1139,6 +1214,43 @@ namespace Clicker
             this.numericUpDown4.TabIndex = 17;
             this.numericUpDown4.ValueChanged += new System.EventHandler(this.numericUpDown4_ValueChanged);
             // 
+            // button24
+            // 
+            this.button24.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.button24.BackColor = System.Drawing.Color.LightGray;
+            this.button24.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("button24.BackgroundImage")));
+            this.button24.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.button24.FlatAppearance.BorderColor = System.Drawing.Color.LightGray;
+            this.button24.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.button24.Location = new System.Drawing.Point(106, 51);
+            this.button24.Name = "button24";
+            this.button24.Size = new System.Drawing.Size(58, 41);
+            this.button24.TabIndex = 13;
+            this.button24.UseVisualStyleBackColor = false;
+            this.button24.Click += new System.EventHandler(this.button24_Click);
+            // 
+            // panel87
+            // 
+            this.panel87.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.panel87.BackColor = System.Drawing.Color.Transparent;
+            this.panel87.Controls.Add(this.panel88);
+            this.panel87.Controls.Add(this.numericUpDown3);
+            this.panel87.Controls.Add(this.button23);
+            this.panel87.Location = new System.Drawing.Point(43, 322);
+            this.panel87.Name = "panel87";
+            this.panel87.Size = new System.Drawing.Size(175, 102);
+            this.panel87.TabIndex = 16;
+            // 
+            // panel88
+            // 
+            this.panel88.BackColor = System.Drawing.Color.Transparent;
+            this.panel88.BackgroundImage = global::Clicker.Properties.Resources.obilí;
+            this.panel88.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.panel88.Location = new System.Drawing.Point(7, 10);
+            this.panel88.Name = "panel88";
+            this.panel88.Size = new System.Drawing.Size(82, 82);
+            this.panel88.TabIndex = 7;
+            // 
             // numericUpDown3
             // 
             this.numericUpDown3.Anchor = System.Windows.Forms.AnchorStyles.Top;
@@ -1153,6 +1265,58 @@ namespace Clicker
             this.numericUpDown3.Size = new System.Drawing.Size(58, 34);
             this.numericUpDown3.TabIndex = 16;
             this.numericUpDown3.ValueChanged += new System.EventHandler(this.numericUpDown3_ValueChanged);
+            // 
+            // button23
+            // 
+            this.button23.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.button23.BackColor = System.Drawing.Color.LightGray;
+            this.button23.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("button23.BackgroundImage")));
+            this.button23.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.button23.FlatAppearance.BorderColor = System.Drawing.Color.LightGray;
+            this.button23.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.button23.Location = new System.Drawing.Point(106, 51);
+            this.button23.Name = "button23";
+            this.button23.Size = new System.Drawing.Size(58, 41);
+            this.button23.TabIndex = 12;
+            this.button23.UseVisualStyleBackColor = false;
+            this.button23.Click += new System.EventHandler(this.button23_Click);
+            // 
+            // panel86
+            // 
+            this.panel86.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.panel86.BackColor = System.Drawing.Color.Transparent;
+            this.panel86.Controls.Add(this.panel61);
+            this.panel86.Controls.Add(this.button22);
+            this.panel86.Controls.Add(this.numericUpDown2);
+            this.panel86.Location = new System.Drawing.Point(249, 188);
+            this.panel86.Name = "panel86";
+            this.panel86.Size = new System.Drawing.Size(175, 102);
+            this.panel86.TabIndex = 15;
+            // 
+            // panel61
+            // 
+            this.panel61.BackColor = System.Drawing.Color.Transparent;
+            this.panel61.BackgroundImage = global::Clicker.Properties.Resources.kámen;
+            this.panel61.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.panel61.Location = new System.Drawing.Point(7, 10);
+            this.panel61.Name = "panel61";
+            this.panel61.Size = new System.Drawing.Size(82, 82);
+            this.panel61.TabIndex = 7;
+            // 
+            // button22
+            // 
+            this.button22.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.button22.BackColor = System.Drawing.Color.LightGray;
+            this.button22.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("button22.BackgroundImage")));
+            this.button22.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.button22.FlatAppearance.BorderColor = System.Drawing.Color.LightGray;
+            this.button22.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.button22.Location = new System.Drawing.Point(106, 51);
+            this.button22.Name = "button22";
+            this.button22.Size = new System.Drawing.Size(58, 41);
+            this.button22.TabIndex = 11;
+            this.button22.UseVisualStyleBackColor = false;
+            this.button22.Click += new System.EventHandler(this.button22_Click);
             // 
             // numericUpDown2
             // 
@@ -1169,6 +1333,67 @@ namespace Clicker
             this.numericUpDown2.TabIndex = 15;
             this.numericUpDown2.ValueChanged += new System.EventHandler(this.numericUpDown2_ValueChanged);
             // 
+            // panel80
+            // 
+            this.panel80.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.panel80.BackgroundImage = global::Clicker.Properties.Resources.warehouse;
+            this.panel80.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.panel80.Location = new System.Drawing.Point(30, 29);
+            this.panel80.Name = "panel80";
+            this.panel80.Size = new System.Drawing.Size(152, 117);
+            this.panel80.TabIndex = 19;
+            // 
+            // label24
+            // 
+            this.label24.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.label24.Font = new System.Drawing.Font("Agency FB", 48F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label24.Location = new System.Drawing.Point(197, 44);
+            this.label24.Name = "label24";
+            this.label24.Size = new System.Drawing.Size(237, 79);
+            this.label24.TabIndex = 18;
+            this.label24.Text = "Storage";
+            this.label24.Click += new System.EventHandler(this.label24_Click_1);
+            // 
+            // panel65
+            // 
+            this.panel65.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.panel65.BackColor = System.Drawing.Color.Transparent;
+            this.panel65.Controls.Add(this.panel64);
+            this.panel65.Controls.Add(this.button21);
+            this.panel65.Controls.Add(this.numericUpDown1);
+            this.panel65.Location = new System.Drawing.Point(43, 188);
+            this.panel65.Name = "panel65";
+            this.panel65.Size = new System.Drawing.Size(175, 102);
+            this.panel65.TabIndex = 8;
+            this.panel65.Paint += new System.Windows.Forms.PaintEventHandler(this.panel65_Paint);
+            // 
+            // panel64
+            // 
+            this.panel64.BackColor = System.Drawing.Color.Transparent;
+            this.panel64.BackgroundImage = global::Clicker.Properties.Resources.dřevo;
+            this.panel64.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.panel64.Location = new System.Drawing.Point(7, 10);
+            this.panel64.Name = "panel64";
+            this.panel64.Size = new System.Drawing.Size(86, 82);
+            this.panel64.TabIndex = 6;
+            this.panel64.Paint += new System.Windows.Forms.PaintEventHandler(this.panel64_Paint);
+            // 
+            // button21
+            // 
+            this.button21.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.button21.BackColor = System.Drawing.Color.LightGray;
+            this.button21.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("button21.BackgroundImage")));
+            this.button21.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.button21.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.button21.FlatAppearance.BorderColor = System.Drawing.Color.LightGray;
+            this.button21.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.button21.Location = new System.Drawing.Point(106, 51);
+            this.button21.Name = "button21";
+            this.button21.Size = new System.Drawing.Size(58, 41);
+            this.button21.TabIndex = 10;
+            this.button21.UseVisualStyleBackColor = false;
+            this.button21.Click += new System.EventHandler(this.button21_Click);
+            // 
             // numericUpDown1
             // 
             this.numericUpDown1.Anchor = System.Windows.Forms.AnchorStyles.Top;
@@ -1183,19 +1408,6 @@ namespace Clicker
             this.numericUpDown1.Size = new System.Drawing.Size(58, 34);
             this.numericUpDown1.TabIndex = 14;
             this.numericUpDown1.ValueChanged += new System.EventHandler(this.numericUpDown1_ValueChanged);
-            // 
-            // panel65
-            // 
-            this.panel65.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.panel65.BackColor = System.Drawing.Color.Transparent;
-            this.panel65.Controls.Add(this.panel64);
-            this.panel65.Controls.Add(this.button21);
-            this.panel65.Controls.Add(this.numericUpDown1);
-            this.panel65.Location = new System.Drawing.Point(43, 188);
-            this.panel65.Name = "panel65";
-            this.panel65.Size = new System.Drawing.Size(175, 102);
-            this.panel65.TabIndex = 8;
-            this.panel65.Paint += new System.Windows.Forms.PaintEventHandler(this.panel65_Paint);
             // 
             // panel3
             // 
@@ -1450,6 +1662,27 @@ namespace Clicker
             this.autoClick.UseVisualStyleBackColor = false;
             this.autoClick.Click += new System.EventHandler(this.button2_Click);
             // 
+            // panel6
+            // 
+            this.panel6.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.panel6.BackgroundImage = global::Clicker.Properties.Resources.nápis_shop_černá;
+            this.panel6.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.panel6.Location = new System.Drawing.Point(201, 23);
+            this.panel6.Name = "panel6";
+            this.panel6.Size = new System.Drawing.Size(169, 110);
+            this.panel6.TabIndex = 19;
+            this.panel6.Paint += new System.Windows.Forms.PaintEventHandler(this.panel6_Paint);
+            // 
+            // panel5
+            // 
+            this.panel5.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.panel5.BackgroundImage = global::Clicker.Properties.Resources.store;
+            this.panel5.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.panel5.Location = new System.Drawing.Point(41, 8);
+            this.panel5.Name = "panel5";
+            this.panel5.Size = new System.Drawing.Size(145, 129);
+            this.panel5.TabIndex = 17;
+            // 
             // panel51
             // 
             this.panel51.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
@@ -1484,6 +1717,16 @@ namespace Clicker
             this.label25.Size = new System.Drawing.Size(245, 68);
             this.label25.TabIndex = 0;
             this.label25.Text = "Machines";
+            // 
+            // panel81
+            // 
+            this.panel81.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.panel81.BackgroundImage = global::Clicker.Properties.Resources.conveyor;
+            this.panel81.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.panel81.Location = new System.Drawing.Point(17, 11);
+            this.panel81.Name = "panel81";
+            this.panel81.Size = new System.Drawing.Size(95, 93);
+            this.panel81.TabIndex = 10;
             // 
             // button28
             // 
@@ -1532,6 +1775,83 @@ namespace Clicker
             this.button25.UseVisualStyleBackColor = true;
             this.button25.Visible = false;
             this.button25.Click += new System.EventHandler(this.button25_Click);
+            // 
+            // panel56
+            // 
+            this.panel56.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.panel56.BackColor = System.Drawing.Color.Transparent;
+            this.panel56.BackgroundImage = global::Clicker.Properties.Resources.planks_machine;
+            this.panel56.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.panel56.Location = new System.Drawing.Point(309, 316);
+            this.panel56.Name = "panel56";
+            this.panel56.Size = new System.Drawing.Size(120, 128);
+            this.panel56.TabIndex = 5;
+            this.panel56.Visible = false;
+            this.panel56.Paint += new System.Windows.Forms.PaintEventHandler(this.panel56_Paint);
+            // 
+            // panel55
+            // 
+            this.panel55.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.panel55.BackColor = System.Drawing.Color.Transparent;
+            this.panel55.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("panel55.BackgroundImage")));
+            this.panel55.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.panel55.Location = new System.Drawing.Point(307, 134);
+            this.panel55.Name = "panel55";
+            this.panel55.Size = new System.Drawing.Size(120, 128);
+            this.panel55.TabIndex = 2;
+            this.panel55.Visible = false;
+            this.panel55.Paint += new System.Windows.Forms.PaintEventHandler(this.panel55_Paint);
+            // 
+            // panel57
+            // 
+            this.panel57.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.panel57.BackColor = System.Drawing.Color.Transparent;
+            this.panel57.BackgroundImage = global::Clicker.Properties.Resources.wheet_machhine1;
+            this.panel57.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.panel57.Location = new System.Drawing.Point(172, 326);
+            this.panel57.Name = "panel57";
+            this.panel57.Size = new System.Drawing.Size(120, 118);
+            this.panel57.TabIndex = 4;
+            this.panel57.Visible = false;
+            this.panel57.Paint += new System.Windows.Forms.PaintEventHandler(this.panel57_Paint);
+            // 
+            // panel58
+            // 
+            this.panel58.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.panel58.BackColor = System.Drawing.Color.Transparent;
+            this.panel58.BackgroundImage = global::Clicker.Properties.Resources.stone_machine;
+            this.panel58.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.panel58.Location = new System.Drawing.Point(39, 316);
+            this.panel58.Name = "panel58";
+            this.panel58.Size = new System.Drawing.Size(120, 128);
+            this.panel58.TabIndex = 3;
+            this.panel58.Visible = false;
+            this.panel58.Paint += new System.Windows.Forms.PaintEventHandler(this.panel58_Paint);
+            // 
+            // panel54
+            // 
+            this.panel54.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.panel54.BackColor = System.Drawing.Color.Transparent;
+            this.panel54.BackgroundImage = global::Clicker.Properties.Resources.solar_machine;
+            this.panel54.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.panel54.Location = new System.Drawing.Point(171, 134);
+            this.panel54.Name = "panel54";
+            this.panel54.Size = new System.Drawing.Size(120, 128);
+            this.panel54.TabIndex = 2;
+            this.panel54.Visible = false;
+            this.panel54.Paint += new System.Windows.Forms.PaintEventHandler(this.panel54_Paint);
+            // 
+            // panel53
+            // 
+            this.panel53.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.panel53.BackColor = System.Drawing.Color.Transparent;
+            this.panel53.BackgroundImage = global::Clicker.Properties.Resources.money_machine;
+            this.panel53.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.panel53.Location = new System.Drawing.Point(38, 134);
+            this.panel53.Name = "panel53";
+            this.panel53.Size = new System.Drawing.Size(120, 128);
+            this.panel53.TabIndex = 1;
+            this.panel53.Paint += new System.Windows.Forms.PaintEventHandler(this.panel53_Paint);
             // 
             // panel48
             // 
@@ -1677,6 +1997,28 @@ namespace Clicker
             this.label16.Text = "label16";
             this.label16.Click += new System.EventHandler(this.label16_Click);
             // 
+            // panel50
+            // 
+            this.panel50.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.panel50.BackgroundImage = global::Clicker.Properties.Resources.stats_nápis_černá;
+            this.panel50.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.panel50.Location = new System.Drawing.Point(189, 38);
+            this.panel50.Name = "panel50";
+            this.panel50.Size = new System.Drawing.Size(194, 80);
+            this.panel50.TabIndex = 1;
+            this.panel50.Paint += new System.Windows.Forms.PaintEventHandler(this.panel50_Paint);
+            // 
+            // panel49
+            // 
+            this.panel49.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.panel49.BackgroundImage = global::Clicker.Properties.Resources._921591;
+            this.panel49.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.panel49.Location = new System.Drawing.Point(17, 1);
+            this.panel49.Name = "panel49";
+            this.panel49.Size = new System.Drawing.Size(152, 137);
+            this.panel49.TabIndex = 0;
+            this.panel49.Paint += new System.Windows.Forms.PaintEventHandler(this.panel49_Paint);
+            // 
             // button6
             // 
             this.button6.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
@@ -1700,496 +2042,6 @@ namespace Clicker
             this.button6.UseVisualStyleBackColor = false;
             this.button6.Visible = false;
             this.button6.Click += new System.EventHandler(this.button6_Click_1);
-            // 
-            // button34
-            // 
-            this.button34.Location = new System.Drawing.Point(548, 407);
-            this.button34.Name = "button34";
-            this.button34.Size = new System.Drawing.Size(65, 29);
-            this.button34.TabIndex = 33;
-            this.button34.Text = "načíst";
-            this.button34.UseVisualStyleBackColor = true;
-            this.button34.Visible = false;
-            this.button34.Click += new System.EventHandler(this.button34_Click);
-            // 
-            // button33
-            // 
-            this.button33.Location = new System.Drawing.Point(548, 372);
-            this.button33.Name = "button33";
-            this.button33.Size = new System.Drawing.Size(65, 29);
-            this.button33.TabIndex = 25;
-            this.button33.Text = "uložit";
-            this.button33.UseVisualStyleBackColor = true;
-            this.button33.Visible = false;
-            this.button33.Click += new System.EventHandler(this.button33_Click);
-            // 
-            // radioButton4
-            // 
-            this.radioButton4.AutoSize = true;
-            this.radioButton4.Font = new System.Drawing.Font("Agency FB", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.radioButton4.Location = new System.Drawing.Point(549, 338);
-            this.radioButton4.Name = "radioButton4";
-            this.radioButton4.Size = new System.Drawing.Size(75, 22);
-            this.radioButton4.TabIndex = 30;
-            this.radioButton4.TabStop = true;
-            this.radioButton4.Text = "Coffe skin";
-            this.radioButton4.UseVisualStyleBackColor = true;
-            this.radioButton4.Visible = false;
-            this.radioButton4.CheckedChanged += new System.EventHandler(this.radioButton4_CheckedChanged);
-            // 
-            // panel83
-            // 
-            this.panel83.Anchor = System.Windows.Forms.AnchorStyles.Right;
-            this.panel83.Controls.Add(this.energy10);
-            this.panel83.Controls.Add(this.panel2);
-            this.panel83.Location = new System.Drawing.Point(637, 153);
-            this.panel83.Name = "panel83";
-            this.panel83.Size = new System.Drawing.Size(194, 373);
-            this.panel83.TabIndex = 32;
-            this.panel83.Paint += new System.Windows.Forms.PaintEventHandler(this.panel83_Paint);
-            // 
-            // energy10
-            // 
-            this.energy10.BackColor = System.Drawing.Color.Lime;
-            this.energy10.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.energy10.Location = new System.Drawing.Point(22, 301);
-            this.energy10.MaximumSize = new System.Drawing.Size(148, 320);
-            this.energy10.Name = "energy10";
-            this.energy10.Size = new System.Drawing.Size(132, 22);
-            this.energy10.TabIndex = 0;
-            this.energy10.Visible = false;
-            this.energy10.Paint += new System.Windows.Forms.PaintEventHandler(this.panel3_Paint);
-            // 
-            // label27
-            // 
-            this.label27.AutoSize = true;
-            this.label27.Font = new System.Drawing.Font("Agency FB", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label27.Location = new System.Drawing.Point(547, 180);
-            this.label27.Name = "label27";
-            this.label27.Size = new System.Drawing.Size(90, 24);
-            this.label27.TabIndex = 31;
-            this.label27.Text = "Battery skins:";
-            this.label27.Visible = false;
-            this.label27.Click += new System.EventHandler(this.label27_Click_1);
-            // 
-            // radioButton3
-            // 
-            this.radioButton3.AutoSize = true;
-            this.radioButton3.Font = new System.Drawing.Font("Agency FB", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.radioButton3.Location = new System.Drawing.Point(549, 302);
-            this.radioButton3.Name = "radioButton3";
-            this.radioButton3.Size = new System.Drawing.Size(70, 22);
-            this.radioButton3.TabIndex = 29;
-            this.radioButton3.TabStop = true;
-            this.radioButton3.Text = "Fish skin";
-            this.radioButton3.UseVisualStyleBackColor = true;
-            this.radioButton3.Visible = false;
-            this.radioButton3.CheckedChanged += new System.EventHandler(this.radioButton3_CheckedChanged);
-            // 
-            // radioButton2
-            // 
-            this.radioButton2.AutoSize = true;
-            this.radioButton2.Font = new System.Drawing.Font("Agency FB", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.radioButton2.Location = new System.Drawing.Point(549, 264);
-            this.radioButton2.Name = "radioButton2";
-            this.radioButton2.Size = new System.Drawing.Size(82, 22);
-            this.radioButton2.TabIndex = 28;
-            this.radioButton2.TabStop = true;
-            this.radioButton2.Text = "Barrel skin";
-            this.radioButton2.UseVisualStyleBackColor = true;
-            this.radioButton2.Visible = false;
-            this.radioButton2.CheckedChanged += new System.EventHandler(this.radioButton2_CheckedChanged);
-            // 
-            // radioButton1
-            // 
-            this.radioButton1.AutoSize = true;
-            this.radioButton1.Font = new System.Drawing.Font("Agency FB", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.radioButton1.Location = new System.Drawing.Point(549, 226);
-            this.radioButton1.Name = "radioButton1";
-            this.radioButton1.Size = new System.Drawing.Size(87, 22);
-            this.radioButton1.TabIndex = 27;
-            this.radioButton1.TabStop = true;
-            this.radioButton1.Text = "Battery skin";
-            this.radioButton1.UseVisualStyleBackColor = true;
-            this.radioButton1.Visible = false;
-            this.radioButton1.CheckedChanged += new System.EventHandler(this.radioButton1_CheckedChanged);
-            // 
-            // panel42
-            // 
-            this.panel42.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.panel42.Controls.Add(this.label15);
-            this.panel42.Controls.Add(this.panel43);
-            this.panel42.Location = new System.Drawing.Point(659, 100);
-            this.panel42.Name = "panel42";
-            this.panel42.Size = new System.Drawing.Size(149, 50);
-            this.panel42.TabIndex = 26;
-            this.panel42.Paint += new System.Windows.Forms.PaintEventHandler(this.panel42_Paint);
-            // 
-            // label15
-            // 
-            this.label15.AutoSize = true;
-            this.label15.Font = new System.Drawing.Font("Agency FB", 24.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label15.Location = new System.Drawing.Point(41, 7);
-            this.label15.Name = "label15";
-            this.label15.Size = new System.Drawing.Size(31, 39);
-            this.label15.TabIndex = 24;
-            this.label15.Text = "0";
-            this.label15.Click += new System.EventHandler(this.label15_Click);
-            // 
-            // panel41
-            // 
-            this.panel41.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.panel41.Controls.Add(this.label2);
-            this.panel41.Controls.Add(this.panel9);
-            this.panel41.Location = new System.Drawing.Point(659, 35);
-            this.panel41.Name = "panel41";
-            this.panel41.Size = new System.Drawing.Size(166, 50);
-            this.panel41.TabIndex = 22;
-            this.panel41.Paint += new System.Windows.Forms.PaintEventHandler(this.panel41_Paint);
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Agency FB", 24.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(59, 7);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(31, 39);
-            this.label2.TabIndex = 24;
-            this.label2.Text = "0";
-            this.label2.Click += new System.EventHandler(this.label2_Click);
-            // 
-            // label1
-            // 
-            this.label1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(686, 8);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(0, 13);
-            this.label1.TabIndex = 21;
-            this.label1.Click += new System.EventHandler(this.label1_Click);
-            // 
-            // tlacitko
-            // 
-            this.tlacitko.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.tlacitko.BackColor = System.Drawing.SystemColors.AppWorkspace;
-            this.tlacitko.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.tlacitko.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.tlacitko.FlatAppearance.BorderColor = System.Drawing.Color.Gray;
-            this.tlacitko.FlatAppearance.BorderSize = 0;
-            this.tlacitko.FlatAppearance.CheckedBackColor = System.Drawing.Color.White;
-            this.tlacitko.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Gray;
-            this.tlacitko.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Gray;
-            this.tlacitko.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.tlacitko.Font = new System.Drawing.Font("Agency FB", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tlacitko.Location = new System.Drawing.Point(113, 167);
-            this.tlacitko.Name = "tlacitko";
-            this.tlacitko.Size = new System.Drawing.Size(406, 350);
-            this.tlacitko.TabIndex = 9;
-            this.tlacitko.Text = "Klikni";
-            this.tlacitko.UseVisualStyleBackColor = false;
-            this.tlacitko.Click += new System.EventHandler(this.button1_Click);
-            // 
-            // panel86
-            // 
-            this.panel86.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.panel86.BackColor = System.Drawing.Color.Transparent;
-            this.panel86.Controls.Add(this.panel61);
-            this.panel86.Controls.Add(this.button22);
-            this.panel86.Controls.Add(this.numericUpDown2);
-            this.panel86.Location = new System.Drawing.Point(249, 188);
-            this.panel86.Name = "panel86";
-            this.panel86.Size = new System.Drawing.Size(175, 102);
-            this.panel86.TabIndex = 15;
-            // 
-            // panel87
-            // 
-            this.panel87.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.panel87.BackColor = System.Drawing.Color.Transparent;
-            this.panel87.Controls.Add(this.panel88);
-            this.panel87.Controls.Add(this.numericUpDown3);
-            this.panel87.Controls.Add(this.button23);
-            this.panel87.Location = new System.Drawing.Point(43, 322);
-            this.panel87.Name = "panel87";
-            this.panel87.Size = new System.Drawing.Size(175, 102);
-            this.panel87.TabIndex = 16;
-            // 
-            // panel62
-            // 
-            this.panel62.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.panel62.BackColor = System.Drawing.Color.Transparent;
-            this.panel62.Controls.Add(this.panel63);
-            this.panel62.Controls.Add(this.numericUpDown4);
-            this.panel62.Controls.Add(this.button24);
-            this.panel62.Location = new System.Drawing.Point(249, 322);
-            this.panel62.Name = "panel62";
-            this.panel62.Size = new System.Drawing.Size(175, 102);
-            this.panel62.TabIndex = 20;
-            // 
-            // panel11
-            // 
-            this.panel11.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.panel11.BackgroundImage = global::Clicker.Properties.Resources.nápis_achievements_černá;
-            this.panel11.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.panel11.Location = new System.Drawing.Point(143, 51);
-            this.panel11.Name = "panel11";
-            this.panel11.Size = new System.Drawing.Size(306, 67);
-            this.panel11.TabIndex = 2;
-            this.panel11.Paint += new System.Windows.Forms.PaintEventHandler(this.panel11_Paint);
-            // 
-            // panel12
-            // 
-            this.panel12.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.panel12.BackgroundImage = global::Clicker.Properties.Resources._3135783;
-            this.panel12.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.panel12.Location = new System.Drawing.Point(5, 3);
-            this.panel12.Name = "panel12";
-            this.panel12.Size = new System.Drawing.Size(132, 148);
-            this.panel12.TabIndex = 3;
-            this.panel12.Paint += new System.Windows.Forms.PaintEventHandler(this.panel12_Paint);
-            // 
-            // panel63
-            // 
-            this.panel63.BackColor = System.Drawing.Color.Transparent;
-            this.panel63.BackgroundImage = global::Clicker.Properties.Resources.prkna;
-            this.panel63.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.panel63.Location = new System.Drawing.Point(7, 10);
-            this.panel63.Name = "panel63";
-            this.panel63.Size = new System.Drawing.Size(82, 82);
-            this.panel63.TabIndex = 7;
-            // 
-            // button24
-            // 
-            this.button24.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.button24.BackColor = System.Drawing.Color.LightGray;
-            this.button24.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("button24.BackgroundImage")));
-            this.button24.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.button24.FlatAppearance.BorderColor = System.Drawing.Color.LightGray;
-            this.button24.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.button24.Location = new System.Drawing.Point(106, 51);
-            this.button24.Name = "button24";
-            this.button24.Size = new System.Drawing.Size(58, 41);
-            this.button24.TabIndex = 13;
-            this.button24.UseVisualStyleBackColor = false;
-            this.button24.Click += new System.EventHandler(this.button24_Click);
-            // 
-            // panel88
-            // 
-            this.panel88.BackColor = System.Drawing.Color.Transparent;
-            this.panel88.BackgroundImage = global::Clicker.Properties.Resources.obilí;
-            this.panel88.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.panel88.Location = new System.Drawing.Point(7, 10);
-            this.panel88.Name = "panel88";
-            this.panel88.Size = new System.Drawing.Size(82, 82);
-            this.panel88.TabIndex = 7;
-            // 
-            // button23
-            // 
-            this.button23.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.button23.BackColor = System.Drawing.Color.LightGray;
-            this.button23.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("button23.BackgroundImage")));
-            this.button23.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.button23.FlatAppearance.BorderColor = System.Drawing.Color.LightGray;
-            this.button23.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.button23.Location = new System.Drawing.Point(106, 51);
-            this.button23.Name = "button23";
-            this.button23.Size = new System.Drawing.Size(58, 41);
-            this.button23.TabIndex = 12;
-            this.button23.UseVisualStyleBackColor = false;
-            this.button23.Click += new System.EventHandler(this.button23_Click);
-            // 
-            // panel61
-            // 
-            this.panel61.BackColor = System.Drawing.Color.Transparent;
-            this.panel61.BackgroundImage = global::Clicker.Properties.Resources.kámen;
-            this.panel61.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.panel61.Location = new System.Drawing.Point(7, 10);
-            this.panel61.Name = "panel61";
-            this.panel61.Size = new System.Drawing.Size(82, 82);
-            this.panel61.TabIndex = 7;
-            // 
-            // button22
-            // 
-            this.button22.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.button22.BackColor = System.Drawing.Color.LightGray;
-            this.button22.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("button22.BackgroundImage")));
-            this.button22.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.button22.FlatAppearance.BorderColor = System.Drawing.Color.LightGray;
-            this.button22.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.button22.Location = new System.Drawing.Point(106, 51);
-            this.button22.Name = "button22";
-            this.button22.Size = new System.Drawing.Size(58, 41);
-            this.button22.TabIndex = 11;
-            this.button22.UseVisualStyleBackColor = false;
-            this.button22.Click += new System.EventHandler(this.button22_Click);
-            // 
-            // panel80
-            // 
-            this.panel80.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.panel80.BackgroundImage = global::Clicker.Properties.Resources.warehouse;
-            this.panel80.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.panel80.Location = new System.Drawing.Point(30, 29);
-            this.panel80.Name = "panel80";
-            this.panel80.Size = new System.Drawing.Size(152, 117);
-            this.panel80.TabIndex = 19;
-            // 
-            // panel64
-            // 
-            this.panel64.BackColor = System.Drawing.Color.Transparent;
-            this.panel64.BackgroundImage = global::Clicker.Properties.Resources.dřevo;
-            this.panel64.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.panel64.Location = new System.Drawing.Point(7, 10);
-            this.panel64.Name = "panel64";
-            this.panel64.Size = new System.Drawing.Size(86, 82);
-            this.panel64.TabIndex = 6;
-            this.panel64.Paint += new System.Windows.Forms.PaintEventHandler(this.panel64_Paint);
-            // 
-            // button21
-            // 
-            this.button21.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.button21.BackColor = System.Drawing.Color.LightGray;
-            this.button21.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("button21.BackgroundImage")));
-            this.button21.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.button21.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.button21.FlatAppearance.BorderColor = System.Drawing.Color.LightGray;
-            this.button21.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.button21.Location = new System.Drawing.Point(106, 51);
-            this.button21.Name = "button21";
-            this.button21.Size = new System.Drawing.Size(58, 41);
-            this.button21.TabIndex = 10;
-            this.button21.UseVisualStyleBackColor = false;
-            this.button21.Click += new System.EventHandler(this.button21_Click);
-            // 
-            // panel6
-            // 
-            this.panel6.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.panel6.BackgroundImage = global::Clicker.Properties.Resources.nápis_shop_černá;
-            this.panel6.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.panel6.Location = new System.Drawing.Point(201, 23);
-            this.panel6.Name = "panel6";
-            this.panel6.Size = new System.Drawing.Size(169, 110);
-            this.panel6.TabIndex = 19;
-            this.panel6.Paint += new System.Windows.Forms.PaintEventHandler(this.panel6_Paint);
-            // 
-            // panel5
-            // 
-            this.panel5.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.panel5.BackgroundImage = global::Clicker.Properties.Resources.store;
-            this.panel5.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.panel5.Location = new System.Drawing.Point(41, 8);
-            this.panel5.Name = "panel5";
-            this.panel5.Size = new System.Drawing.Size(145, 129);
-            this.panel5.TabIndex = 17;
-            // 
-            // panel81
-            // 
-            this.panel81.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.panel81.BackgroundImage = global::Clicker.Properties.Resources.conveyor;
-            this.panel81.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.panel81.Location = new System.Drawing.Point(17, 11);
-            this.panel81.Name = "panel81";
-            this.panel81.Size = new System.Drawing.Size(95, 93);
-            this.panel81.TabIndex = 10;
-            // 
-            // panel56
-            // 
-            this.panel56.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.panel56.BackColor = System.Drawing.Color.Transparent;
-            this.panel56.BackgroundImage = global::Clicker.Properties.Resources.planks_machine;
-            this.panel56.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.panel56.Location = new System.Drawing.Point(309, 316);
-            this.panel56.Name = "panel56";
-            this.panel56.Size = new System.Drawing.Size(120, 128);
-            this.panel56.TabIndex = 5;
-            this.panel56.Visible = false;
-            this.panel56.Paint += new System.Windows.Forms.PaintEventHandler(this.panel56_Paint);
-            // 
-            // panel55
-            // 
-            this.panel55.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.panel55.BackColor = System.Drawing.Color.Transparent;
-            this.panel55.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("panel55.BackgroundImage")));
-            this.panel55.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.panel55.Location = new System.Drawing.Point(307, 134);
-            this.panel55.Name = "panel55";
-            this.panel55.Size = new System.Drawing.Size(120, 128);
-            this.panel55.TabIndex = 2;
-            this.panel55.Visible = false;
-            this.panel55.Paint += new System.Windows.Forms.PaintEventHandler(this.panel55_Paint);
-            // 
-            // panel57
-            // 
-            this.panel57.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.panel57.BackColor = System.Drawing.Color.Transparent;
-            this.panel57.BackgroundImage = global::Clicker.Properties.Resources.wheet_machhine1;
-            this.panel57.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.panel57.Location = new System.Drawing.Point(172, 326);
-            this.panel57.Name = "panel57";
-            this.panel57.Size = new System.Drawing.Size(120, 118);
-            this.panel57.TabIndex = 4;
-            this.panel57.Visible = false;
-            this.panel57.Paint += new System.Windows.Forms.PaintEventHandler(this.panel57_Paint);
-            // 
-            // panel58
-            // 
-            this.panel58.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.panel58.BackColor = System.Drawing.Color.Transparent;
-            this.panel58.BackgroundImage = global::Clicker.Properties.Resources.stone_machine;
-            this.panel58.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.panel58.Location = new System.Drawing.Point(39, 316);
-            this.panel58.Name = "panel58";
-            this.panel58.Size = new System.Drawing.Size(120, 128);
-            this.panel58.TabIndex = 3;
-            this.panel58.Visible = false;
-            this.panel58.Paint += new System.Windows.Forms.PaintEventHandler(this.panel58_Paint);
-            // 
-            // panel54
-            // 
-            this.panel54.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.panel54.BackColor = System.Drawing.Color.Transparent;
-            this.panel54.BackgroundImage = global::Clicker.Properties.Resources.solar_machine;
-            this.panel54.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.panel54.Location = new System.Drawing.Point(171, 134);
-            this.panel54.Name = "panel54";
-            this.panel54.Size = new System.Drawing.Size(120, 128);
-            this.panel54.TabIndex = 2;
-            this.panel54.Visible = false;
-            this.panel54.Paint += new System.Windows.Forms.PaintEventHandler(this.panel54_Paint);
-            // 
-            // panel53
-            // 
-            this.panel53.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.panel53.BackColor = System.Drawing.Color.Transparent;
-            this.panel53.BackgroundImage = global::Clicker.Properties.Resources.money_machine;
-            this.panel53.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.panel53.Location = new System.Drawing.Point(38, 134);
-            this.panel53.Name = "panel53";
-            this.panel53.Size = new System.Drawing.Size(120, 128);
-            this.panel53.TabIndex = 1;
-            this.panel53.Paint += new System.Windows.Forms.PaintEventHandler(this.panel53_Paint);
-            // 
-            // panel50
-            // 
-            this.panel50.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.panel50.BackgroundImage = global::Clicker.Properties.Resources.stats_nápis_černá;
-            this.panel50.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.panel50.Location = new System.Drawing.Point(189, 38);
-            this.panel50.Name = "panel50";
-            this.panel50.Size = new System.Drawing.Size(194, 80);
-            this.panel50.TabIndex = 1;
-            this.panel50.Paint += new System.Windows.Forms.PaintEventHandler(this.panel50_Paint);
-            // 
-            // panel49
-            // 
-            this.panel49.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.panel49.BackgroundImage = global::Clicker.Properties.Resources._921591;
-            this.panel49.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.panel49.Location = new System.Drawing.Point(17, 1);
-            this.panel49.Name = "panel49";
-            this.panel49.Size = new System.Drawing.Size(152, 137);
-            this.panel49.TabIndex = 0;
-            this.panel49.Paint += new System.Windows.Forms.PaintEventHandler(this.panel49_Paint);
             // 
             // button1
             // 
@@ -2304,6 +2156,17 @@ namespace Clicker
             this.button4.UseVisualStyleBackColor = false;
             this.button4.Click += new System.EventHandler(this.button4_Click);
             // 
+            // button34
+            // 
+            this.button34.Location = new System.Drawing.Point(548, 407);
+            this.button34.Name = "button34";
+            this.button34.Size = new System.Drawing.Size(65, 29);
+            this.button34.TabIndex = 33;
+            this.button34.Text = "načíst";
+            this.button34.UseVisualStyleBackColor = true;
+            this.button34.Visible = false;
+            this.button34.Click += new System.EventHandler(this.button34_Click);
+            // 
             // button7
             // 
             this.button7.Anchor = System.Windows.Forms.AnchorStyles.Left;
@@ -2323,6 +2186,54 @@ namespace Clicker
             this.button7.UseVisualStyleBackColor = false;
             this.button7.Click += new System.EventHandler(this.button7_Click);
             // 
+            // button33
+            // 
+            this.button33.Location = new System.Drawing.Point(548, 372);
+            this.button33.Name = "button33";
+            this.button33.Size = new System.Drawing.Size(65, 29);
+            this.button33.TabIndex = 25;
+            this.button33.Text = "uložit";
+            this.button33.UseVisualStyleBackColor = true;
+            this.button33.Visible = false;
+            this.button33.Click += new System.EventHandler(this.button33_Click);
+            // 
+            // radioButton4
+            // 
+            this.radioButton4.AutoSize = true;
+            this.radioButton4.Font = new System.Drawing.Font("Agency FB", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.radioButton4.Location = new System.Drawing.Point(549, 338);
+            this.radioButton4.Name = "radioButton4";
+            this.radioButton4.Size = new System.Drawing.Size(75, 22);
+            this.radioButton4.TabIndex = 30;
+            this.radioButton4.TabStop = true;
+            this.radioButton4.Text = "Coffe skin";
+            this.radioButton4.UseVisualStyleBackColor = true;
+            this.radioButton4.Visible = false;
+            this.radioButton4.CheckedChanged += new System.EventHandler(this.radioButton4_CheckedChanged);
+            // 
+            // panel83
+            // 
+            this.panel83.Anchor = System.Windows.Forms.AnchorStyles.Right;
+            this.panel83.Controls.Add(this.energy10);
+            this.panel83.Controls.Add(this.panel2);
+            this.panel83.Location = new System.Drawing.Point(637, 153);
+            this.panel83.Name = "panel83";
+            this.panel83.Size = new System.Drawing.Size(194, 373);
+            this.panel83.TabIndex = 32;
+            this.panel83.Paint += new System.Windows.Forms.PaintEventHandler(this.panel83_Paint);
+            // 
+            // energy10
+            // 
+            this.energy10.BackColor = System.Drawing.Color.Lime;
+            this.energy10.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.energy10.Location = new System.Drawing.Point(22, 301);
+            this.energy10.MaximumSize = new System.Drawing.Size(148, 320);
+            this.energy10.Name = "energy10";
+            this.energy10.Size = new System.Drawing.Size(132, 22);
+            this.energy10.TabIndex = 0;
+            this.energy10.Visible = false;
+            this.energy10.Paint += new System.Windows.Forms.PaintEventHandler(this.panel3_Paint);
+            // 
             // panel2
             // 
             this.panel2.BackColor = System.Drawing.Color.Transparent;
@@ -2334,6 +2245,82 @@ namespace Clicker
             this.panel2.TabIndex = 1;
             this.panel2.Paint += new System.Windows.Forms.PaintEventHandler(this.panel2_Paint_1);
             // 
+            // label27
+            // 
+            this.label27.AutoSize = true;
+            this.label27.Font = new System.Drawing.Font("Agency FB", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label27.Location = new System.Drawing.Point(547, 180);
+            this.label27.Name = "label27";
+            this.label27.Size = new System.Drawing.Size(90, 24);
+            this.label27.TabIndex = 31;
+            this.label27.Text = "Battery skins:";
+            this.label27.Visible = false;
+            this.label27.Click += new System.EventHandler(this.label27_Click_1);
+            // 
+            // radioButton3
+            // 
+            this.radioButton3.AutoSize = true;
+            this.radioButton3.Font = new System.Drawing.Font("Agency FB", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.radioButton3.Location = new System.Drawing.Point(549, 302);
+            this.radioButton3.Name = "radioButton3";
+            this.radioButton3.Size = new System.Drawing.Size(70, 22);
+            this.radioButton3.TabIndex = 29;
+            this.radioButton3.TabStop = true;
+            this.radioButton3.Text = "Fish skin";
+            this.radioButton3.UseVisualStyleBackColor = true;
+            this.radioButton3.Visible = false;
+            this.radioButton3.CheckedChanged += new System.EventHandler(this.radioButton3_CheckedChanged);
+            // 
+            // radioButton2
+            // 
+            this.radioButton2.AutoSize = true;
+            this.radioButton2.Font = new System.Drawing.Font("Agency FB", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.radioButton2.Location = new System.Drawing.Point(549, 264);
+            this.radioButton2.Name = "radioButton2";
+            this.radioButton2.Size = new System.Drawing.Size(82, 22);
+            this.radioButton2.TabIndex = 28;
+            this.radioButton2.TabStop = true;
+            this.radioButton2.Text = "Barrel skin";
+            this.radioButton2.UseVisualStyleBackColor = true;
+            this.radioButton2.Visible = false;
+            this.radioButton2.CheckedChanged += new System.EventHandler(this.radioButton2_CheckedChanged);
+            // 
+            // radioButton1
+            // 
+            this.radioButton1.AutoSize = true;
+            this.radioButton1.Font = new System.Drawing.Font("Agency FB", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.radioButton1.Location = new System.Drawing.Point(549, 226);
+            this.radioButton1.Name = "radioButton1";
+            this.radioButton1.Size = new System.Drawing.Size(87, 22);
+            this.radioButton1.TabIndex = 27;
+            this.radioButton1.TabStop = true;
+            this.radioButton1.Text = "Battery skin";
+            this.radioButton1.UseVisualStyleBackColor = true;
+            this.radioButton1.Visible = false;
+            this.radioButton1.CheckedChanged += new System.EventHandler(this.radioButton1_CheckedChanged);
+            // 
+            // panel42
+            // 
+            this.panel42.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.panel42.Controls.Add(this.label15);
+            this.panel42.Controls.Add(this.panel43);
+            this.panel42.Location = new System.Drawing.Point(659, 100);
+            this.panel42.Name = "panel42";
+            this.panel42.Size = new System.Drawing.Size(149, 50);
+            this.panel42.TabIndex = 26;
+            this.panel42.Paint += new System.Windows.Forms.PaintEventHandler(this.panel42_Paint);
+            // 
+            // label15
+            // 
+            this.label15.AutoSize = true;
+            this.label15.Font = new System.Drawing.Font("Agency FB", 24.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label15.Location = new System.Drawing.Point(41, 7);
+            this.label15.Name = "label15";
+            this.label15.Size = new System.Drawing.Size(31, 39);
+            this.label15.TabIndex = 24;
+            this.label15.Text = "0";
+            this.label15.Click += new System.EventHandler(this.label15_Click);
+            // 
             // panel43
             // 
             this.panel43.BackgroundImage = global::Clicker.Properties.Resources.diamond;
@@ -2344,6 +2331,28 @@ namespace Clicker
             this.panel43.TabIndex = 25;
             this.panel43.Paint += new System.Windows.Forms.PaintEventHandler(this.panel43_Paint);
             // 
+            // panel41
+            // 
+            this.panel41.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.panel41.Controls.Add(this.label2);
+            this.panel41.Controls.Add(this.panel9);
+            this.panel41.Location = new System.Drawing.Point(659, 35);
+            this.panel41.Name = "panel41";
+            this.panel41.Size = new System.Drawing.Size(166, 50);
+            this.panel41.TabIndex = 22;
+            this.panel41.Paint += new System.Windows.Forms.PaintEventHandler(this.panel41_Paint);
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Agency FB", 24.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Location = new System.Drawing.Point(59, 7);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(31, 39);
+            this.label2.TabIndex = 24;
+            this.label2.Text = "0";
+            this.label2.Click += new System.EventHandler(this.label2_Click);
+            // 
             // panel9
             // 
             this.panel9.BackgroundImage = global::Clicker.Properties.Resources.dollar;
@@ -2353,6 +2362,16 @@ namespace Clicker
             this.panel9.Size = new System.Drawing.Size(50, 43);
             this.panel9.TabIndex = 25;
             this.panel9.Paint += new System.Windows.Forms.PaintEventHandler(this.panel9_Paint);
+            // 
+            // label1
+            // 
+            this.label1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(686, 8);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(0, 13);
+            this.label1.TabIndex = 21;
+            this.label1.Click += new System.EventHandler(this.label1_Click);
             // 
             // panel8
             // 
@@ -2377,6 +2396,33 @@ namespace Clicker
             this.panel7.TabIndex = 22;
             this.panel7.Paint += new System.Windows.Forms.PaintEventHandler(this.panel7_Paint);
             // 
+            // tlacitko
+            // 
+            this.tlacitko.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.tlacitko.BackColor = System.Drawing.SystemColors.AppWorkspace;
+            this.tlacitko.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.tlacitko.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.tlacitko.FlatAppearance.BorderColor = System.Drawing.Color.Gray;
+            this.tlacitko.FlatAppearance.BorderSize = 0;
+            this.tlacitko.FlatAppearance.CheckedBackColor = System.Drawing.Color.White;
+            this.tlacitko.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Gray;
+            this.tlacitko.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Gray;
+            this.tlacitko.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.tlacitko.Font = new System.Drawing.Font("Agency FB", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tlacitko.Location = new System.Drawing.Point(113, 167);
+            this.tlacitko.Name = "tlacitko";
+            this.tlacitko.Size = new System.Drawing.Size(406, 350);
+            this.tlacitko.TabIndex = 9;
+            this.tlacitko.Text = "Klikni";
+            this.tlacitko.UseVisualStyleBackColor = false;
+            this.tlacitko.Click += new System.EventHandler(this.button1_Click);
+            // 
+            // openFileDialog1
+            // 
+            this.openFileDialog1.FileName = "openFileDialog1";
+            // 
             // Clicker
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -2394,10 +2440,12 @@ namespace Clicker
             this.Load += new System.EventHandler(this.Clicker_Load);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
-            this.panel84.ResumeLayout(false);
-            this.panel84.PerformLayout();
+            this.panel66.ResumeLayout(false);
+            this.panel66.PerformLayout();
             this.panel85.ResumeLayout(false);
             this.panel85.PerformLayout();
+            this.panel84.ResumeLayout(false);
+            this.panel84.PerformLayout();
             this.panel10.ResumeLayout(false);
             this.panel78.ResumeLayout(false);
             this.panel78.PerformLayout();
@@ -2429,11 +2477,14 @@ namespace Clicker
             this.panel17.ResumeLayout(false);
             this.panel17.PerformLayout();
             this.panel52.ResumeLayout(false);
+            this.panel62.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown4)).EndInit();
+            this.panel87.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown3)).EndInit();
+            this.panel86.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown2)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).EndInit();
             this.panel65.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).EndInit();
             this.panel3.ResumeLayout(false);
             this.panel82.ResumeLayout(false);
             this.panel82.PerformLayout();
@@ -2449,9 +2500,6 @@ namespace Clicker
             this.panel42.PerformLayout();
             this.panel41.ResumeLayout(false);
             this.panel41.PerformLayout();
-            this.panel86.ResumeLayout(false);
-            this.panel87.ResumeLayout(false);
-            this.panel62.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -2474,7 +2522,6 @@ namespace Clicker
         private System.Windows.Forms.Button button9;
         private System.Windows.Forms.Panel panel3;
         private System.Windows.Forms.Panel panel5;
-        private System.Windows.Forms.ImageList imageList1;
         private System.Windows.Forms.Panel panel6;
         private System.Windows.Forms.Panel panel7;
         private System.Windows.Forms.Panel panel8;
@@ -2486,7 +2533,6 @@ namespace Clicker
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Panel panel11;
         private System.Windows.Forms.Panel panel12;
-        private System.Windows.Forms.ColorDialog colorDialog1;
         private System.Windows.Forms.Panel panel17;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Panel panel16;
@@ -2631,6 +2677,11 @@ namespace Clicker
         private System.Windows.Forms.Panel panel63;
         private System.Windows.Forms.Panel panel87;
         private System.Windows.Forms.Panel panel88;
+        private System.Windows.Forms.Panel panel66;
+        private System.Windows.Forms.OpenFileDialog openFileDialog1;
+        private System.Windows.Forms.Label label32;
+        private System.Windows.Forms.Button button36;
+        private System.Windows.Forms.Button button37;
     }
 }
 
