@@ -98,6 +98,8 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="clicker_icon_129311.ico" />
+    <None Include="Resources\save-bg.png" />
+    <None Include="Resources\save.png" />
     <None Include="Resources\payment-method.png" />
     <None Include="Resources\myš klik nová pruhledná.png" />
     <None Include="Resources\myš klik nová.png" />

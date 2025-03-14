@@ -3,6 +3,9 @@ using System.Drawing;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Data.SqlTypes;
+using System.Security.Cryptography;
+using System.Text;
+using System.IO;
 
 namespace Clicker
 {
@@ -16,6 +19,9 @@ namespace Clicker
         string admin_heslo = "4321";
         bool admin_rezim = false;
 
+        string cesta = "";
+        
+
         //Baterka
         int energy = 0;
         int maxEnergy = 100;
@@ -24,7 +30,10 @@ namespace Clicker
         int vyskaplnostibaterie = 235;
         int sirkaplnostibateriesize = 1;
         int sirkaplnostibaterielocation = 1;
-        
+
+        //Currrency save
+        string penize_save;
+        string gemy_save;
 
         //Currency/Suroviny
         int penize = 0;
@@ -1850,12 +1859,35 @@ namespace Clicker
 
         private void button36_Click_1(object sender, EventArgs e)
         {
-
+            panel66.Visible = false;
         }
 
         private void button37_Click_1(object sender, EventArgs e)
         {
+            cesta = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), "Clicker");
+            if (!Directory.Exists(cesta))
+                Directory.CreateDirectory(cesta);
 
+            //load game button
+            byte[] encryptedData = File.ReadAllBytes("cesta");
+            string key = "1234567890123456";  // 16 znaků pro AES
+            string decryptedData = DecryptData(encryptedData, key);
+
+            
+
+            // Rozdělení dešifrovaných dat na penize a gemy
+            string[] parts = decryptedData.Split('\n');
+            penize_save = parts[0];  // Přiřadíme první hodnotu do proměnné penize
+            gemy_save = parts[1];  // Přiřadíme druhou hodnotu do proměnné gemy
+
+            penize = Int32.Parse(penize_save);
+            gemy = Int32.Parse(gemy_save);
+
+
+
+            update();
+
+            panel66.Visible = false;
         }
 
         private void panel66_Paint_1(object sender, PaintEventArgs e)
@@ -1865,6 +1897,58 @@ namespace Clicker
 
         private void label32_Click_1(object sender, EventArgs e)
         {
+
+        }
+
+        // Šifrování textu pomocí AES
+        private byte[] EncryptData(string data, string key)
+        {
+            using (Aes aes = Aes.Create())
+            {
+                aes.Key = Encoding.UTF8.GetBytes(key);  // 16 znaků pro AES
+                aes.IV = new byte[16];  // Inicializační vektor (IV)
+
+                using (ICryptoTransform encryptor = aes.CreateEncryptor())
+                {
+                    return encryptor.TransformFinalBlock(Encoding.UTF8.GetBytes(data), 0, data.Length);
+                }
+            }
+        }
+
+        // Dešifrování dat pomocí AES
+        private string DecryptData(byte[] data, string key)
+        {
+            using (Aes aes = Aes.Create())
+            {
+                aes.Key = Encoding.UTF8.GetBytes(key);  // 16 znaků pro AES
+                aes.IV = new byte[16];  // Inicializační vektor (IV)
+
+                using (ICryptoTransform decryptor = aes.CreateDecryptor())
+                {
+                    byte[] decryptedBytes = decryptor.TransformFinalBlock(data, 0, data.Length);
+                    return Encoding.UTF8.GetString(decryptedBytes);
+                }
+            }
+        }
+
+        private void button33_Click_1(object sender, EventArgs e)
+        {
+            //save button
+            // Data k šifrování (proměnné penize a gemy)
+            string data = penize + "\n" + gemy;  // Spojíme je do jednoho textu
+
+            string key = "1234567890123456";  // 16 znaků pro AES
+            byte[] encryptedData = EncryptData(data, key);
+
+            // Uložení šifrovaných dat do souboru
+            cesta = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), "Clicker");
+            if (!Directory.Exists(cesta))
+                Directory.CreateDirectory(cesta);
+
+            cesta = cesta + "/clicker_save.txt";
+            File.WriteAllBytes(cesta, encryptedData);
+
+            update();
 
         }
     }
