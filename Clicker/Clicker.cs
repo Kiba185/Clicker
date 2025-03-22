@@ -14,13 +14,14 @@ namespace Clicker
         public Clicker()
         {
             InitializeComponent();
+            panel66.Location = new System.Drawing.Point(0, 0);
         }
         //admin režim
         string admin_heslo = "4321";
         bool admin_rezim = false;
 
-        string cesta = "";
-        
+        string cesta = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), "Clicker");
+
 
         //Baterka
         int energy = 0;
@@ -1729,9 +1730,53 @@ namespace Clicker
 
         }
 
+        void save_question()
+        {
+            DialogResult dr = MessageBox.Show("Chcete hru uložit?", "", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            if (dr == DialogResult.No)
+            {
+                Application.Exit();
+            }
+            else
+            {
+                save_game();
+                Application.Exit();
+            }
+        }
+
         private void button1_Click_3(object sender, EventArgs e)
         {
-            Application.Exit();
+            string cesta_txt = cesta + "/clicker_save.txt";
+
+            
+
+            if (File.Exists(cesta_txt) == true)
+            {
+                byte[] encryptedData = File.ReadAllBytes(cesta);
+                string key = "1234567890123456";  // 16 znaků pro AES
+                string decryptedData = DecryptData(encryptedData, key);
+
+                // Rozdělení dešifrovaných dat na penize a gemy
+                string[] parts = decryptedData.Split('\n');
+                penize_save = parts[0];  // Přiřadíme první hodnotu do proměnné penize
+                gemy_save = parts[1];  // Přiřadíme druhou hodnotu do proměnné gemy
+
+                if (penize == Int32.Parse(penize_save) && gemy == Int32.Parse(gemy_save))
+                {
+                    Application.Exit();
+                }
+                else
+                {
+                    save_question();
+                }
+            }
+            else
+            {
+                save_question();
+            }
+
+            
+
         }
 
         private async void button6_Click_1(object sender, EventArgs e)
@@ -1863,31 +1908,31 @@ namespace Clicker
         }
 
         private void button37_Click_1(object sender, EventArgs e)
-        {
-            cesta = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), "Clicker");
-            if (!Directory.Exists(cesta))
-                Directory.CreateDirectory(cesta);
+        { //load game button
+            string cesta_txt = cesta + "/clicker_save.txt";
+            if (File.Exists(cesta_txt) == false)
+            {
+                MessageBox.Show("Nexistuje žádná záloha", "", MessageBoxButtons.OK, MessageBoxIcon.Error);      
+            }
 
-            //load game button
-            byte[] encryptedData = File.ReadAllBytes("cesta");
-            string key = "1234567890123456";  // 16 znaků pro AES
-            string decryptedData = DecryptData(encryptedData, key);
+            else if (File.Exists(cesta_txt) == true)
+            {
+                byte[] encryptedData = File.ReadAllBytes(cesta);
+                string key = "1234567890123456";  // 16 znaků pro AES
+                string decryptedData = DecryptData(encryptedData, key);
 
+                // Rozdělení dešifrovaných dat na penize a gemy
+                string[] parts = decryptedData.Split('\n');
+                penize_save = parts[0];  // Přiřadíme první hodnotu do proměnné penize
+                gemy_save = parts[1];  // Přiřadíme druhou hodnotu do proměnné gemy
+
+                penize = Int32.Parse(penize_save);
+                gemy = Int32.Parse(gemy_save);
+
+                panel66.Visible = false;
+                update();
+            }
             
-
-            // Rozdělení dešifrovaných dat na penize a gemy
-            string[] parts = decryptedData.Split('\n');
-            penize_save = parts[0];  // Přiřadíme první hodnotu do proměnné penize
-            gemy_save = parts[1];  // Přiřadíme druhou hodnotu do proměnné gemy
-
-            penize = Int32.Parse(penize_save);
-            gemy = Int32.Parse(gemy_save);
-
-
-
-            update();
-
-            panel66.Visible = false;
         }
 
         private void panel66_Paint_1(object sender, PaintEventArgs e)
@@ -1933,6 +1978,11 @@ namespace Clicker
 
         private void button33_Click_1(object sender, EventArgs e)
         {
+            save_game();
+        }
+
+        void save_game()
+        {
             //save button
             // Data k šifrování (proměnné penize a gemy)
             string data = penize + "\n" + gemy;  // Spojíme je do jednoho textu
@@ -1941,14 +1991,16 @@ namespace Clicker
             byte[] encryptedData = EncryptData(data, key);
 
             // Uložení šifrovaných dat do souboru
-            cesta = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), "Clicker");
+            
             if (!Directory.Exists(cesta))
                 Directory.CreateDirectory(cesta);
 
-            cesta = cesta + "/clicker_save.txt";
-            File.WriteAllBytes(cesta, encryptedData);
+            string cesta_txt = cesta + "/clicker_save.txt";
 
-            update();
+            using (StreamWriter writer = new StreamWriter(cesta_txt))
+            {
+                writer.WriteLine(encryptedData);
+            }
 
         }
     }
