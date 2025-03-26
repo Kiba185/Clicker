@@ -20,7 +20,9 @@ namespace Clicker
         string admin_heslo = "4321";
         bool admin_rezim = false;
 
-        string cesta = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), "Clicker");
+        //save / load game
+        private string filePath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), "data.txt");
+        private string key = "1234567890123456"; // 16 znaků pro AES-128
 
 
         //Baterka
@@ -1739,27 +1741,17 @@ namespace Clicker
             }
             else
             {
-                save_game();
+                SaveData();
                 Application.Exit();
             }
         }
 
         private void button1_Click_3(object sender, EventArgs e)
         {
-            string cesta_txt = cesta + "/clicker_save.txt";
 
-            
-
-            if (File.Exists(cesta_txt) == true)
+            if (File.Exists(filePath) == true)
             {
-                byte[] encryptedData = File.ReadAllBytes(cesta);
-                string key = "1234567890123456";  // 16 znaků pro AES
-                string decryptedData = DecryptData(encryptedData, key);
-
-                // Rozdělení dešifrovaných dat na penize a gemy
-                string[] parts = decryptedData.Split('\n');
-                penize_save = parts[0];  // Přiřadíme první hodnotu do proměnné penize
-                gemy_save = parts[1];  // Přiřadíme druhou hodnotu do proměnné gemy
+                LoadData();
 
                 if (penize == Int32.Parse(penize_save) && gemy == Int32.Parse(gemy_save))
                 {
@@ -1774,8 +1766,6 @@ namespace Clicker
             {
                 save_question();
             }
-
-            
 
         }
 
@@ -1909,22 +1899,14 @@ namespace Clicker
 
         private void button37_Click_1(object sender, EventArgs e)
         { //load game button
-            string cesta_txt = cesta + "/clicker_save.txt";
-            if (File.Exists(cesta_txt) == false)
+            if (File.Exists(filePath) == false)
             {
                 MessageBox.Show("Nexistuje žádná záloha", "", MessageBoxButtons.OK, MessageBoxIcon.Error);      
             }
 
-            else if (File.Exists(cesta_txt) == true)
+            else if (File.Exists(filePath) == true)
             {
-                byte[] encryptedData = File.ReadAllBytes(cesta);
-                string key = "1234567890123456";  // 16 znaků pro AES
-                string decryptedData = DecryptData(encryptedData, key);
-
-                // Rozdělení dešifrovaných dat na penize a gemy
-                string[] parts = decryptedData.Split('\n');
-                penize_save = parts[0];  // Přiřadíme první hodnotu do proměnné penize
-                gemy_save = parts[1];  // Přiřadíme druhou hodnotu do proměnné gemy
+                LoadData();
 
                 penize = Int32.Parse(penize_save);
                 gemy = Int32.Parse(gemy_save);
@@ -1978,30 +1960,67 @@ namespace Clicker
 
         private void button33_Click_1(object sender, EventArgs e)
         {
-            save_game();
+            //save game button
+            SaveData();
         }
 
-        void save_game()
+        private void SaveData()
         {
-            //save button
-            // Data k šifrování (proměnné penize a gemy)
-            string data = penize + "\n" + gemy;  // Spojíme je do jednoho textu
-
-            string key = "1234567890123456";  // 16 znaků pro AES
-            byte[] encryptedData = EncryptData(data, key);
-
-            // Uložení šifrovaných dat do souboru
-            
-            if (!Directory.Exists(cesta))
-                Directory.CreateDirectory(cesta);
-
-            string cesta_txt = cesta + "/clicker_save.txt";
-
-            using (StreamWriter writer = new StreamWriter(cesta_txt))
+            string data = penize + "," + gemy;
+            string encryptedData = Encrypt(data, key);
+            using (StreamWriter writer = new StreamWriter(filePath))
             {
-                writer.WriteLine(encryptedData);
+                writer.Write(encryptedData);
             }
+        }
 
+        private void LoadData()
+        {
+            string encryptedData;
+            using (StreamReader reader = new StreamReader(filePath))
+            {
+                encryptedData = reader.ReadToEnd();
+            }
+            string decryptedData = Decrypt(encryptedData, key);
+            string[] values = decryptedData.Split(',');
+            penize_save = values[0];
+            gemy_save = values[1];
+            
+        }
+
+        private string Encrypt(string text, string key)
+        {
+            using (Aes aes = Aes.Create())
+            {
+                aes.Key = Encoding.UTF8.GetBytes(key);
+                aes.IV = new byte[16]; // Inicializační vektor (pro jednoduchost nulový)
+                using (var encryptor = aes.CreateEncryptor(aes.Key, aes.IV))
+                using (MemoryStream ms = new MemoryStream())
+                using (CryptoStream cs = new CryptoStream(ms, encryptor, CryptoStreamMode.Write))
+                using (StreamWriter sw = new StreamWriter(cs))
+                {
+                    sw.Write(text);
+                    sw.Flush();
+                    cs.FlushFinalBlock();
+                    return Convert.ToBase64String(ms.ToArray());
+                }
+            }
+        }
+
+        private string Decrypt(string encryptedText, string key)
+        {
+            using (Aes aes = Aes.Create())
+            {
+                aes.Key = Encoding.UTF8.GetBytes(key);
+                aes.IV = new byte[16];
+                using (var decryptor = aes.CreateDecryptor(aes.Key, aes.IV))
+                using (MemoryStream ms = new MemoryStream(Convert.FromBase64String(encryptedText)))
+                using (CryptoStream cs = new CryptoStream(ms, decryptor, CryptoStreamMode.Read))
+                using (StreamReader sr = new StreamReader(cs))
+                {
+                    return sr.ReadToEnd();
+                }
+            }
         }
     }
 }
