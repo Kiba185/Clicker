@@ -512,7 +512,7 @@ namespace Clicker
             this.panel10.Controls.Add(this.panel12);
             this.panel10.Controls.Add(this.panel13);
             this.panel10.Controls.Add(this.panel17);
-            this.panel10.Location = new System.Drawing.Point(525, 518);
+            this.panel10.Location = new System.Drawing.Point(525, 517);
             this.panel10.Name = "panel10";
             this.panel10.Size = new System.Drawing.Size(559, 546);
             this.panel10.TabIndex = 21;

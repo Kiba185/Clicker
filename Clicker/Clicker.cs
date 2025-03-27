@@ -5,6 +5,7 @@ using System.Windows.Forms;
 using System.Data.SqlTypes;
 using System.Security.Cryptography;
 using System.Text;
+using System.Text.Json;
 using System.IO;
 
 namespace Clicker
@@ -21,8 +22,10 @@ namespace Clicker
         bool admin_rezim = false;
 
         //save / load game
-        private string filePath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), "data.txt");
+        private string filePath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), "data.json");
         private string key = "1234567890123456"; // 16 znaků pro AES-128
+        private DataContainer data = new DataContainer { x = 42, y = 84, z = 128, a = 256, b = 512 };
+
 
 
         //Baterka
@@ -1966,8 +1969,8 @@ namespace Clicker
 
         private void SaveData()
         {
-            string data = penize + "," + gemy;
-            string encryptedData = Encrypt(data, key);
+            string jsonData = JsonSerializer.Serialize(data);
+            string encryptedData = Encrypt(jsonData, key);
             using (StreamWriter writer = new StreamWriter(filePath))
             {
                 writer.Write(encryptedData);
@@ -1982,10 +1985,8 @@ namespace Clicker
                 encryptedData = reader.ReadToEnd();
             }
             string decryptedData = Decrypt(encryptedData, key);
-            string[] values = decryptedData.Split(',');
-            penize_save = values[0];
-            gemy_save = values[1];
-            
+            data = JsonSerializer.Deserialize<DataContainer>(decryptedData);
+
         }
 
         private string Encrypt(string text, string key)
@@ -2021,6 +2022,15 @@ namespace Clicker
                     return sr.ReadToEnd();
                 }
             }
+        }
+
+        private class DataContainer
+        {
+            public int x { get; set; }
+            public int y { get; set; }
+            public int z { get; set; }
+            public int a { get; set; }
+            public int b { get; set; }
         }
     }
 }
