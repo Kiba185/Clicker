@@ -38,8 +38,8 @@ namespace Clicker
         int sirkaplnostibaterielocation = 1;
 
         //Currrency save
-        string penize_save = 0;
-        string gemy_save = 0;
+        string penize_save = "0";
+        string gemy_save = "0";
 
         //Currency/Suroviny
         int penize = 0;
