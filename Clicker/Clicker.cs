@@ -38,8 +38,8 @@ namespace Clicker
         int sirkaplnostibaterielocation = 1;
 
         //Currrency save
-        string penize_save;
-        string gemy_save;
+        string penize_save = 0;
+        string gemy_save = 0;
 
         //Currency/Suroviny
         int penize = 0;
@@ -862,6 +862,7 @@ namespace Clicker
         //Shop button
         private void button4_Click(object sender, EventArgs e)
         {
+            button33.Visible = false;
             button35.Visible = true;
             button4.Visible = false;
             button9.Visible = true;
@@ -910,6 +911,7 @@ namespace Clicker
         private void button8_Click(object sender, EventArgs e)
         {
             //Machines button
+            button33.Visible = false;
             button35.Visible = true;
             button4.Visible = true;
             button9.Visible = true;
@@ -933,6 +935,7 @@ namespace Clicker
         private void button7_Click(object sender, EventArgs e)
         {
             //Storage button
+            button33.Visible = false;
             button35.Visible = true;
             button4.Visible = true;
             button9.Visible = true;
@@ -959,6 +962,7 @@ namespace Clicker
         private void button9_Click(object sender, EventArgs e)
         {
             //Achievments button
+            button33.Visible = false;
             button35.Visible = true;
             button4.Visible = true;
             button9.Visible = false;
@@ -985,6 +989,7 @@ namespace Clicker
         private void button10_Click(object sender, EventArgs e)
         {
             //Stats button
+            button33.Visible = false;
             button35.Visible = true;
             button4.Visible = true;
             button9.Visible = true;
@@ -1709,6 +1714,7 @@ namespace Clicker
         private void button35_Click(object sender, EventArgs e)
         {
             //tlacitko clicker aplikace
+            button33.Visible = true;
             button35.Visible = false;
 
             button4.Visible = true;
