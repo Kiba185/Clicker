@@ -22,11 +22,9 @@ namespace Clicker
         bool admin_rezim = false;
 
         //save / load game
-        private string filePath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), "data.json");
+        private string filePath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), "clicker_save.json");
         private string key = "1234567890123456"; // 16 znaků pro AES-128
-        private DataContainer data = new DataContainer { x = 42, y = 84, z = 128, a = 256, b = 512 };
-
-
+        
 
         //Baterka
         int energy = 0;
@@ -37,9 +35,37 @@ namespace Clicker
         int sirkaplnostibateriesize = 1;
         int sirkaplnostibaterielocation = 1;
 
-        //Currrency save
-        string penize_save = "0";
-        string gemy_save = "0";
+        //Variables _save
+        int penize_save = 0;
+        int gemy_save = 0;
+        int wood_save = 0;
+        int stone_save = 0;
+        int wheat_save = 0;
+        int plank_save = 0;
+        int woodWait_save = 0;
+        int stoneWait_save = 0;
+        int wheatWait_save = 0;
+        int plankWait_save = 0;
+        int totalClicks_save = 0;
+        int totalEnergy_save = 0;
+        int totalPenize_save = 0;
+        int achievments_save = 0;
+        int machines_save = 1;
+        int resources_save = 0;
+        int sellRecources_save = 0;
+        int maxEnergy_save = 100;
+        int baseEnergy_save = 1;
+        int energyNasob_save = 1;
+        int lastClick_save = 0;
+        int maxLastClick_save = 5;
+        bool checkClicksOn_save = false;
+        bool penizeGiving_save = false;
+        int autoEnergyUpgrade_save = 0;
+        int forestUpgrade_save = 0;
+        int mineUpgrade_save = 0;
+        int farmUpgrade_save = 0;
+        int utilityBuildingUpgrade_save = 0;
+
 
         //Currency/Suroviny
         int penize = 0;
@@ -1762,7 +1788,7 @@ namespace Clicker
             {
                 LoadData();
 
-                if (penize == Int32.Parse(penize_save) && gemy == Int32.Parse(gemy_save))
+                if (penize == penize_save && gemy == gemy_save)
                 {
                     Application.Exit();
                 }
@@ -1917,8 +1943,8 @@ namespace Clicker
             {
                 LoadData();
 
-                penize = Int32.Parse(penize_save);
-                gemy = Int32.Parse(gemy_save);
+                penize = penize_save;
+                gemy = gemy_save;
 
                 panel66.Visible = false;
                 update();
@@ -1975,24 +2001,59 @@ namespace Clicker
 
         private void SaveData()
         {
-            string jsonData = JsonSerializer.Serialize(data);
-            string encryptedData = Encrypt(jsonData, key);
-            using (StreamWriter writer = new StreamWriter(filePath))
-            {
-                writer.Write(encryptedData);
-            }
+            if (!Directory.Exists(filePath))
+                Directory.CreateDirectory(filePath);
+            string data = $"{x},{y},{z},{a},{b}";
+            string encryptedData = Encrypt(data, key);
+            File.WriteAllText(filePath, encryptedData);
         }
 
         private void LoadData()
         {
-            string encryptedData;
-            using (StreamReader reader = new StreamReader(filePath))
-            {
-                encryptedData = reader.ReadToEnd();
-            }
+            string encryptedData = File.ReadAllText(filePath);
             string decryptedData = Decrypt(encryptedData, key);
-            data = JsonSerializer.Deserialize<DataContainer>(decryptedData);
+            string[] values = decryptedData.Split(',');
 
+            if (values.Length == 30)
+            {
+                values[0] = penize_save;
+                int gemy_save = 0;
+                int wood_save = 0;
+                int stone_save = 0;
+                int wheat_save = 0;
+                int plank_save = 0;
+                int woodWait_save = 0;
+                int stoneWait_save = 0;
+                int wheatWait_save = 0;
+                int plankWait_save = 0;
+                int totalClicks_save = 0;
+                int totalEnergy_save = 0;
+                int totalPenize_save = 0;
+                int achievments_save = 0;
+                int machines_save = 1;
+                int resources_save = 0;
+                int sellRecources_save = 0;
+                int maxEnergy_save = 100;
+                int baseEnergy_save = 1;
+                int energyNasob_save = 1;
+                int lastClick_save = 0;
+                int maxLastClick_save = 5;
+                bool checkClicksOn_save = false;
+                bool penizeGiving_save = false;
+                int autoEnergyUpgrade_save = 0;
+                int forestUpgrade_save = 0;
+                int mineUpgrade_save = 0;
+                int farmUpgrade_save = 0;
+                int utilityBuildingUpgrade_save = 0;
+            }
+
+
+
+
+            else
+            {
+                MessageBox.Show("Chyba při načítání dat.");
+            }
         }
 
         private string Encrypt(string text, string key)
@@ -2028,15 +2089,6 @@ namespace Clicker
                     return sr.ReadToEnd();
                 }
             }
-        }
-
-        private class DataContainer
-        {
-            public int x { get; set; }
-            public int y { get; set; }
-            public int z { get; set; }
-            public int a { get; set; }
-            public int b { get; set; }
         }
     }
 }
