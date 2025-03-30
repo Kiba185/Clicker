@@ -2016,40 +2016,37 @@ namespace Clicker
 
             if (values.Length == 30)
             {
-                values[0] = penize_save;
-                int gemy_save = 0;
-                int wood_save = 0;
-                int stone_save = 0;
-                int wheat_save = 0;
-                int plank_save = 0;
-                int woodWait_save = 0;
-                int stoneWait_save = 0;
-                int wheatWait_save = 0;
-                int plankWait_save = 0;
-                int totalClicks_save = 0;
-                int totalEnergy_save = 0;
-                int totalPenize_save = 0;
-                int achievments_save = 0;
-                int machines_save = 1;
-                int resources_save = 0;
-                int sellRecources_save = 0;
-                int maxEnergy_save = 100;
-                int baseEnergy_save = 1;
-                int energyNasob_save = 1;
-                int lastClick_save = 0;
-                int maxLastClick_save = 5;
-                bool checkClicksOn_save = false;
-                bool penizeGiving_save = false;
-                int autoEnergyUpgrade_save = 0;
-                int forestUpgrade_save = 0;
-                int mineUpgrade_save = 0;
-                int farmUpgrade_save = 0;
-                int utilityBuildingUpgrade_save = 0;
+                penize_save = Int32.TryParse(values[0]) ;
+                gemy_save;
+                wood_save;
+                stone_save = values[3];
+                wheat_save = values[4];
+                plank_save = values[4];
+                woodWait_save = values[5];
+                stoneWait_save = values[6];
+                wheatWait_save = values[7];
+                plankWait_save = values[8];
+                totalClicks_save = values[9];
+                totalEnergy_save = [10];
+                totalPenize_save = [11];
+                achievments_save = [12];
+                machines_save = [13];
+                resources_save = [14];
+                sellRecources_save = [15];
+                maxEnergy_save = [16];
+                baseEnergy_save = [17];
+                energyNasob_save = [18];
+                lastClick_save = [19];
+                maxLastClick_save = [20];
+                checkClicksOn_save = [21];
+                penizeGiving_save = [22];
+                autoEnergyUpgrade_save = [23];
+                forestUpgrade_save = [24];
+                mineUpgrade_save = [25];
+                farmUpgrade_save = [26];
+                utilityBuildingUpgrade_save = [27];
             }
-
-
-
-
+  
             else
             {
                 MessageBox.Show("Chyba při načítání dat.");
