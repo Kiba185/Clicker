@@ -7,6 +7,8 @@ using System.Security.Cryptography;
 using System.Text;
 using System.Text.Json;
 using System.IO;
+using System.Collections.Generic;
+using Newtonsoft.Json;
 
 namespace Clicker
 {
@@ -24,7 +26,8 @@ namespace Clicker
         //save / load game
         private string filePath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), "clicker_save.json");
         private string key = "1234567890123456"; // 16 znaků pro AES-128
-        
+        List<Variables> stats = new List<Variables>();
+
 
         //Baterka
         int energy = 0;
@@ -746,117 +749,6 @@ namespace Clicker
         //Tmavý režim:
         private void checkBox1_CheckedChanged(object sender, EventArgs e)
         {
-            
-            {
-                button19.BackColor = Color.DimGray;
-                button19.ForeColor = Color.LightGray;
-                autoClick.BackColor = Color.DimGray;
-                autoClick.ForeColor = Color.LightGray;
-                button3.BackColor = Color.DimGray;
-                button3.ForeColor = Color.LightGray;
-                tlacitko.BackColor = Color.DimGray;
-                tlacitko.ForeColor = Color.LightGray;
-                panel1.BackColor = Color.FromArgb(60,60,60);
-                
-                button4.BackColor = Color.DimGray;
-                button4.ForeColor = Color.LightGray;
-                panel2.BackColor = Color.FromArgb(60, 60, 60);
-                button5.BackColor = Color.DimGray;
-                button5.ForeColor = Color.LightGray;
-                button7.BackColor = Color.DimGray;
-                button7.ForeColor = Color.LightGray;
-                button8.BackColor = Color.DimGray;
-                button8.ForeColor = Color.LightGray;
-                button9.BackColor = Color.DimGray;
-                button9.ForeColor = Color.LightGray;
-                button10.BackColor = Color.DimGray;
-                button10.ForeColor = Color.LightGray;
-                button12.BackColor = Color.DimGray;
-                button12.ForeColor = Color.LightGray;
-                panel6.BackgroundImage = global::Clicker.Properties.Resources.nápis_shop_šedá;
-                panel7.BackgroundImage = global::Clicker.Properties.Resources.myš_klik_šedá;
-                panel8.BackgroundImage = global::Clicker.Properties.Resources.nápis_clicker_šedá;
-                panel2.BackgroundImage = global::Clicker.Properties.Resources.baterka_šedá;
-                label2.ForeColor = Color.LightGray;
-                panel9.BackgroundImage = global::Clicker.Properties.Resources.dolar_šedá;
-                panel11.BackgroundImage = global::Clicker.Properties.Resources.nápis_achievements_šedá;
-                panel12.BackgroundImage = global::Clicker.Properties.Resources.achievements_logo_šedá;
-                label4.ForeColor = Color.LightGray;
-                label5.ForeColor = Color.LightGray;
-                label6.ForeColor = Color.LightGray;
-                label7.ForeColor = Color.LightGray;
-                label8.ForeColor = Color.LightGray;
-                label9.ForeColor = Color.LightGray;
-                label10.ForeColor = Color.LightGray;
-                label11.ForeColor = Color.LightGray;
-                label12.ForeColor = Color.LightGray;
-                label13.ForeColor = Color.LightGray;
-                label14.ForeColor = Color.LightGray;
-                label15.ForeColor = Color.LightGray;
-                panel43.BackgroundImage = global::Clicker.Properties.Resources.gem_šedá;
-                label1.ForeColor = Color.LightGray;
-                panel49.BackgroundImage = global::Clicker.Properties.Resources.stats_logo_šedá;
-                panel50.BackgroundImage = global::Clicker.Properties.Resources.stats_nápis_šedá;
-                panel51.BackColor = Color.LightGray;
-                panel52.BackColor = Color.LightGray;
-
-
-            }
-
-            
-            {
-                button19.BackColor = Color.Silver;
-                button19.ForeColor = Color.Black;
-                autoClick.BackColor = Color.Silver;
-                autoClick.ForeColor = Color.Black;
-                button3.BackColor = Color.Silver;
-                button3.ForeColor = Color.Black;
-                tlacitko.BackColor = Color.LightGray;
-                tlacitko.ForeColor = Color.Black;
-                panel1.BackColor = Color.WhiteSmoke;
-                button4.BackColor= Color.Silver;
-                button4.ForeColor = Color.Black;
-                panel2.BackColor = Color.WhiteSmoke;
-                button5.BackColor= Color.Silver;
-                button5.ForeColor= Color.Black;
-                button7.BackColor = Color.Silver;
-                button7.ForeColor = Color.Black;
-                button8.BackColor = Color.Silver;
-                button8.ForeColor = Color.Black;
-                button9.BackColor = Color.Silver;
-                button9.ForeColor = Color.Black;
-                button10.BackColor = Color.Silver;
-                button10.ForeColor = Color.Black;
-                button12.BackColor = Color.Silver;
-                button12.ForeColor = Color.Black;
-                panel6.BackgroundImage = global::Clicker.Properties.Resources.nápis_shop_černá;
-                panel7.BackgroundImage = global::Clicker.Properties.Resources.myš_klik_černá;
-                panel8.BackgroundImage = global::Clicker.Properties.Resources.nápis_clicker_černá;
-                panel2.BackgroundImage = global::Clicker.Properties.Resources.baterka_černá;
-                label2.ForeColor = Color.Black;
-                panel9.BackgroundImage = global::Clicker.Properties.Resources.dolar_černá;
-                panel11.BackgroundImage = global::Clicker.Properties.Resources.nápis_achievements_černá;
-                panel12.BackgroundImage = global::Clicker.Properties.Resources.achievements_logo_černá;
-                label4.ForeColor = Color.Black;
-                label5.ForeColor = Color.Black;
-                label6.ForeColor = Color.Black;
-                label7.ForeColor = Color.Black;
-                label8.ForeColor = Color.Black;
-                label9.ForeColor = Color.Black;
-                label10.ForeColor = Color.Black;
-                label11.ForeColor = Color.Black;
-                label12.ForeColor = Color.Black;
-                label13.ForeColor = Color.Black;
-                label14.ForeColor = Color.Black;
-                label15.ForeColor = Color.Black;
-                panel43.BackgroundImage = global::Clicker.Properties.Resources.gem_černá;
-                label1.ForeColor = Color.Black;
-                panel49.BackgroundImage = global::Clicker.Properties.Resources.stats_logo_černá;
-                panel50.BackgroundImage = global::Clicker.Properties.Resources.stats_nápis_černá;
-                panel51.BackColor = Color.Silver;
-                panel52.BackColor = Color.Silver;
-                
-            }
 
         }
 
@@ -2003,48 +1895,22 @@ namespace Clicker
         {
             if (!Directory.Exists(filePath))
                 Directory.CreateDirectory(filePath);
-            string data = $"{x},{y},{z},{a},{b}";
-            string encryptedData = Encrypt(data, key);
-            File.WriteAllText(filePath, encryptedData);
+            string jsonData = JsonConvert.SerializeObject(gameData);
+            string encryptedData = Encrypt(jsonData, key, iv);
+            File.WriteAllText("data.enc", encryptedData);
         }
 
         private void LoadData()
         {
             string encryptedData = File.ReadAllText(filePath);
+            string jsonString = File.ReadAllText(filePath);
+            stats = JsonSerializer.Deserialize<List<Variables>>(jsonString);
             string decryptedData = Decrypt(encryptedData, key);
             string[] values = decryptedData.Split(',');
 
             if (values.Length == 30)
             {
-                penize_save = Int32.TryParse(values[0]) ;
-                gemy_save;
-                wood_save;
-                stone_save = values[3];
-                wheat_save = values[4];
-                plank_save = values[4];
-                woodWait_save = values[5];
-                stoneWait_save = values[6];
-                wheatWait_save = values[7];
-                plankWait_save = values[8];
-                totalClicks_save = values[9];
-                totalEnergy_save = [10];
-                totalPenize_save = [11];
-                achievments_save = [12];
-                machines_save = [13];
-                resources_save = [14];
-                sellRecources_save = [15];
-                maxEnergy_save = [16];
-                baseEnergy_save = [17];
-                energyNasob_save = [18];
-                lastClick_save = [19];
-                maxLastClick_save = [20];
-                checkClicksOn_save = [21];
-                penizeGiving_save = [22];
-                autoEnergyUpgrade_save = [23];
-                forestUpgrade_save = [24];
-                mineUpgrade_save = [25];
-                farmUpgrade_save = [26];
-                utilityBuildingUpgrade_save = [27];
+                
             }
   
             else
@@ -2052,7 +1918,6 @@ namespace Clicker
                 MessageBox.Show("Chyba při načítání dat.");
             }
         }
-
         private string Encrypt(string text, string key)
         {
             using (Aes aes = Aes.Create())
@@ -2087,5 +1952,38 @@ namespace Clicker
                 }
             }
         }
+    }
+    class Variables
+    {
+        public int penize { get; set; }
+        public int gemy { get; set; }
+        public int wood { get; set; }
+        public int stone { get; set; }
+        public int wheat { get; set; }
+        public int plank { get; set; }
+        public int woodWait { get; set; }
+        public int stoneWait { get; set; }
+        public int wheatWait { get; set; }
+        public int plankWait { get; set; }
+        public int totalClicks { get; set; }
+        public int totalEnergy { get; set; }
+        public int totalPenize { get; set; }
+        public int achievments { get; set; }
+        public int machines { get; set; }
+        public int resources { get; set; }
+        public int sellRecources { get; set; }
+        public int maxEnergy { get; set; } = 100; // Default value
+        public int baseEnergy { get; set; } = 1;  // Default value
+        public int energyNasob { get; set; } = 1; // Default value
+        public int lastClick { get; set; }
+        public int maxLastClick { get; set; } = 5; // Default value
+        public bool checkClicksOn { get; set; } = false; // Default value
+        public bool penizeGiving { get; set; } = false; // Default value
+        public int autoEnergyUpgrade { get; set; }
+        public int forestUpgrade { get; set; }
+        public int mineUpgrade { get; set; }
+        public int farmUpgrade { get; set; }
+        public int utilityBuildingUpgrade { get; set; }
+
     }
 }
