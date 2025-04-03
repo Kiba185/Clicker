@@ -252,11 +252,12 @@ namespace Clicker
             this.panel1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.panel1.Controls.Add(this.panel66);
             this.panel1.Controls.Add(this.button33);
+            this.panel1.Controls.Add(this.button13);
+            this.panel1.Controls.Add(this.panel84);
             this.panel1.Controls.Add(this.button32);
             this.panel1.Controls.Add(this.button31);
             this.panel1.Controls.Add(this.panel85);
             this.panel1.Controls.Add(this.label42);
-            this.panel1.Controls.Add(this.button13);
             this.panel1.Controls.Add(this.label28);
             this.panel1.Controls.Add(this.panel10);
             this.panel1.Controls.Add(this.panel52);
@@ -294,7 +295,7 @@ namespace Clicker
             this.panel66.Controls.Add(this.button37);
             this.panel66.Controls.Add(this.button36);
             this.panel66.Controls.Add(this.label32);
-            this.panel66.Location = new System.Drawing.Point(780, 19);
+            this.panel66.Location = new System.Drawing.Point(829, 102);
             this.panel66.Name = "panel66";
             this.panel66.Size = new System.Drawing.Size(834, 526);
             this.panel66.TabIndex = 41;
@@ -355,7 +356,7 @@ namespace Clicker
             // 
             // button32
             // 
-            this.button32.Location = new System.Drawing.Point(603, 107);
+            this.button32.Location = new System.Drawing.Point(602, 107);
             this.button32.Name = "button32";
             this.button32.Size = new System.Drawing.Size(50, 39);
             this.button32.TabIndex = 34;
@@ -366,7 +367,7 @@ namespace Clicker
             // 
             // button31
             // 
-            this.button31.Location = new System.Drawing.Point(603, 42);
+            this.button31.Location = new System.Drawing.Point(599, 42);
             this.button31.Name = "button31";
             this.button31.Size = new System.Drawing.Size(50, 39);
             this.button31.TabIndex = 33;
@@ -380,8 +381,7 @@ namespace Clicker
             this.panel85.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.panel85.Controls.Add(this.label43);
             this.panel85.Controls.Add(this.button15);
-            this.panel85.Controls.Add(this.panel84);
-            this.panel85.Location = new System.Drawing.Point(823, 100);
+            this.panel85.Location = new System.Drawing.Point(826, 120);
             this.panel85.Name = "panel85";
             this.panel85.Size = new System.Drawing.Size(232, 152);
             this.panel85.TabIndex = 40;
@@ -415,7 +415,7 @@ namespace Clicker
             this.panel84.Controls.Add(this.label29);
             this.panel84.Controls.Add(this.button14);
             this.panel84.Controls.Add(this.textBox1);
-            this.panel84.Location = new System.Drawing.Point(5, 17);
+            this.panel84.Location = new System.Drawing.Point(817, 134);
             this.panel84.Name = "panel84";
             this.panel84.Size = new System.Drawing.Size(232, 152);
             this.panel84.TabIndex = 39;
@@ -456,7 +456,7 @@ namespace Clicker
             this.label42.BackColor = System.Drawing.Color.Transparent;
             this.label42.Font = new System.Drawing.Font("Agency FB", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label42.ForeColor = System.Drawing.Color.LimeGreen;
-            this.label42.Location = new System.Drawing.Point(412, 120);
+            this.label42.Location = new System.Drawing.Point(392, 120);
             this.label42.Name = "label42";
             this.label42.Size = new System.Drawing.Size(105, 30);
             this.label42.TabIndex = 40;
@@ -469,8 +469,8 @@ namespace Clicker
             this.button13.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.button13.BackColor = System.Drawing.Color.LightGray;
             this.button13.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.button13.Cursor = System.Windows.Forms.Cursors.Default;
             this.button13.FlatAppearance.BorderColor = System.Drawing.Color.LightGray;
-            this.button13.FlatAppearance.BorderSize = 0;
             this.button13.FlatAppearance.MouseDownBackColor = System.Drawing.Color.LightGray;
             this.button13.FlatAppearance.MouseOverBackColor = System.Drawing.Color.LightGray;
             this.button13.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
@@ -1188,7 +1188,7 @@ namespace Clicker
             this.panel52.Controls.Add(this.panel80);
             this.panel52.Controls.Add(this.label24);
             this.panel52.Controls.Add(this.panel65);
-            this.panel52.Location = new System.Drawing.Point(542, 504);
+            this.panel52.Location = new System.Drawing.Point(539, 507);
             this.panel52.Name = "panel52";
             this.panel52.Size = new System.Drawing.Size(563, 631);
             this.panel52.TabIndex = 1;
@@ -1437,7 +1437,7 @@ namespace Clicker
             this.panel3.Controls.Add(this.panel60);
             this.panel3.Controls.Add(this.panel6);
             this.panel3.Controls.Add(this.panel5);
-            this.panel3.Location = new System.Drawing.Point(551, 496);
+            this.panel3.Location = new System.Drawing.Point(551, 498);
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(554, 517);
             this.panel3.TabIndex = 21;
@@ -2089,6 +2089,7 @@ namespace Clicker
             this.button35.ForeColor = System.Drawing.Color.Transparent;
             this.button35.Location = new System.Drawing.Point(12, 35);
             this.button35.Name = "button35";
+            this.button35.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.button35.Size = new System.Drawing.Size(65, 65);
             this.button35.TabIndex = 34;
             this.button35.UseVisualStyleBackColor = false;
@@ -2257,7 +2258,7 @@ namespace Clicker
             // 
             this.radioButton3.AutoSize = true;
             this.radioButton3.Font = new System.Drawing.Font("Agency FB", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.radioButton3.Location = new System.Drawing.Point(549, 302);
+            this.radioButton3.Location = new System.Drawing.Point(549, 301);
             this.radioButton3.Name = "radioButton3";
             this.radioButton3.Size = new System.Drawing.Size(70, 22);
             this.radioButton3.TabIndex = 29;

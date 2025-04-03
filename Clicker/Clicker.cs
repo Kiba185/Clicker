@@ -9,6 +9,7 @@ using System.Text.Json;
 using System.IO;
 using System.Collections.Generic;
 using Newtonsoft.Json;
+using System.Xml;
 
 namespace Clicker
 {
@@ -24,9 +25,11 @@ namespace Clicker
         bool admin_rezim = false;
 
         //save / load game
-        private string filePath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), "clicker_save.json");
-        private string key = "1234567890123456"; // 16 znaků pro AES-128
-        List<Variables> stats = new List<Variables>();
+        private string filePath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), "Clicker", "clicker_save.enc");
+        private string key = "mysecretkey12345"; // 16-bajtový klíč
+        private string iv = "1234567890123456";  // 16-bajtový IV
+        private GameData gameData = new GameData(); // Herní data
+
 
 
         //Baterka
@@ -109,14 +112,14 @@ namespace Clicker
         int mineUpgrade = 0;
         int farmUpgrade = 0;
         int utilityBuildingUpgrade = 0;
-        
+
         void update()
         {
             float penizeText = penize;
             tlacitko.Text = "Energy: " + energy + "/" + maxEnergy;
             button6.Text = "Energy: " + energy + "/" + maxEnergy;
             label15.Text = "" + gemy;
-            button19.Text = "Větší klikání - " + 10 * (energyNasob*3) + "$";
+            button19.Text = "Větší klikání - " + 10 * (energyNasob * 3) + "$";
             button5.Text = "Double peníze - " + 50 * (nasob) + "$";
             button12.Text = "LastClick Check Upgrade: " + 150 * (maxLastClick - 4) + "$";
             autoClick.Text = "Solár: " + 5 + "K $";
@@ -124,12 +127,12 @@ namespace Clicker
             button17.Text = "Mine: " + 50 + "K $";
             button18.Text = "Farm: " + 15 + "K $";
             button20.Text = "Sawmill: " + 100 + "K $";
-            
+
 
 
             //Peníze ukazatel
-            if (penize < 1000) { label2.Text = ""+penize; }
-            else if(penize > 1000 && penize < 100000) { label2.Text = Math.Round(penizeText/1000,2) + "K"; }
+            if (penize < 1000) { label2.Text = "" + penize; }
+            else if (penize > 1000 && penize < 100000) { label2.Text = Math.Round(penizeText / 1000, 2) + "K"; }
             else if (penize > 100000 && penize < 1000000) { label2.Text = Math.Round(penizeText / 1000) + "K"; }
             else if (penize > 1000000 && penize < 100000000) { label2.Text = Math.Round(penizeText / 1000000, 2) + "M"; }
             else if (penize > 100000000 && penize < 1000000000) { label2.Text = Math.Round(penizeText / 1000000) + "M"; }
@@ -141,35 +144,35 @@ namespace Clicker
                 button3.Text = "Energy kapacita upgrade: " + maxEnergy * 2 + "$";
             }
             else button3.Visible = false;
-            
+
             //Ukazatel energie - max 148, 275 
-            energy10.Size = new Size(125, 0 + (energy*vyskaplnostibaterie/maxEnergy));
-            energy10.Location = new System.Drawing.Point(27, 317 - (energy*vyskaplnostibaterie/maxEnergy));
+            energy10.Size = new Size(125, 0 + (energy * vyskaplnostibaterie / maxEnergy));
+            energy10.Location = new System.Drawing.Point(27, 317 - (energy * vyskaplnostibaterie / maxEnergy));
             energy10.Visible = false;
             if (energy > 0)
             {
                 energy10.Visible = true;
-            
+
             }
             else { energy10.Visible = false; }
 
-            
+
         }
 
         void updateStorage()
         {
-            
-            numericUpDown1.Maximum = wood ;
-            numericUpDown2.Maximum = stone ;
-            numericUpDown3.Maximum = wheat ;
-            numericUpDown4.Maximum = plank ;
+
+            numericUpDown1.Maximum = wood;
+            numericUpDown2.Maximum = stone;
+            numericUpDown3.Maximum = wheat;
+            numericUpDown4.Maximum = plank;
 
             numericUpDown1.Value = wood;
             numericUpDown2.Value = stone;
             numericUpDown3.Value = wheat;
             numericUpDown4.Value = plank;
 
-            button25.Text = "Vyzvednout: " + woodWait ;
+            button25.Text = "Vyzvednout: " + woodWait;
             button26.Text = "Vyzvednout: " + stoneWait;
             button27.Text = "Vyzvednout: " + wheatWait;
             button28.Text = "Vyzvednout: " + plankWait;
@@ -240,7 +243,8 @@ namespace Clicker
         {
             while (true)
             {
-                if (wood >= 2) {
+                if (wood >= 2)
+                {
                     if (energy > 250)
                     {
                         wood -= 2;
@@ -301,14 +305,14 @@ namespace Clicker
                     else { await Task.Delay(5000); }
                     //Console.WriteLine((10000 / (energy + 1)).ToString());
                 }
-                else {await Task.Delay(1000); }
+                else { await Task.Delay(1000); }
             }
         }
 
         //Klikání
         private async void button1_Click(object sender, EventArgs e)
         {
-            
+
             lastClick = maxLastClick;
             if (energy < maxEnergy)
             {
@@ -343,7 +347,7 @@ namespace Clicker
             {
                 penize -= (10 * (energyNasob * 3));
                 energyNasob += 1;
-                update();   
+                update();
 
             }
         }
@@ -352,9 +356,9 @@ namespace Clicker
         {
             if (maxEnergy < 500)
             {
-                if (penize >= maxEnergy*2)
-                {     
-                    penize -= maxEnergy*2;
+                if (penize >= maxEnergy * 2)
+                {
+                    penize -= maxEnergy * 2;
                     maxEnergy += 50;
                     update();
                 }
@@ -363,9 +367,9 @@ namespace Clicker
         //Double peníze - zatím
         private void button5_Click_1(object sender, EventArgs e)
         {
-            if (penize >= 50*(nasob))
+            if (penize >= 50 * (nasob))
             {
-                penize -= 50*(nasob);
+                penize -= 50 * (nasob);
                 nasob += 1;
                 update();
             }
@@ -374,7 +378,7 @@ namespace Clicker
         private void button12_Click(object sender, EventArgs e)
         {
             //button5
-            if(penize >= 150 * (maxLastClick - 4))
+            if (penize >= 150 * (maxLastClick - 4))
             {
                 penize -= 150 * (maxLastClick - 4);
                 maxLastClick += 1;
@@ -473,20 +477,22 @@ namespace Clicker
         bool AstoResources = false; //70
         bool AsellResource = false; //79
         bool A100Kprodej = false; //73
-        
+
         void UpdateAchievments() //zk velikost 87,29
         {
-          if (totalClicks > 0 && Aclick == false) {
+            if (totalClicks > 0 && Aclick == false)
+            {
                 Aclick = true;
                 achievments += 1;
                 gemy += 1;
                 panel16.Visible = false;
                 panel16.BackColor = System.Drawing.Color.Lime;
                 panel16.Visible = true;
-            
-            } 
-          
-          if(energyNasob > 1 && Abiggerclick == false) {
+
+            }
+
+            if (energyNasob > 1 && Abiggerclick == false)
+            {
                 Abiggerclick = true;
                 achievments += 1;
                 gemy += 1;
@@ -495,7 +501,8 @@ namespace Clicker
                 panel14.Visible = true;
             }
 
-          if (maxEnergy > 100 && Abiggercapacity == false) {
+            if (maxEnergy > 100 && Abiggercapacity == false)
+            {
                 Abiggercapacity = true;
                 achievments += 1;
                 gemy += 2;
@@ -503,8 +510,9 @@ namespace Clicker
                 panel18.BackColor = System.Drawing.Color.Lime;
                 panel18.Visible = true;
             }
-          //Stovka 
-          if (penize >= 100 && Astovka == false) {
+            //Stovka 
+            if (penize >= 100 && Astovka == false)
+            {
                 Astovka = true;
                 achievments += 1;
                 gemy += 2;
@@ -513,14 +521,15 @@ namespace Clicker
                 panel20.Visible = true;
             }
 
-          if (Astovka == false)
+            if (Astovka == false)
             {
                 panel20.Visible = false;
-                panel20.Size = new Size((87*penize/100),29);
+                panel20.Size = new Size((87 * penize / 100), 29);
                 panel20.Visible = true;
             }
-          //Tisicovka
-          if (penize >= 1000 && Atisicovka == false) {
+            //Tisicovka
+            if (penize >= 1000 && Atisicovka == false)
+            {
                 Atisicovka = true;
                 achievments += 1;
                 gemy += 5;
@@ -529,14 +538,15 @@ namespace Clicker
                 panel22.Visible = true;
             }
 
-          if (Atisicovka == false)
+            if (Atisicovka == false)
             {
                 panel22.Visible = false;
                 panel22.Size = new Size((87 * penize / 1000), 29);
                 panel22.Visible = true;
             }
-          //Stotisicovka
-          if (penize >= 100000 && Astotisicovka == false) {
+            //Stotisicovka
+            if (penize >= 100000 && Astotisicovka == false)
+            {
                 Astotisicovka = true;
                 achievments += 1;
                 gemy += 10;
@@ -545,14 +555,15 @@ namespace Clicker
                 panel24.Visible = true;
             }
 
-          if (Astotisicovka == false)
+            if (Astotisicovka == false)
             {
                 panel24.Visible = false;
                 panel24.Size = new Size((87 * penize / 100000), 29);
                 panel24.Visible = true;
             }
 
-          if (maxLastClick > 5 && Alastclickupgrade == false) { 
+            if (maxLastClick > 5 && Alastclickupgrade == false)
+            {
                 Alastclickupgrade = true;
                 achievments += 1;
                 gemy += 2;
@@ -561,7 +572,8 @@ namespace Clicker
                 panel26.Visible = true;
             }
 
-          if (autoEnergyUpgrade > 0 && Aautoclick == false) {
+            if (autoEnergyUpgrade > 0 && Aautoclick == false)
+            {
                 Aautoclick = true;
                 achievments += 1;
                 gemy += 1;
@@ -569,8 +581,9 @@ namespace Clicker
                 panel28.BackColor = System.Drawing.Color.Lime;
                 panel28.Visible = true;
             }
-          //Energy Capacity 
-          if (maxEnergy == 500 && Amaxenergy == false) {
+            //Energy Capacity 
+            if (maxEnergy == 500 && Amaxenergy == false)
+            {
                 Amaxenergy = true;
                 achievments += 1;
                 gemy += 5;
@@ -579,14 +592,15 @@ namespace Clicker
                 panel30.Visible = true;
             }
 
-          if (Amaxenergy == false)
+            if (Amaxenergy == false)
             {
                 panel30.Visible = false;
-                panel30.Size = new Size((87*maxEnergy/500),29);
+                panel30.Size = new Size((87 * maxEnergy / 500), 29);
                 panel30.Visible = true;
             }
-          //Total Clicks
-          if (totalClicks >= 1000 && Atisicclicku == false) {
+            //Total Clicks
+            if (totalClicks >= 1000 && Atisicclicku == false)
+            {
                 Atisicclicku = true;
                 achievments += 1;
                 gemy += 10;
@@ -595,14 +609,15 @@ namespace Clicker
                 panel32.Visible = true;
             }
 
-          if (Atisicclicku == false)
+            if (Atisicclicku == false)
             {
                 panel32.Visible = false;
                 panel32.Size = new Size((87 * totalClicks / 1000), 29);
                 panel32.Visible = true;
             }
-          //Final
-          if (achievments == 14 && Afinale == false) {
+            //Final
+            if (achievments == 14 && Afinale == false)
+            {
                 Afinale = true;
                 gemy += 1;
                 panel34.Visible = false;
@@ -618,14 +633,14 @@ namespace Clicker
                 update();
             }
 
-          if (Afinale == false)
+            if (Afinale == false)
             {
                 panel34.Visible = false;
                 panel34.Size = new Size((474 * achievments / 14), 29);
                 panel34.Visible = true;
             }
-          //Machines
-          if (machines == 6  && Amachines == false)
+            //Machines
+            if (machines == 6 && Amachines == false)
             {
                 Amachines = true;
                 achievments += 1;
@@ -634,14 +649,14 @@ namespace Clicker
                 panel76.Size = new Size(87, 29);
                 panel76.Visible = true;
             }
-          if (Amachines == false)
+            if (Amachines == false)
             {
-               panel76.Visible = false;
-               panel76.Size = new Size((87*machines/6),29);
-               panel76.Visible = true;
+                panel76.Visible = false;
+                panel76.Size = new Size((87 * machines / 6), 29);
+                panel76.Visible = true;
             }
-          //Sto surovin
-          if(resources >= 100 && AstoResources == false)
+            //Sto surovin
+            if (resources >= 100 && AstoResources == false)
             {
                 AstoResources = true;
                 achievments += 1;
@@ -650,24 +665,25 @@ namespace Clicker
                 panel70.Size = new Size(87, 29);
                 panel70.Visible = true;
             }
-          
-          if (AstoResources == false)
+
+            if (AstoResources == false)
             {
                 panel70.Visible = false;
                 panel70.Size = new Size((87 * resources / 100), 29);
                 panel70.Visible = true;
             }
 
-          if(sellRecources > 0 && AsellResource == false) {
+            if (sellRecources > 0 && AsellResource == false)
+            {
                 AsellResource = true;
-                achievments += 1; 
+                achievments += 1;
                 gemy += 3;
                 panel79.Visible = false;
                 panel79.BackColor = System.Drawing.Color.Lime;
                 panel79.Visible = true;
             }
-          //100Kprodej
-          if(sellRecources >= 100000 && A100Kprodej == false)
+            //100Kprodej
+            if (sellRecources >= 100000 && A100Kprodej == false)
             {
                 A100Kprodej = true;
                 achievments += 1;
@@ -676,7 +692,7 @@ namespace Clicker
                 panel73.Size = new Size(87, 29);
                 panel73.Visible = true;
             }
-          if(A100Kprodej == false)
+            if (A100Kprodej == false)
             {
                 panel73.Visible = false;
                 panel73.Size = new Size((87 * sellRecources / 100000), 29);
@@ -710,12 +726,12 @@ namespace Clicker
         {
             //wood
             var number = Convert.ToInt32(numericUpDown1.Value);
-            if (wood >= numericUpDown1.Value) 
+            if (wood >= numericUpDown1.Value)
             {
-                wood -= number; 
-                penize += 2000 * number; 
-                totalPenize += 2000 * number; 
-                sellRecources += 2000 * number; 
+                wood -= number;
+                penize += 2000 * number;
+                totalPenize += 2000 * number;
+                sellRecources += 2000 * number;
             }
             updateStorage();
 
@@ -725,7 +741,7 @@ namespace Clicker
         {
             //stone
             var number = Convert.ToInt32(numericUpDown2.Value);
-            if (stone >= numericUpDown2.Value) { stone -= number; penize += 5000*number; totalPenize += 5000 * number; sellRecources += 5000 * number; }
+            if (stone >= numericUpDown2.Value) { stone -= number; penize += 5000 * number; totalPenize += 5000 * number; sellRecources += 5000 * number; }
             updateStorage();
         }
 
@@ -806,14 +822,14 @@ namespace Clicker
 
         private void button5_Click(object sender, EventArgs e)
         {
-            
+
         }
 
         //Exit SHop button
         private void button6_Click(object sender, EventArgs e)
         {
             panel3.Visible = false;
-           
+
         }
 
         private void panel3_Paint_1(object sender, PaintEventArgs e)
@@ -901,7 +917,7 @@ namespace Clicker
             panel10.Location = new System.Drawing.Point(83, 12);
             UpdateAchievments();
             Update();
-            
+
         }
 
         private void button10_Click(object sender, EventArgs e)
@@ -926,17 +942,17 @@ namespace Clicker
             panel52.Visible = false;
             panel51.Visible = false;
             panel48.Location = new System.Drawing.Point(89, 14);
-            label16.Text = "Total Clicks: "+totalClicks;
-            label17.Text = "Total Energy: "+totalEnergy;
-            label18.Text = "Total Peněz: "+totalPenize;
+            label16.Text = "Total Clicks: " + totalClicks;
+            label17.Text = "Total Energy: " + totalEnergy;
+            label18.Text = "Total Peněz: " + totalPenize;
             label19.Text = "Počet Machines: " + machines;
-            label20.Text = "Double peníze upgrade: "+(nasob-1);
-            label21.Text = "Větší klikání upgrade: "+(energyNasob-1);
-            label22.Text = "LastClick upgrade: "+(maxLastClick-5);
-            label23.Text = "Počet dokončených achievementů: "+achievments;
-            label40.Text = "Dohromady surovin: "+resources;
-            label41.Text = "Peníze z prodaných surovin: "+sellRecources;
-            
+            label20.Text = "Double peníze upgrade: " + (nasob - 1);
+            label21.Text = "Větší klikání upgrade: " + (energyNasob - 1);
+            label22.Text = "LastClick upgrade: " + (maxLastClick - 5);
+            label23.Text = "Počet dokončených achievementů: " + achievments;
+            label40.Text = "Dohromady surovin: " + resources;
+            label41.Text = "Peníze z prodaných surovin: " + sellRecources;
+
         }
 
         private void panel3_Paint_2(object sender, PaintEventArgs e)
@@ -946,7 +962,7 @@ namespace Clicker
 
         private void richTextBox1_TextChanged(object sender, EventArgs e)
         {
-            
+
         }
 
         private void panel6_Paint(object sender, PaintEventArgs e)
@@ -1005,9 +1021,9 @@ namespace Clicker
         private void button11_Click_1(object sender, EventArgs e)
         {
             //Vyherni button
-           
-       
-            
+
+
+
         }
 
         private void panel11_Paint(object sender, PaintEventArgs e)
@@ -1017,8 +1033,8 @@ namespace Clicker
 
         private void button14_Click(object sender, EventArgs e)
         {
-            
-        
+
+
         }
 
         private void panel17_Paint(object sender, PaintEventArgs e)
@@ -1128,7 +1144,7 @@ namespace Clicker
 
         private void label14_Click(object sender, EventArgs e)
         {
-            
+
         }
 
         private void panel41_Paint(object sender, PaintEventArgs e)
@@ -1214,8 +1230,8 @@ namespace Clicker
 
         private void button11_Click(object sender, EventArgs e)
         {
-           
-           
+
+
         }
 
         private void label9_Click(object sender, EventArgs e)
@@ -1295,7 +1311,7 @@ namespace Clicker
         private void panel56_Paint(object sender, PaintEventArgs e)
         {
             //Machine6
-            
+
         }
 
         private void label24_Click(object sender, EventArgs e)
@@ -1425,7 +1441,7 @@ namespace Clicker
 
         private void panel73_Paint(object sender, PaintEventArgs e)
         {
-            
+
         }
 
         private void panel76_Paint(object sender, PaintEventArgs e)
@@ -1471,7 +1487,7 @@ namespace Clicker
         private void button25_Click(object sender, EventArgs e)
         {
             //vyvednout button wood
-            
+
             wood += woodWait;
             woodWait = 0;
             updateStorage();
@@ -1525,36 +1541,39 @@ namespace Clicker
         private void button11_Click_2(object sender, EventArgs e)
         {
             //battery barel skin
-            radioButton2.Checked = radioButton2.Checked;
-            label27.Visible = true;  
-            radioButton1.Visible = true;
-            radioButton2.Visible = true;
+            
             if (gemy >= 6)
-            { 
+            {
                 gemy = gemy - 6;
                 button11.Visible = false;
+                radioButton2.Checked = radioButton2.Checked;
+                label27.Visible = true;
+                radioButton1.Visible = true;
+                radioButton2.Visible = true;
             }
         }
 
         private void button29_Click(object sender, EventArgs e)
         {
             //battery fish skin
-            radioButton3.Visible = true;
+            
             if (gemy >= 10)
             {
                 gemy = gemy - 10;
                 button29.Visible = false;
+                radioButton3.Visible = true;
             }
         }
 
         private void button30_Click(object sender, EventArgs e)
         {
             //battery coffe skin
-            radioButton4.Visible = true;
+            
             if (gemy >= 12)
             {
                 gemy = gemy - 12;
                 button30.Visible = false;
+                radioButton4.Visible = true;
             }
         }
 
@@ -1567,7 +1586,7 @@ namespace Clicker
         {
             //battery skin rb
             panel2.BackgroundImage = global::Clicker.Properties.Resources.baterka_černá;
-           
+
 
         }
 
@@ -1619,12 +1638,12 @@ namespace Clicker
 
         private void button33_Click(object sender, EventArgs e)
         {
-            
+
         }
 
         private void button34_Click(object sender, EventArgs e)
         {
-           
+
 
 
         }
@@ -1642,9 +1661,9 @@ namespace Clicker
             button7.Visible = true;
             button1.Visible = true;
             if (tlacitko.Visible == false)
-                {
-                    button6.Visible = true;
-                }
+            {
+                button6.Visible = true;
+            }
             button13.Visible = true;
             if (admin_rezim == true)
             {
@@ -1680,7 +1699,25 @@ namespace Clicker
             {
                 LoadData();
 
-                if (penize == penize_save && gemy == gemy_save)
+                if (gameData.Penize == penize &&
+                    gameData.Gemy == gemy &&
+                    gameData.Wood == wood &&
+                    gameData.Stone == stone &&
+                    gameData.Wheat == wheat &&
+                    gameData.Plank == plank &&
+                    gameData.TotalClicks == totalClicks &&
+                    gameData.TotalEnergy == totalEnergy &&
+                    gameData.TotalPenize == totalPenize &&
+                    gameData.Achievments == achievments &&
+                    gameData.Machines == machines &&
+                    gameData.MaxEnergy == maxEnergy &&
+                    gameData.BaseEnergy == baseEnergy &&
+                    gameData.EnergyNasob == energyNasob &&
+                    gameData.CheckClicksOn == checkClicksOn &&
+                    gameData.PenizeGiving == penizeGiving &&
+                    gameData.ForestUpgrade == forestUpgrade)
+
+
                 {
                     Application.Exit();
                 }
@@ -1724,7 +1761,7 @@ namespace Clicker
                 tlacitko.Visible = true;
                 await penizeGive();
             }
-           
+
         }
 
         private void label29_Click_1(object sender, EventArgs e)
@@ -1734,7 +1771,7 @@ namespace Clicker
 
         private void button13_Click_1(object sender, EventArgs e)
         {
-            
+
             if (panel84.Visible == false && panel85.Visible == false)
             {
                 if (admin_rezim == false)
@@ -1748,7 +1785,7 @@ namespace Clicker
                     panel85.Location = new System.Drawing.Point(287, 12);
                     panel85.Visible = true;
                 }
-               
+
             }
 
             else if (panel84.Visible == true || panel85.Visible == true)
@@ -1757,7 +1794,7 @@ namespace Clicker
                 panel85.Visible = false;
             }
 
-           
+
 
         }
 
@@ -1828,20 +1865,18 @@ namespace Clicker
         { //load game button
             if (File.Exists(filePath) == false)
             {
-                MessageBox.Show("Nexistuje žádná záloha", "", MessageBoxButtons.OK, MessageBoxIcon.Error);      
+                MessageBox.Show("Nexistuje žádná záloha", "", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
 
             else if (File.Exists(filePath) == true)
             {
                 LoadData();
-
-                penize = penize_save;
-                gemy = gemy_save;
+                WriteData();
 
                 panel66.Visible = false;
                 update();
             }
-            
+
         }
 
         private void panel66_Paint_1(object sender, PaintEventArgs e)
@@ -1893,97 +1928,166 @@ namespace Clicker
 
         private void SaveData()
         {
-            if (!Directory.Exists(filePath))
-                Directory.CreateDirectory(filePath);
-            string jsonData = JsonConvert.SerializeObject(gameData);
+            string directoryPath = Path.GetDirectoryName(filePath);
+            if (!Directory.Exists(directoryPath))
+            {
+                Directory.CreateDirectory(directoryPath);
+            }
+
+            // Serializace dat do JSON
+            string jsonData = JsonConvert.SerializeObject(gameData, Formatting.Indented);
             string encryptedData = Encrypt(jsonData, key, iv);
-            File.WriteAllText("data.enc", encryptedData);
+
+            // Otevření souboru v režimu zápisu s kontrolou pro zápis
+            using (FileStream fileStream = new FileStream(filePath, FileMode.Create, FileAccess.Write, FileShare.None))
+            using (StreamWriter writer = new StreamWriter(fileStream))
+            {
+                writer.Write(encryptedData);
+            }
         }
+        
 
         private void LoadData()
         {
-            string encryptedData = File.ReadAllText(filePath);
-            string jsonString = File.ReadAllText(filePath);
-            stats = JsonSerializer.Deserialize<List<Variables>>(jsonString);
-            string decryptedData = Decrypt(encryptedData, key);
-            string[] values = decryptedData.Split(',');
-
-            if (values.Length == 30)
+            using (StreamReader reader = new StreamReader(filePath))
             {
-                
-            }
-  
-            else
-            {
-                MessageBox.Show("Chyba při načítání dat.");
+                string encryptedData = reader.ReadToEnd();
+                string decryptedData = Decrypt(encryptedData, key, iv);
+                gameData = JsonConvert.DeserializeObject<GameData>(decryptedData);
             }
         }
-        private string Encrypt(string text, string key)
+        private void WriteData()
         {
-            using (Aes aes = Aes.Create())
+            // Přenesení hodnot z objektu gameData do příslušných proměnných
+            penize = gameData.Penize;
+            gemy = gameData.Gemy;
+            wood = gameData.Wood;
+            stone = gameData.Stone;
+            wheat = gameData.Wheat;
+            plank = gameData.Plank;
+            woodWait = gameData.WoodWait;
+            stoneWait = gameData.StoneWait;
+            wheatWait = gameData.WheatWait;
+            plankWait = gameData.PlankWait;
+            totalClicks = gameData.TotalClicks;
+            totalEnergy = gameData.TotalEnergy;
+            totalPenize = gameData.TotalPenize;
+            achievments = gameData.Achievments;
+            machines = gameData.Machines;
+            resources = gameData.Resources;
+            sellRecources = gameData.SellRecources;
+            maxEnergy = gameData.MaxEnergy;
+            baseEnergy = gameData.BaseEnergy;
+            energyNasob = gameData.EnergyNasob;
+            lastClick = gameData.LastClick;
+            maxLastClick = gameData.MaxLastClick;
+            checkClicksOn = gameData.CheckClicksOn;
+            penizeGiving = gameData.PenizeGiving;
+            autoEnergyUpgrade = gameData.AutoEnergyUpgrade;
+            forestUpgrade = gameData.ForestUpgrade;
+            mineUpgrade = gameData.MineUpgrade;
+            farmUpgrade = gameData.FarmUpgrade;
+            utilityBuildingUpgrade = gameData.UtilityBuildingUpgrade;
+            Aclick = gameData.Aclick;
+            Abiggerclick = gameData.Abiggerclick;
+            Abiggercapacity = gameData.Abiggercapacity;
+            Astovka = gameData.Astovka;
+            Atisicovka = gameData.Atisicovka;
+            Astotisicovka = gameData.Astotisicovka;
+            Alastclickupgrade = gameData.Alastclickupgrade;
+            Aautoclick = gameData.Aautoclick;
+            Amaxenergy = gameData.Amaxenergy;
+            Atisicclicku = gameData.Atisicclicku;
+            Afinale = gameData.Afinale;
+            Amachines = gameData.Amachines;
+            AstoResources = gameData.AstoResources;
+            AsellResource = gameData.AsellResource;
+            A100Kprodej = gameData.A100Kprodej;
+
+        }
+        private string Encrypt(string plainText, string key, string iv)
+        {
+            using (Aes aesAlg = Aes.Create())
             {
-                aes.Key = Encoding.UTF8.GetBytes(key);
-                aes.IV = new byte[16]; // Inicializační vektor (pro jednoduchost nulový)
-                using (var encryptor = aes.CreateEncryptor(aes.Key, aes.IV))
-                using (MemoryStream ms = new MemoryStream())
-                using (CryptoStream cs = new CryptoStream(ms, encryptor, CryptoStreamMode.Write))
-                using (StreamWriter sw = new StreamWriter(cs))
+                aesAlg.Key = Encoding.UTF8.GetBytes(key);
+                aesAlg.IV = Encoding.UTF8.GetBytes(iv);
+                ICryptoTransform encryptor = aesAlg.CreateEncryptor(aesAlg.Key, aesAlg.IV);
+
+                using (MemoryStream msEncrypt = new MemoryStream())
                 {
-                    sw.Write(text);
-                    sw.Flush();
-                    cs.FlushFinalBlock();
-                    return Convert.ToBase64String(ms.ToArray());
+                    using (CryptoStream csEncrypt = new CryptoStream(msEncrypt, encryptor, CryptoStreamMode.Write))
+                    using (StreamWriter swEncrypt = new StreamWriter(csEncrypt))
+                    {
+                        swEncrypt.Write(plainText);
+                    }
+                    return Convert.ToBase64String(msEncrypt.ToArray());
                 }
             }
         }
 
-        private string Decrypt(string encryptedText, string key)
+        // 🔹 AES Dešifrování
+        private string Decrypt(string cipherText, string key, string iv)
         {
-            using (Aes aes = Aes.Create())
+            using (Aes aesAlg = Aes.Create())
             {
-                aes.Key = Encoding.UTF8.GetBytes(key);
-                aes.IV = new byte[16];
-                using (var decryptor = aes.CreateDecryptor(aes.Key, aes.IV))
-                using (MemoryStream ms = new MemoryStream(Convert.FromBase64String(encryptedText)))
-                using (CryptoStream cs = new CryptoStream(ms, decryptor, CryptoStreamMode.Read))
-                using (StreamReader sr = new StreamReader(cs))
+                aesAlg.Key = Encoding.UTF8.GetBytes(key);
+                aesAlg.IV = Encoding.UTF8.GetBytes(iv);
+                ICryptoTransform decryptor = aesAlg.CreateDecryptor(aesAlg.Key, aesAlg.IV);
+
+                using (MemoryStream msDecrypt = new MemoryStream(Convert.FromBase64String(cipherText)))
+                using (CryptoStream csDecrypt = new CryptoStream(msDecrypt, decryptor, CryptoStreamMode.Read))
+                using (StreamReader srDecrypt = new StreamReader(csDecrypt))
                 {
-                    return sr.ReadToEnd();
+                    return srDecrypt.ReadToEnd();
                 }
             }
         }
-    }
-    class Variables
-    {
-        public int penize { get; set; }
-        public int gemy { get; set; }
-        public int wood { get; set; }
-        public int stone { get; set; }
-        public int wheat { get; set; }
-        public int plank { get; set; }
-        public int woodWait { get; set; }
-        public int stoneWait { get; set; }
-        public int wheatWait { get; set; }
-        public int plankWait { get; set; }
-        public int totalClicks { get; set; }
-        public int totalEnergy { get; set; }
-        public int totalPenize { get; set; }
-        public int achievments { get; set; }
-        public int machines { get; set; }
-        public int resources { get; set; }
-        public int sellRecources { get; set; }
-        public int maxEnergy { get; set; } = 100; // Default value
-        public int baseEnergy { get; set; } = 1;  // Default value
-        public int energyNasob { get; set; } = 1; // Default value
-        public int lastClick { get; set; }
-        public int maxLastClick { get; set; } = 5; // Default value
-        public bool checkClicksOn { get; set; } = false; // Default value
-        public bool penizeGiving { get; set; } = false; // Default value
-        public int autoEnergyUpgrade { get; set; }
-        public int forestUpgrade { get; set; }
-        public int mineUpgrade { get; set; }
-        public int farmUpgrade { get; set; }
-        public int utilityBuildingUpgrade { get; set; }
-
+        public class GameData
+        {
+            public int Penize { get; set; }
+            public int Gemy { get; set; }
+            public int Wood { get; set; }
+            public int Stone { get; set; }
+            public int Wheat { get; set; }
+            public int Plank { get; set; }
+            public int WoodWait { get; set; }
+            public int StoneWait { get; set; }
+            public int WheatWait { get; set; }
+            public int PlankWait { get; set; }
+            public int TotalClicks { get; set; }
+            public int TotalEnergy { get; set; }
+            public int TotalPenize { get; set; }
+            public int Achievments { get; set; }
+            public int Machines { get; set; }
+            public int Resources { get; set; }
+            public int SellRecources { get; set; }
+            public int MaxEnergy { get; set; }
+            public int BaseEnergy { get; set; }
+            public int EnergyNasob { get; set; }
+            public int LastClick { get; set; }
+            public int MaxLastClick { get; set; }
+            public bool CheckClicksOn { get; set; }
+            public bool PenizeGiving { get; set; }
+            public int AutoEnergyUpgrade { get; set; }
+            public int ForestUpgrade { get; set; }
+            public int MineUpgrade { get; set; }
+            public int FarmUpgrade { get; set; }
+            public int UtilityBuildingUpgrade { get; set; }
+            public bool Aclick { get; set; }
+            public bool Abiggerclick { get; set; }
+            public bool Abiggercapacity { get; set; }
+            public bool Astovka { get; set; }
+            public bool Atisicovka { get; set; }
+            public bool Astotisicovka { get; set; }
+            public bool Alastclickupgrade { get; set; }
+            public bool Aautoclick { get; set; }
+            public bool Amaxenergy { get; set; }
+            public bool Atisicclicku { get; set; }
+            public bool Afinale { get; set; }
+            public bool Amachines { get; set; }
+            public bool AstoResources { get; set; }
+            public bool AsellResource { get; set; }
+            public bool A100Kprodej { get; set; }
+        }
     }
 }
