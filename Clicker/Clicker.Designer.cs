@@ -174,7 +174,7 @@ namespace Clicker
             this.label16 = new System.Windows.Forms.Label();
             this.panel50 = new System.Windows.Forms.Panel();
             this.panel49 = new System.Windows.Forms.Panel();
-            this.basa_click_panel_1 = new System.Windows.Forms.Button();
+            this.base_click_panel_1 = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
             this.button35 = new System.Windows.Forms.Button();
             this.button8 = new System.Windows.Forms.Button();
@@ -264,7 +264,7 @@ namespace Clicker
             this.panel1.Controls.Add(this.panel3);
             this.panel1.Controls.Add(this.panel51);
             this.panel1.Controls.Add(this.panel48);
-            this.panel1.Controls.Add(this.basa_click_panel_1);
+            this.panel1.Controls.Add(this.base_click_panel_1);
             this.panel1.Controls.Add(this.button1);
             this.panel1.Controls.Add(this.button35);
             this.panel1.Controls.Add(this.button8);
@@ -1554,7 +1554,7 @@ namespace Clicker
             this.button5.Font = new System.Drawing.Font("Agency FB", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button5.Location = new System.Drawing.Point(6, 127);
             this.button5.Name = "button5";
-            this.button5.Size = new System.Drawing.Size(144, 70);
+            this.button5.Size = new System.Drawing.Size(146, 70);
             this.button5.TabIndex = 16;
             this.button5.Text = "Double Penize - 50$";
             this.button5.UseVisualStyleBackColor = false;
@@ -2037,29 +2037,29 @@ namespace Clicker
             this.panel49.TabIndex = 0;
             this.panel49.Paint += new System.Windows.Forms.PaintEventHandler(this.panel49_Paint);
             // 
-            // basa_click_panel_1
+            // base_click_panel_1
             // 
-            this.basa_click_panel_1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.base_click_panel_1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.basa_click_panel_1.BackColor = System.Drawing.SystemColors.AppWorkspace;
-            this.basa_click_panel_1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.basa_click_panel_1.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.basa_click_panel_1.FlatAppearance.BorderColor = System.Drawing.Color.Gray;
-            this.basa_click_panel_1.FlatAppearance.BorderSize = 0;
-            this.basa_click_panel_1.FlatAppearance.CheckedBackColor = System.Drawing.Color.White;
-            this.basa_click_panel_1.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Gray;
-            this.basa_click_panel_1.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Gray;
-            this.basa_click_panel_1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.basa_click_panel_1.Font = new System.Drawing.Font("Agency FB", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.basa_click_panel_1.Location = new System.Drawing.Point(113, 167);
-            this.basa_click_panel_1.Name = "basa_click_panel_1";
-            this.basa_click_panel_1.Size = new System.Drawing.Size(406, 350);
-            this.basa_click_panel_1.TabIndex = 8;
-            this.basa_click_panel_1.Text = "Klikni";
-            this.basa_click_panel_1.UseVisualStyleBackColor = false;
-            this.basa_click_panel_1.Visible = false;
-            this.basa_click_panel_1.Click += new System.EventHandler(this.button6_Click_1);
+            this.base_click_panel_1.BackColor = System.Drawing.SystemColors.AppWorkspace;
+            this.base_click_panel_1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.base_click_panel_1.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.base_click_panel_1.FlatAppearance.BorderColor = System.Drawing.Color.Gray;
+            this.base_click_panel_1.FlatAppearance.BorderSize = 0;
+            this.base_click_panel_1.FlatAppearance.CheckedBackColor = System.Drawing.Color.White;
+            this.base_click_panel_1.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Gray;
+            this.base_click_panel_1.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Gray;
+            this.base_click_panel_1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.base_click_panel_1.Font = new System.Drawing.Font("Agency FB", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.base_click_panel_1.Location = new System.Drawing.Point(113, 167);
+            this.base_click_panel_1.Name = "base_click_panel_1";
+            this.base_click_panel_1.Size = new System.Drawing.Size(406, 350);
+            this.base_click_panel_1.TabIndex = 8;
+            this.base_click_panel_1.Text = "Klikni";
+            this.base_click_panel_1.UseVisualStyleBackColor = false;
+            this.base_click_panel_1.Visible = false;
+            this.base_click_panel_1.Click += new System.EventHandler(this.button6_Click_1);
             // 
             // button1
             // 
@@ -2656,7 +2656,7 @@ namespace Clicker
         private System.Windows.Forms.Button button31;
         private System.Windows.Forms.Button button35;
         private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Button basa_click_panel_1;
+        private System.Windows.Forms.Button base_click_panel_1;
         private System.Windows.Forms.Label label28;
         private System.Windows.Forms.Button button13;
         private System.Windows.Forms.Panel panel84;

@@ -29,11 +29,14 @@ namespace Clicker
         private string key = "mysecretkey12345"; // 16-bajtový klíč
         private string iv = "1234567890123456";  // 16-bajtový IV
         private GameData gameData = new GameData(); // Herní data
+        private GameData_save gameData_save = new GameData_save(); // Herní data pro uložení
 
         public class GameData
         {
             public int Penize { get; set; }
             public int Gemy { get; set; }
+            public int Nasob { get; set; } = 1;
+            public int BasePenize { get; set; } = 1;
             public int Wood { get; set; }
             public int Stone { get; set; }
             public int Wheat { get; set; }
@@ -46,14 +49,14 @@ namespace Clicker
             public int TotalEnergy { get; set; }
             public int TotalPenize { get; set; }
             public int Achievments { get; set; }
-            public int Machines { get; set; }
+            public int Machines { get; set; } = 1;
             public int Resources { get; set; }
             public int SellRecources { get; set; }
-            public int MaxEnergy { get; set; }
-            public int BaseEnergy { get; set; }
-            public int EnergyNasob { get; set; }
+            public int MaxEnergy { get; set; } = 100;
+            public int BaseEnergy { get; set; } = 1;
+            public int EnergyNasob { get; set; } = 1;
             public int LastClick { get; set; }
-            public int MaxLastClick { get; set; }
+            public int MaxLastClick { get; set; } = 5;
             public bool CheckClicksOn { get; set; }
             public bool PenizeGiving { get; set; }
             public int AutoEnergyUpgrade { get; set; }
@@ -78,17 +81,66 @@ namespace Clicker
             public bool A100Kprodej { get; set; }
         }
 
-        
+        public class GameData_save
+        {
+            public int Penize_save { get; set; }
+            public int Gemy_save { get; set; }
+            public int Nasob_save { get; set; } = 1;
+            public int BasePenize_save { get; set; } = 1;
+            public int Wood_save { get; set; }
+            public int Stone_save { get; set; }
+            public int Wheat_save { get; set; }
+            public int Plank_save { get; set; }
+            public int WoodWait_save { get; set; }
+            public int StoneWait_save { get; set; }
+            public int WheatWait_save { get; set; }
+            public int PlankWait_save { get; set; }
+            public int TotalClicks_save { get; set; }
+            public int TotalEnergy_save { get; set; }
+            public int TotalPenize_save { get; set; }
+            public int Achievments_save { get; set; }
+            public int Machines_save { get; set; } = 1;
+            public int Resources_save { get; set; }
+            public int SellRecources_save { get; set; }
+            public int MaxEnergy_save { get; set; } = 100;
+            public int BaseEnergy_save { get; set; } = 1;
+            public int EnergyNasob_save { get; set; } = 1;
+            public int LastClick_save { get; set; }
+            public int MaxLastClick_save { get; set; } = 5;
+            public bool CheckClicksOn_save { get; set; }
+            public bool PenizeGiving_save { get; set; }
+            public int AutoEnergyUpgrade_save { get; set; }
+            public int ForestUpgrade_save { get; set; }
+            public int MineUpgrade_save { get; set; }
+            public int FarmUpgrade_save { get; set; }
+            public int UtilityBuildingUpgrade_save { get; set; }
+            public bool Aclick_save { get; set; }
+            public bool Abiggerclick_save { get; set; }
+            public bool Abiggercapacity_save { get; set; }
+            public bool Astovka_save { get; set; }
+            public bool Atisicovka_save { get; set; }
+            public bool Astotisicovka_save { get; set; }
+            public bool Alastclickupgrade_save { get; set; }
+            public bool Aautoclick_save { get; set; }
+            public bool Amaxenergy_save { get; set; }
+            public bool Atisicclicku_save { get; set; }
+            public bool Afinale_save { get; set; }
+            public bool Amachines_save { get; set; }
+            public bool AstoResources_save { get; set; }
+            public bool AsellResource_save { get; set; }
+            public bool A100Kprodej_save { get; set; }
+        }
+
         //Baterka
         int energy = 0;
-        /*
-        int maxEnergy = 100;
-        int baseEnergy = 1;
-        int energyNasob = 1;
+        
+        //int maxEnergy = 100;
+        //int baseEnergy = 1;
+        //int energyNasob = 1;
         int vyskaplnostibaterie = 235;
         int sirkaplnostibateriesize = 1;
         int sirkaplnostibaterielocation = 1;
-
+        /*
         //Variables _save
         int penize_save = 0;
         int gemy_save = 0;
@@ -120,9 +172,9 @@ namespace Clicker
         int farmUpgrade_save = 0;
         int utilityBuildingUpgrade_save = 0;
 
-
+        
         //Currency/Suroviny
-        private static int penize = 0;
+        int penize = 0;
         int basePenize = 1;
         int nasob = 1;
         int gemy = 0;
@@ -159,58 +211,51 @@ namespace Clicker
         int forestUpgrade = 0;
         int mineUpgrade = 0;
         int farmUpgrade = 0;
-        int utilityBuildingUpgrade = 0
+        int utilityBuildingUpgrade = 0;
         */
 
         void update()
         {
-            float penizeText = penize;
-            base_click_panel_2.Text = "Energy: " + energy + "/" + maxEnergy;
-            basa_click_panel_1.Text = "Energy: " + energy + "/" + maxEnergy;
-            label15.Text = "" + gemy;
-            button19.Text = "Větší klikání - " + 10 * (energyNasob * 3) + "$";
-            button5.Text = "Double peníze - " + 50 * (nasob) + "$";
-            button12.Text = "LastClick Check Upgrade: " + 150 * (maxLastClick - 4) + "$";
+            float penizeText = gameData.Penize;
+            base_click_panel_2.Text = "Energy: " + energy + "/" + gameData.MaxEnergy;
+            base_click_panel_1.Text = "Energy: " + energy + "/" + gameData.MaxEnergy;
+            label15.Text = "" + gameData.Gemy;
+            button19.Text = "Větší klikání - " + 10 * (gameData.EnergyNasob * 3) + "$";
+            button5.Text = "Double peníze - " + 50 * (gameData.Nasob) + "$";
+            button12.Text = "LastClick Check Upgrade: " + 150 * (gameData.MaxLastClick - 4) + "$";
             autoClick.Text = "Solár: " + 5 + "K $";
             button16.Text = "Forest: " + 30 + "K $";
             button17.Text = "Mine: " + 50 + "K $";
             button18.Text = "Farm: " + 15 + "K $";
             button20.Text = "Sawmill: " + 100 + "K $";
 
-
-
             //Peníze ukazatel
-            if (penize < 1000) { label2.Text = "" + penize; }
-            else if (penize > 1000 && penize < 100000) { label2.Text = Math.Round(penizeText / 1000, 2) + "K"; }
-            else if (penize > 100000 && penize < 1000000) { label2.Text = Math.Round(penizeText / 1000) + "K"; }
-            else if (penize > 1000000 && penize < 100000000) { label2.Text = Math.Round(penizeText / 1000000, 2) + "M"; }
-            else if (penize > 100000000 && penize < 1000000000) { label2.Text = Math.Round(penizeText / 1000000) + "M"; }
+            if (gameData.Penize < 1000) { label2.Text = "" + gameData.Penize; }
+            else if (gameData.Penize > 1000 && gameData.Penize < 100000) { label2.Text = Math.Round(penizeText / 1000, 2) + "K"; }
+            else if (gameData.Penize > 100000 && gameData.Penize < 1000000) { label2.Text = Math.Round(penizeText / 1000) + "K"; }
+            else if (gameData.Penize > 1000000 && gameData.Penize < 100000000) { label2.Text = Math.Round(penizeText / 1000000, 2) + "M"; }
+            else if (gameData.Penize > 100000000 && gameData.Penize < 1000000000) { label2.Text = Math.Round(penizeText / 1000000) + "M"; }
             else { label2.Text = Math.Round(penizeText / 1000000000, 2) + "B"; }
 
-
-            if (maxEnergy < 500)
+            if (gameData.MaxEnergy < 500)
             {
-                button3.Text = "Energy kapacita upgrade: " + maxEnergy * 2 + "$";
+                button3.Text = "Energy kapacita upgrade: " + gameData.MaxEnergy * 2 + "$";
             }
             else button3.Visible = false;
 
             //Ukazatel energie - max 148, 275 
-            energy10.Size = new Size(125, 0 + (energy * vyskaplnostibaterie / maxEnergy));
-            energy10.Location = new System.Drawing.Point(27, 317 - (energy * vyskaplnostibaterie / maxEnergy));
+            energy10.Size = new Size(125, 0 + (energy * vyskaplnostibaterie / gameData.MaxEnergy));
+            energy10.Location = new System.Drawing.Point(27, 317 - (energy * vyskaplnostibaterie / gameData.MaxEnergy));
             energy10.Visible = false;
             if (energy > 0)
             {
                 energy10.Visible = true;
-
             }
             else { energy10.Visible = false; }
-
-
         }
 
         void updateStorage()
         {
-
             numericUpDown1.Maximum = gameData.Wood;
             numericUpDown2.Maximum = gameData.Stone;
             numericUpDown3.Maximum = gameData.Wheat;
@@ -237,7 +282,6 @@ namespace Clicker
                 update();
                 await Task.Delay(1000);
             }
-
         }
 
         async Task forest()
@@ -314,12 +358,12 @@ namespace Clicker
         {
             while (true)
             {
-                if (lastClick > 0)
+                if (gameData.LastClick > 0)
                 {
-                    lastClick -= 1;
-                    if (lastClick == 0)
+                    gameData.LastClick -= 1;
+                    if (gameData.LastClick == 0)
                     {
-                        while (lastClick == 0)
+                        while (gameData.LastClick == 0)
                         {
                             if (energy > 0)
                             {
@@ -344,8 +388,8 @@ namespace Clicker
             {
                 if (energy > 0)
                 {
-                    penize += basePenize * nasob;
-                    totalPenize += basePenize * nasob;
+                    gameData.Penize += gameData.BasePenize * gameData.Nasob;
+                    gameData.TotalPenize += gameData.BasePenize * gameData.Nasob;
                     update();
                     if (energy >= 20)
                     {
@@ -361,29 +405,26 @@ namespace Clicker
         //Klikání
         private async void button1_Click(object sender, EventArgs e)
         {
-
-            lastClick = maxLastClick;
-            if (energy < maxEnergy)
+            gameData.LastClick = gameData.MaxLastClick;
+            if (energy < gameData.MaxEnergy)
             {
-                energy += baseEnergy * energyNasob;
-                totalEnergy += baseEnergy * energyNasob;
-                if (energy > maxEnergy) { energy = maxEnergy; }
-                totalClicks += 1;
+                energy += gameData.BaseEnergy * gameData.EnergyNasob;
+                gameData.TotalEnergy += gameData.BaseEnergy * gameData.EnergyNasob;
+                if (energy > gameData.MaxEnergy) { energy = gameData.MaxEnergy; }
+                gameData.TotalClicks += 1;
                 update();
             }
-            if (checkClicksOn == false)
+            if (gameData.CheckClicksOn == false)
             {
-                checkClicksOn = true;
-
-
+                gameData.CheckClicksOn = true;
                 await checkClicks();
             }
-            if (penizeGiving == false)
+            if (gameData.PenizeGiving == false)
             {
-                penizeGiving = true;
+                gameData.PenizeGiving = true;
                 await penizeGive();
             }
-            basa_click_panel_1.Visible = true;
+            base_click_panel_1.Visible = true;
             base_click_panel_2.Visible = false;
         }
 
@@ -392,23 +433,22 @@ namespace Clicker
         //Větší klikání
         private void button1_Click_1(object sender, EventArgs e)
         {
-            if (penize >= 10 * (energyNasob * 3))
+            if (gameData.Penize >= 10 * (gameData.EnergyNasob * 3))
             {
-                penize -= (10 * (energyNasob * 3));
-                energyNasob += 1;
+                gameData.Penize -= (10 * (gameData.EnergyNasob * 3));
+                gameData.EnergyNasob += 1;
                 update();
-
             }
         }
         //Přidávání kapacity energie(+baterka) - přidat pak aby to přidávalo/zvětšovalo další baterky
         private void button3_Click(object sender, EventArgs e)
         {
-            if (maxEnergy < 500)
+            if (gameData.MaxEnergy < 500)
             {
-                if (penize >= maxEnergy * 2)
+                if (gameData.Penize >= gameData.MaxEnergy * 2)
                 {
-                    penize -= maxEnergy * 2;
-                    maxEnergy += 50;
+                    gameData.Penize -= gameData.MaxEnergy * 2;
+                    gameData.MaxEnergy += 50;
                     update();
                 }
             }
@@ -416,33 +456,32 @@ namespace Clicker
         //Double peníze - zatím
         private void button5_Click_1(object sender, EventArgs e)
         {
-            if (penize >= 50 * (nasob))
+            if (gameData.Penize >= 50 * (gameData.Nasob))
             {
-                penize -= 50 * (nasob);
-                nasob += 1;
+                gameData.Penize -= 50 * (gameData.Nasob);
+                gameData.Nasob += 1;
                 update();
             }
         }
         //MaxLastClick Upgrade - zatím
         private void button12_Click(object sender, EventArgs e)
         {
-            //button5
-            if (penize >= 150 * (maxLastClick - 4))
+            if (gameData.Penize >= 150 * (gameData.MaxLastClick - 4))
             {
-                penize -= 150 * (maxLastClick - 4);
-                maxLastClick += 1;
+                gameData.Penize -= 150 * (gameData.MaxLastClick - 4);
+                gameData.MaxLastClick += 1;
             }
         }
         //AutoEnergy(Solar)
         private async void button2_Click(object sender, EventArgs e)
         {
-            if (penize >= 5000 && autoEnergyUpgrade == 0)
+            if (gameData.Penize >= 5000 && gameData.AutoEnergyUpgrade == 0)
             {
-                penize -= 5000;
+                gameData.Penize -= 5000;
                 panel54.Visible = true;
                 update();
-                autoEnergyUpgrade = 1;
-                machines += 1;
+                gameData.AutoEnergyUpgrade = 1;
+                gameData.Machines += 1;
                 autoClick.Visible = false;
                 await autoEnergy();
             }
@@ -450,14 +489,14 @@ namespace Clicker
         //Forest
         private async void button16_Click_1(object sender, EventArgs e)
         {
-            if (penize >= 30000 && forestUpgrade == 0)
+            if (gameData.Penize >= 30000 && gameData.ForestUpgrade == 0)
             {
-                penize -= 30000;
+                gameData.Penize -= 30000;
                 panel55.Visible = true;
                 button25.Visible = true;
                 update();
-                forestUpgrade = 1;
-                machines += 1;
+                gameData.ForestUpgrade = 1;
+                gameData.Machines += 1;
                 button16.Visible = false;
                 await forest();
             }
@@ -466,14 +505,14 @@ namespace Clicker
         //Mine
         private async void button17_Click(object sender, EventArgs e)
         {
-            if (penize >= 50000 && mineUpgrade == 0)
+            if (gameData.Penize >= 50000 && gameData.MineUpgrade == 0)
             {
-                penize -= 50000;
+                gameData.Penize -= 50000;
                 panel58.Visible = true;
                 button26.Visible = true;
                 update();
-                mineUpgrade = 1;
-                machines += 1;
+                gameData.MineUpgrade = 1;
+                gameData.Machines += 1;
                 button17.Visible = false;
                 await mine();
             }
@@ -481,14 +520,14 @@ namespace Clicker
         //Farm
         private async void button18_Click(object sender, EventArgs e)
         {
-            if (penize >= 15000 && farmUpgrade == 0)
+            if (gameData.Penize >= 15000 && gameData.FarmUpgrade == 0)
             {
-                penize -= 15000;
+                gameData.Penize -= 15000;
                 panel57.Visible = true;
                 button27.Visible = true;
                 update();
-                farmUpgrade = 1;
-                machines += 1;
+                gameData.FarmUpgrade = 1;
+                gameData.Machines += 1;
                 button18.Visible = false;
                 await farm();
             }
@@ -496,14 +535,14 @@ namespace Clicker
         //UtilityBuilding
         private async void button20_Click(object sender, EventArgs e)
         {
-            if (penize >= 100000 && utilityBuildingUpgrade == 0)
+            if (gameData.Penize >= 100000 && gameData.UtilityBuildingUpgrade == 0)
             {
-                penize -= 100000;
+                gameData.Penize -= 100000;
                 panel56.Visible = true;
                 button28.Visible = true;
                 update();
-                utilityBuildingUpgrade = 1;
-                machines += 1;
+                gameData.UtilityBuildingUpgrade = 1;
+                gameData.Machines += 1;
                 button20.Visible = false;
                 await utilityBuilding();
             }
@@ -511,164 +550,149 @@ namespace Clicker
 
 
         //Achievmenty
-        bool Aclick = false; //16
-        bool Abiggerclick = false; //14
-        bool Abiggercapacity = false; //18
-        bool Astovka = false; //20
-        bool Atisicovka = false; //22
-        bool Astotisicovka = false; //24
-        bool Alastclickupgrade = false; //26
-        bool Aautoclick = false; //28
-        bool Amaxenergy = false; //30
-        bool Atisicclicku = false; //32
-        bool Afinale = false; //ende verze 0.06 - 34
-        bool Amachines = false; //76
-        bool AstoResources = false; //70
-        bool AsellResource = false; //79
-        bool A100Kprodej = false; //73
 
         void UpdateAchievments() //zk velikost 87,29
         {
-            if (totalClicks > 0 && Aclick == false)
+            if (gameData.TotalClicks > 0 && gameData.Aclick == false)
             {
-                Aclick = true;
-                achievments += 1;
-                gemy += 1;
+                gameData.Aclick = true;
+                gameData.Achievments += 1;
+                gameData.Gemy += 1;
                 panel16.Visible = false;
                 panel16.BackColor = System.Drawing.Color.Lime;
                 panel16.Visible = true;
 
             }
 
-            if (energyNasob > 1 && Abiggerclick == false)
+            if (gameData.EnergyNasob > 1 && gameData.Abiggerclick == false)
             {
-                Abiggerclick = true;
-                achievments += 1;
-                gemy += 1;
+                gameData.Abiggerclick = true;
+                gameData.Achievments += 1;
+                gameData.Gemy += 1;
                 panel14.Visible = false;
                 panel14.BackColor = System.Drawing.Color.Lime;
                 panel14.Visible = true;
             }
 
-            if (maxEnergy > 100 && Abiggercapacity == false)
+            if (gameData.MaxEnergy > 100 && gameData.Abiggercapacity == false)
             {
-                Abiggercapacity = true;
-                achievments += 1;
-                gemy += 2;
+                gameData.Abiggercapacity = true;
+                gameData.Achievments += 1;
+                gameData.Gemy += 2;
                 panel18.Visible = false;
                 panel18.BackColor = System.Drawing.Color.Lime;
                 panel18.Visible = true;
             }
             //Stovka 
-            if (penize >= 100 && Astovka == false)
+            if (gameData.Penize >= 100 && gameData.Astovka == false)
             {
-                Astovka = true;
-                achievments += 1;
-                gemy += 2;
+                gameData.Astovka = true;
+                gameData.Achievments += 1;
+                gameData.Gemy += 2;
                 panel20.Visible = false;
                 panel20.Size = new Size(87, 29);
                 panel20.Visible = true;
             }
 
-            if (Astovka == false)
+            if (gameData.Astovka == false)
             {
                 panel20.Visible = false;
-                panel20.Size = new Size((87 * penize / 100), 29);
+                panel20.Size = new Size((87 * gameData.Penize / 100), 29);
                 panel20.Visible = true;
             }
             //Tisicovka
-            if (penize >= 1000 && Atisicovka == false)
+            if (gameData.Penize >= 1000 && gameData.Atisicovka == false)
             {
-                Atisicovka = true;
-                achievments += 1;
-                gemy += 5;
+                gameData.Atisicovka = true;
+                gameData.Achievments += 1;
+                gameData.Gemy += 5;
                 panel22.Visible = false;
                 panel22.Size = new Size(87, 29);
                 panel22.Visible = true;
             }
 
-            if (Atisicovka == false)
+            if (gameData.Atisicovka == false)
             {
                 panel22.Visible = false;
-                panel22.Size = new Size((87 * penize / 1000), 29);
+                panel22.Size = new Size((87 * gameData.Penize / 1000), 29);
                 panel22.Visible = true;
             }
             //Stotisicovka
-            if (penize >= 100000 && Astotisicovka == false)
+            if (gameData.Penize >= 100000 && gameData.Astotisicovka == false)
             {
-                Astotisicovka = true;
-                achievments += 1;
-                gemy += 10;
+                gameData.Astotisicovka = true;
+                gameData.Achievments += 1;
+                gameData.Gemy += 10;
                 panel24.Visible = false;
                 panel24.Size = new Size(87, 29);
                 panel24.Visible = true;
             }
 
-            if (Astotisicovka == false)
+            if (gameData.Astotisicovka == false)
             {
                 panel24.Visible = false;
-                panel24.Size = new Size((87 * penize / 100000), 29);
+                panel24.Size = new Size((87 * gameData.Penize / 100000), 29);
                 panel24.Visible = true;
             }
 
-            if (maxLastClick > 5 && Alastclickupgrade == false)
+            if (gameData.MaxLastClick > 5 && gameData.Alastclickupgrade == false)
             {
-                Alastclickupgrade = true;
-                achievments += 1;
-                gemy += 2;
+                gameData.Alastclickupgrade = true;
+                gameData.Achievments += 1;
+                gameData.Gemy += 2;
                 panel26.Visible = false;
                 panel26.BackColor = System.Drawing.Color.Lime;
                 panel26.Visible = true;
             }
 
-            if (autoEnergyUpgrade > 0 && Aautoclick == false)
+            if (gameData.AutoEnergyUpgrade > 0 && gameData.Aautoclick == false)
             {
-                Aautoclick = true;
-                achievments += 1;
-                gemy += 1;
+                gameData.Aautoclick = true;
+                gameData.Achievments += 1;
+                gameData.Gemy += 1;
                 panel28.Visible = false;
                 panel28.BackColor = System.Drawing.Color.Lime;
                 panel28.Visible = true;
             }
             //Energy Capacity 
-            if (maxEnergy == 500 && Amaxenergy == false)
+            if (gameData.MaxEnergy == 500 && gameData.Amaxenergy == false)
             {
-                Amaxenergy = true;
-                achievments += 1;
-                gemy += 5;
+                gameData.Amaxenergy = true;
+                gameData.Achievments += 1;
+                gameData.Gemy += 5;
                 panel30.Visible = false;
                 panel30.Size = new Size(87, 29);
                 panel30.Visible = true;
             }
 
-            if (Amaxenergy == false)
+            if (gameData.Amaxenergy == false)
             {
                 panel30.Visible = false;
-                panel30.Size = new Size((87 * maxEnergy / 500), 29);
+                panel30.Size = new Size((87 * gameData.MaxEnergy / 500), 29);
                 panel30.Visible = true;
             }
             //Total Clicks
-            if (totalClicks >= 1000 && Atisicclicku == false)
+            if (gameData.TotalClicks >= 1000 && gameData.Atisicclicku == false)
             {
-                Atisicclicku = true;
-                achievments += 1;
-                gemy += 10;
+                gameData.Atisicclicku = true;
+                gameData.Achievments += 1;
+                gameData.Gemy += 10;
                 panel32.Visible = false;
                 panel32.Size = new Size(87, 29);
                 panel32.Visible = true;
             }
 
-            if (Atisicclicku == false)
+            if (gameData.Atisicclicku == false)
             {
                 panel32.Visible = false;
-                panel32.Size = new Size((87 * totalClicks / 1000), 29);
+                panel32.Size = new Size((87 * gameData.TotalClicks / 1000), 29);
                 panel32.Visible = true;
             }
             //Final
-            if (achievments == 14 && Afinale == false)
+            if (gameData.Achievments == 14 && gameData.Afinale == false)
             {
-                Afinale = true;
-                gemy += 1;
+                gameData.Afinale = true;
+                gameData.Gemy += 1;
                 panel34.Visible = false;
                 panel34.Size = new Size(474, 29);
                 panel34.Visible = true;
@@ -682,69 +706,69 @@ namespace Clicker
                 update();
             }
 
-            if (Afinale == false)
+            if (gameData.Afinale == false)
             {
                 panel34.Visible = false;
-                panel34.Size = new Size((474 * achievments / 14), 29);
+                panel34.Size = new Size((474 * gameData.Achievments / 14), 29);
                 panel34.Visible = true;
             }
             //Machines
-            if (machines == 6 && Amachines == false)
+            if (gameData.Machines == 6 && gameData.Amachines == false)
             {
-                Amachines = true;
-                achievments += 1;
-                gemy += 10;
+                gameData.Amachines = true;
+                gameData.Achievments += 1;
+                gameData.Gemy += 10;
                 panel76.Visible = false;
                 panel76.Size = new Size(87, 29);
                 panel76.Visible = true;
             }
-            if (Amachines == false)
+            if (gameData.Amachines == false)
             {
                 panel76.Visible = false;
-                panel76.Size = new Size((87 * machines / 6), 29);
+                panel76.Size = new Size((87 * gameData.Machines / 6), 29);
                 panel76.Visible = true;
             }
             //Sto surovin
-            if (resources >= 100 && AstoResources == false)
+            if (gameData.Resources >= 100 && gameData.AstoResources == false)
             {
-                AstoResources = true;
-                achievments += 1;
-                gemy += 5;
+                gameData.AstoResources = true;
+                gameData.Achievments += 1;
+                gameData.Gemy += 5;
                 panel70.Visible = false;
                 panel70.Size = new Size(87, 29);
                 panel70.Visible = true;
             }
 
-            if (AstoResources == false)
+            if (gameData.AstoResources == false)
             {
                 panel70.Visible = false;
-                panel70.Size = new Size((87 * resources / 100), 29);
+                panel70.Size = new Size((87 * gameData.Resources / 100), 29);
                 panel70.Visible = true;
             }
 
-            if (sellRecources > 0 && AsellResource == false)
+            if (gameData.SellRecources > 0 && gameData.AsellResource == false)
             {
-                AsellResource = true;
-                achievments += 1;
-                gemy += 3;
+                gameData.AsellResource = true;
+                gameData.Achievments += 1;
+                gameData.Gemy += 3;
                 panel79.Visible = false;
                 panel79.BackColor = System.Drawing.Color.Lime;
                 panel79.Visible = true;
             }
             //100Kprodej
-            if (sellRecources >= 100000 && A100Kprodej == false)
+            if (gameData.SellRecources >= 100000 && gameData.A100Kprodej == false)
             {
-                A100Kprodej = true;
-                achievments += 1;
-                gemy += 5;
+                gameData.A100Kprodej = true;
+                gameData.Achievments += 1;
+                gameData.Gemy += 5;
                 panel73.Visible = false;
                 panel73.Size = new Size(87, 29);
                 panel73.Visible = true;
             }
-            if (A100Kprodej == false)
+            if (gameData.A100Kprodej == false)
             {
                 panel73.Visible = false;
-                panel73.Size = new Size((87 * sellRecources / 100000), 29);
+                panel73.Size = new Size((87 * gameData.SellRecources / 100000), 29);
                 panel73.Visible = true;
             }
         }
@@ -775,12 +799,12 @@ namespace Clicker
         {
             //wood
             var number = Convert.ToInt32(numericUpDown1.Value);
-            if (wood >= numericUpDown1.Value)
+            if (gameData.Wood >= numericUpDown1.Value)
             {
-                wood -= number;
-                penize += 2000 * number;
-                totalPenize += 2000 * number;
-                sellRecources += 2000 * number;
+                gameData.Wood -= number;
+                gameData.Penize += 2000 * number;
+                gameData.TotalPenize += 2000 * number;
+                gameData.SellRecources += 2000 * number;
             }
             updateStorage();
 
@@ -790,7 +814,7 @@ namespace Clicker
         {
             //stone
             var number = Convert.ToInt32(numericUpDown2.Value);
-            if (stone >= numericUpDown2.Value) { stone -= number; penize += 5000 * number; totalPenize += 5000 * number; sellRecources += 5000 * number; }
+            if (gameData.Stone >= numericUpDown2.Value) { gameData.Stone -= number; gameData.Penize += 5000 * number; gameData.TotalPenize += 5000 * number; gameData.SellRecources += 5000 * number; }
             updateStorage();
         }
 
@@ -798,7 +822,7 @@ namespace Clicker
         {
             //wheat
             var number = Convert.ToInt32(numericUpDown3.Value);
-            if (wheat >= numericUpDown3.Value) { wheat -= number; penize += 500 * number; totalPenize += 500 * number; sellRecources += 500 * number; }
+            if (gameData.Wheat >= numericUpDown3.Value) { gameData.Wheat -= number; gameData.Penize += 500 * number; gameData.TotalPenize += 500 * number; gameData.SellRecources += 500 * number; }
             updateStorage();
         }
 
@@ -806,7 +830,7 @@ namespace Clicker
         {
             //plank
             var number = Convert.ToInt32(numericUpDown4.Value);
-            if (plank >= numericUpDown4.Value) { plank -= number; penize += 10000 * number; totalPenize += 10000 * number; sellRecources += 10000 * number; }
+            if (gameData.Plank >= numericUpDown4.Value) { gameData.Plank -= number; gameData.Penize += 10000 * number; gameData.TotalPenize += 10000 * number; gameData.SellRecources += 10000 * number; }
             updateStorage();
         }
 
@@ -853,7 +877,7 @@ namespace Clicker
             button8.Visible = true;
             button7.Visible = true;
             button1.Visible = false;
-            basa_click_panel_1.Visible = false;
+            base_click_panel_1.Visible = false;
             panel84.Visible = false;
             button13.Visible = false;
             label42.Visible = false;
@@ -902,7 +926,7 @@ namespace Clicker
             button8.Visible = false;
             button7.Visible = true;
             button1.Visible = false;
-            basa_click_panel_1.Visible = false;
+            base_click_panel_1.Visible = false;
             panel84.Visible = false;
             button13.Visible = false;
             label42.Visible = false;
@@ -926,7 +950,7 @@ namespace Clicker
             button8.Visible = true;
             button7.Visible = false;
             button1.Visible = false;
-            basa_click_panel_1.Visible = false;
+            base_click_panel_1.Visible = false;
             panel84.Visible = false;
             button13.Visible = false;
             label42.Visible = false;
@@ -953,7 +977,7 @@ namespace Clicker
             button8.Visible = true;
             button7.Visible = true;
             button1.Visible = false;
-            basa_click_panel_1.Visible = false;
+            base_click_panel_1.Visible = false;
             panel84.Visible = false;
             button13.Visible = false;
             label42.Visible = false;
@@ -980,7 +1004,7 @@ namespace Clicker
             button8.Visible = true;
             button7.Visible = true;
             button1.Visible = false;
-            basa_click_panel_1.Visible = false;
+            base_click_panel_1.Visible = false;
             panel84.Visible = false;
             button13.Visible = false;
             label42.Visible = false;
@@ -991,16 +1015,16 @@ namespace Clicker
             panel52.Visible = false;
             panel51.Visible = false;
             panel48.Location = new System.Drawing.Point(89, 14);
-            label16.Text = "Total Clicks: " + totalClicks;
-            label17.Text = "Total Energy: " + totalEnergy;
-            label18.Text = "Total Peněz: " + totalPenize;
-            label19.Text = "Počet Machines: " + machines;
-            label20.Text = "Double peníze upgrade: " + (nasob - 1);
-            label21.Text = "Větší klikání upgrade: " + (energyNasob - 1);
-            label22.Text = "LastClick upgrade: " + (maxLastClick - 5);
-            label23.Text = "Počet dokončených achievementů: " + achievments;
-            label40.Text = "Dohromady surovin: " + resources;
-            label41.Text = "Peníze z prodaných surovin: " + sellRecources;
+            label16.Text = "Total Clicks: " + gameData.TotalClicks;
+            label17.Text = "Total Energy: " + gameData.TotalEnergy;
+            label18.Text = "Total Peněz: " + gameData.TotalPenize;
+            label19.Text = "Počet Machines: " + gameData.Machines;
+            label20.Text = "Double peníze upgrade: " + (gameData.Nasob - 1);
+            label21.Text = "Větší klikání upgrade: " + (gameData.EnergyNasob - 1);
+            label22.Text = "LastClick upgrade: " + (gameData.MaxLastClick - 5);
+            label23.Text = "Počet dokončených achievementů: " + gameData.Achievments;
+            label40.Text = "Dohromady surovin: " + gameData.Resources;
+            label41.Text = "Peníze z prodaných surovin: " + gameData.SellRecources;
 
         }
 
@@ -1711,7 +1735,7 @@ namespace Clicker
             button1.Visible = true;
             if (base_click_panel_2.Visible == false)
             {
-                basa_click_panel_1.Visible = true;
+                base_click_panel_1.Visible = true;
             }
             button13.Visible = true;
             if (admin_rezim == true)
@@ -1729,6 +1753,83 @@ namespace Clicker
 
         void save_question()
         {
+            // Načtení dat ze souboru
+            LoadData();
+
+            // Ověření, zda existuje rozdíl mezi hodnotami proměnných
+            bool isDifferent =
+                gameData_save.Penize_save != gameData.Penize ||
+                gameData_save.Gemy_save != gameData.Gemy ||
+                gameData_save.Nasob_save != gameData.Nasob ||
+                gameData_save.BasePenize_save != gameData.BasePenize ||
+                gameData_save.Wood_save != gameData.Wood ||
+                gameData_save.Stone_save != gameData.Stone ||
+                gameData_save.Wheat_save != gameData.Wheat ||
+                gameData_save.Plank_save != gameData.Plank ||
+                gameData_save.WoodWait_save != gameData.WoodWait ||
+                gameData_save.StoneWait_save != gameData.StoneWait ||
+                gameData_save.WheatWait_save != gameData.WheatWait ||
+                gameData_save.PlankWait_save != gameData.PlankWait ||
+                gameData_save.TotalClicks_save != gameData.TotalClicks ||
+                gameData_save.TotalEnergy_save != gameData.TotalEnergy ||
+                gameData_save.TotalPenize_save != gameData.TotalPenize ||
+                gameData_save.Achievments_save != gameData.Achievments ||
+                gameData_save.Machines_save != gameData.Machines ||
+                gameData_save.Resources_save != gameData.Resources ||
+                gameData_save.SellRecources_save != gameData.SellRecources ||
+                gameData_save.MaxEnergy_save != gameData.MaxEnergy ||
+                gameData_save.BaseEnergy_save != gameData.BaseEnergy ||
+                gameData_save.EnergyNasob_save != gameData.EnergyNasob ||
+                gameData_save.LastClick_save != gameData.LastClick ||
+                gameData_save.MaxLastClick_save != gameData.MaxLastClick ||
+                gameData_save.CheckClicksOn_save != gameData.CheckClicksOn ||
+                gameData_save.PenizeGiving_save != gameData.PenizeGiving ||
+                gameData_save.AutoEnergyUpgrade_save != gameData.AutoEnergyUpgrade ||
+                gameData_save.ForestUpgrade_save != gameData.ForestUpgrade ||
+                gameData_save.MineUpgrade_save != gameData.MineUpgrade ||
+                gameData_save.FarmUpgrade_save != gameData.FarmUpgrade ||
+                gameData_save.UtilityBuildingUpgrade_save != gameData.UtilityBuildingUpgrade ||
+                gameData_save.Aclick_save != gameData.Aclick ||
+                gameData_save.Abiggerclick_save != gameData.Abiggerclick ||
+                gameData_save.Abiggercapacity_save != gameData.Abiggercapacity ||
+                gameData_save.Astovka_save != gameData.Astovka ||
+                gameData_save.Atisicovka_save != gameData.Atisicovka ||
+                gameData_save.Astotisicovka_save != gameData.Astotisicovka ||
+                gameData_save.Alastclickupgrade_save != gameData.Alastclickupgrade ||
+                gameData_save.Aautoclick_save != gameData.Aautoclick ||
+                gameData_save.Amaxenergy_save != gameData.Amaxenergy ||
+                gameData_save.Atisicclicku_save != gameData.Atisicclicku ||
+                gameData_save.Afinale_save != gameData.Afinale ||
+                gameData_save.Amachines_save != gameData.Amachines ||
+                gameData_save.AstoResources_save != gameData.AstoResources ||
+                gameData_save.AsellResource_save != gameData.AsellResource ||
+                gameData_save.A100Kprodej_save != gameData.A100Kprodej;
+
+            if (isDifferent)
+            {
+                DialogResult dr = MessageBox.Show("Chcete hru uložit?", "", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                if (dr == DialogResult.No)
+                {
+                    Application.Exit();
+                }
+                else
+                {
+                    SaveData();
+                    Application.Exit();
+                }
+            }
+            else
+            {
+                Application.Exit();
+            }
+        }
+
+
+
+        private void button1_Click_3(object sender, EventArgs e)
+        {
+
+            //save_question();
             DialogResult dr = MessageBox.Show("Chcete hru uložit?", "", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
             if (dr == DialogResult.No)
             {
@@ -1739,74 +1840,35 @@ namespace Clicker
                 SaveData();
                 Application.Exit();
             }
-        }
-
-        private void button1_Click_3(object sender, EventArgs e)
-        {
-
-            if (File.Exists(filePath) == true)
-            {
-                LoadData();
-
-                if (gameData.Penize == penize &&
-                    gameData.Gemy == gemy &&
-                    gameData.Wood == wood &&
-                    gameData.Stone == stone &&
-                    gameData.Wheat == wheat &&
-                    gameData.Plank == plank &&
-                    gameData.TotalClicks == totalClicks &&
-                    gameData.TotalEnergy == totalEnergy &&
-                    gameData.TotalPenize == totalPenize &&
-                    gameData.Achievments == achievments &&
-                    gameData.Machines == machines &&
-                    gameData.MaxEnergy == maxEnergy &&
-                    gameData.BaseEnergy == baseEnergy &&
-                    gameData.EnergyNasob == energyNasob &&
-                    gameData.CheckClicksOn == checkClicksOn &&
-                    gameData.PenizeGiving == penizeGiving &&
-                    gameData.ForestUpgrade == forestUpgrade)
-
-
-                {
-                    Application.Exit();
-                }
-                else
-                {
-                    save_question();
-                }
-            }
-            else
-            {
-                save_question();
-            }
 
         }
 
         private async void button6_Click_1(object sender, EventArgs e)
         {
-            lastClick = maxLastClick;
-            if (energy < maxEnergy)
+            Console.WriteLine(gameData.Penize);
+            gameData.LastClick = gameData.MaxLastClick;
+            if (energy < gameData.MaxEnergy)
             {
-                energy += baseEnergy * energyNasob;
-                totalEnergy += baseEnergy * energyNasob;
-                if (energy > maxEnergy) { energy = maxEnergy; }
-                totalClicks += 1;
-                basa_click_panel_1.Visible = false;
+                energy += gameData.BaseEnergy * gameData.EnergyNasob;
+                gameData.TotalEnergy += gameData.BaseEnergy * gameData.EnergyNasob;
+                if (energy > gameData.MaxEnergy) { energy = gameData.MaxEnergy; }
+                gameData.TotalClicks += 1;
+                base_click_panel_1.Visible = false;
                 base_click_panel_2.Visible = true;
                 update();
             }
-            if (checkClicksOn == false)
+            if (gameData.CheckClicksOn == false)
             {
-                checkClicksOn = true;
+                gameData.CheckClicksOn = true;
 
-                basa_click_panel_1.Visible = false;
+                base_click_panel_1.Visible = false;
                 base_click_panel_2.Visible = true;
                 await checkClicks();
             }
-            if (penizeGiving == false)
+            if (gameData.PenizeGiving == false)
             {
-                penizeGiving = true;
-                basa_click_panel_1.Visible = false;
+                gameData.PenizeGiving = true;
+                base_click_panel_1.Visible = false;
                 base_click_panel_2.Visible = true;
                 await penizeGive();
             }
@@ -1920,10 +1982,9 @@ namespace Clicker
             else if (File.Exists(filePath) == true)
             {
                 LoadData();
-                WriteData();
-
+                //WriteData();
                 panel66.Visible = false;
-                update();
+                
             }
 
         }
@@ -1936,37 +1997,6 @@ namespace Clicker
         private void label32_Click_1(object sender, EventArgs e)
         {
 
-        }
-
-        // Šifrování textu pomocí AES
-        private byte[] EncryptData(string data, string key)
-        {
-            using (Aes aes = Aes.Create())
-            {
-                aes.Key = Encoding.UTF8.GetBytes(key);  // 16 znaků pro AES
-                aes.IV = new byte[16];  // Inicializační vektor (IV)
-
-                using (ICryptoTransform encryptor = aes.CreateEncryptor())
-                {
-                    return encryptor.TransformFinalBlock(Encoding.UTF8.GetBytes(data), 0, data.Length);
-                }
-            }
-        }
-
-        // Dešifrování dat pomocí AES
-        private string DecryptData(byte[] data, string key)
-        {
-            using (Aes aes = Aes.Create())
-            {
-                aes.Key = Encoding.UTF8.GetBytes(key);  // 16 znaků pro AES
-                aes.IV = new byte[16];  // Inicializační vektor (IV)
-
-                using (ICryptoTransform decryptor = aes.CreateDecryptor())
-                {
-                    byte[] decryptedBytes = decryptor.TransformFinalBlock(data, 0, data.Length);
-                    return Encoding.UTF8.GetString(decryptedBytes);
-                }
-            }
         }
 
         private void button33_Click_1(object sender, EventArgs e)
@@ -1999,61 +2029,70 @@ namespace Clicker
         private void LoadData()
         {
             using (StreamReader reader = new StreamReader(filePath))
-            {
+            {/*
                 string encryptedData = reader.ReadToEnd();
                 string decryptedData = Decrypt(encryptedData, key, iv);
-                gameData = JsonConvert.DeserializeObject<GameData>(decryptedData);
+                gameData_save = JsonConvert.DeserializeObject<GameData_save>(decryptedData);
+                */
+                string encryptedData = reader.ReadToEnd();
+                gameData = JsonConvert.DeserializeObject<GameData>(encryptedData);
+                update();
+                updateStorage();
+                UpdateAchievments();
             }
+            
         }
         private void WriteData()
         {
-            // Přenesení hodnot z objektu gameData do příslušných proměnných
-            gameData.Penize = gameData.Penize;
-            gameData.Gemy = gameData.Gemy;
-            gameData.Wood = gameData.Wood;
-            gameData.Stone = gameData.Stone;
-            gameData.Wheat = gameData.Wheat;
-            gameData.Plank = gameData.Plank;
-            gameData.WoodWait = gameData.WoodWait;
-            gameData.StoneWait = gameData.StoneWait;
-            gameData.WheatWait = gameData.WheatWait;
-            gameData.PlankWait = gameData.PlankWait;
-            gameData.TotalClicks = gameData.TotalClicks;
-            gameData.TotalEnergy = gameData.TotalEnergy;
-            gameData.TotalPenize = gameData.TotalPenize;
-            gameData.Achievments = gameData.Achievments;
-            gameData.Machines = gameData.Machines;
-            gameData.Resources = gameData.Resources;
-            gameData.SellRecources = gameData.SellRecources;
-            gameData.MaxEnergy = gameData.MaxEnergy;
-            gameData.BaseEnergy = gameData.BaseEnergy;
-            gameData.EnergyNasob = gameData.EnergyNasob;
-            gameData.LastClick = gameData.LastClick;
-            gameData.MaxLastClick = gameData.MaxLastClick;
-            gameData.CheckClicksOn = gameData.CheckClicksOn;
-            gameData.PenizeGiving = gameData.PenizeGiving;
-            gameData.AutoEnergyUpgrade = gameData.AutoEnergyUpgrade;
-            gameData.ForestUpgrade = gameData.ForestUpgrade;
-            gameData.MineUpgrade = gameData.MineUpgrade;
-            gameData.FarmUpgrade = gameData.FarmUpgrade;
-            gameData.UtilityBuildingUpgrade = gameData.UtilityBuildingUpgrade;
-            Aclick = gameData.Aclick;
-            Abiggerclick = gameData.Abiggerclick;
-            Abiggercapacity = gameData.Abiggercapacity;
-            Astovka = gameData.Astovka;
-            Atisicovka = gameData.Atisicovka;
-            Astotisicovka = gameData.Astotisicovka;
-            Alastclickupgrade = gameData.Alastclickupgrade;
-            Aautoclick = gameData.Aautoclick;
-            Amaxenergy = gameData.Amaxenergy;
-            Atisicclicku = gameData.Atisicclicku;
-            Afinale = gameData.Afinale;
-            Amachines = gameData.Amachines;
-            AstoResources = gameData.AstoResources;
-            AsellResource = gameData.AsellResource;
-            A100Kprodej = gameData.A100Kprodej;
-
+            // Přenesení hodnot z objektu gameData_save do objektu gameData
+            gameData.Penize = gameData_save.Penize_save;
+            gameData.Gemy = gameData_save.Gemy_save;
+            gameData.Nasob = gameData_save.Nasob_save;
+            gameData.BasePenize = gameData_save.BasePenize_save;
+            gameData.Wood = gameData_save.Wood_save;
+            gameData.Stone = gameData_save.Stone_save;
+            gameData.Wheat = gameData_save.Wheat_save;
+            gameData.Plank = gameData_save.Plank_save;
+            gameData.WoodWait = gameData_save.WoodWait_save;
+            gameData.StoneWait = gameData_save.StoneWait_save;
+            gameData.WheatWait = gameData_save.WheatWait_save;
+            gameData.PlankWait = gameData_save.PlankWait_save;
+            gameData.TotalClicks = gameData_save.TotalClicks_save;
+            gameData.TotalEnergy = gameData_save.TotalEnergy_save;
+            gameData.TotalPenize = gameData_save.TotalPenize_save;
+            gameData.Achievments = gameData_save.Achievments_save;
+            gameData.Machines = gameData_save.Machines_save;
+            gameData.Resources = gameData_save.Resources_save;
+            gameData.SellRecources = gameData_save.SellRecources_save;
+            gameData.MaxEnergy = gameData_save.MaxEnergy_save;
+            gameData.BaseEnergy = gameData_save.BaseEnergy_save;
+            gameData.EnergyNasob = gameData_save.EnergyNasob_save;
+            gameData.LastClick = gameData_save.LastClick_save;
+            gameData.MaxLastClick = gameData_save.MaxLastClick_save;
+            gameData.CheckClicksOn = gameData_save.CheckClicksOn_save;
+            gameData.PenizeGiving = gameData_save.PenizeGiving_save;
+            gameData.AutoEnergyUpgrade = gameData_save.AutoEnergyUpgrade_save;
+            gameData.ForestUpgrade = gameData_save.ForestUpgrade_save;
+            gameData.MineUpgrade = gameData_save.MineUpgrade_save;
+            gameData.FarmUpgrade = gameData_save.FarmUpgrade_save;
+            gameData.UtilityBuildingUpgrade = gameData_save.UtilityBuildingUpgrade_save;
+            gameData.Aclick = gameData_save.Aclick_save;
+            gameData.Abiggerclick = gameData_save.Abiggerclick_save;
+            gameData.Abiggercapacity = gameData_save.Abiggercapacity_save;
+            gameData.Astovka = gameData_save.Astovka_save;
+            gameData.Atisicovka = gameData_save.Atisicovka_save;
+            gameData.Astotisicovka = gameData_save.Astotisicovka_save;
+            gameData.Alastclickupgrade = gameData_save.Alastclickupgrade_save;
+            gameData.Aautoclick = gameData_save.Aautoclick_save;
+            gameData.Amaxenergy = gameData_save.Amaxenergy_save;
+            gameData.Atisicclicku = gameData_save.Atisicclicku_save;
+            gameData.Afinale = gameData_save.Afinale_save;
+            gameData.Amachines = gameData_save.Amachines_save;
+            gameData.AstoResources = gameData_save.AstoResources_save;
+            gameData.AsellResource = gameData_save.AsellResource_save;
+            gameData.A100Kprodej = gameData_save.A100Kprodej_save;
         }
+
         private string Encrypt(string plainText, string key, string iv)
         {
             using (Aes aesAlg = Aes.Create())
