@@ -1188,7 +1188,7 @@ namespace Clicker
             this.panel52.Controls.Add(this.panel80);
             this.panel52.Controls.Add(this.label24);
             this.panel52.Controls.Add(this.panel65);
-            this.panel52.Location = new System.Drawing.Point(539, 507);
+            this.panel52.Location = new System.Drawing.Point(542, 506);
             this.panel52.Name = "panel52";
             this.panel52.Size = new System.Drawing.Size(563, 631);
             this.panel52.TabIndex = 1;
@@ -1437,7 +1437,7 @@ namespace Clicker
             this.panel3.Controls.Add(this.panel60);
             this.panel3.Controls.Add(this.panel6);
             this.panel3.Controls.Add(this.panel5);
-            this.panel3.Location = new System.Drawing.Point(551, 498);
+            this.panel3.Location = new System.Drawing.Point(569, 498);
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(554, 517);
             this.panel3.TabIndex = 21;
@@ -1719,7 +1719,7 @@ namespace Clicker
             this.panel51.Controls.Add(this.panel58);
             this.panel51.Controls.Add(this.panel54);
             this.panel51.Controls.Add(this.panel53);
-            this.panel51.Location = new System.Drawing.Point(577, 489);
+            this.panel51.Location = new System.Drawing.Point(87, 8);
             this.panel51.Name = "panel51";
             this.panel51.Size = new System.Drawing.Size(557, 633);
             this.panel51.TabIndex = 11;

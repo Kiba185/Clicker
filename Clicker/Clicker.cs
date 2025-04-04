@@ -25,7 +25,7 @@ namespace Clicker
         bool admin_rezim = false;
 
         //save / load game
-        private string filePath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), "Clicker", "clicker_save.json");
+        private string filePath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), "Clicker", "clicker_save.enc");
         private string key = "mysecretkey12345"; // 16-bajtový klíč
         private string iv = "1234567890123456";  // 16-bajtový IV
         private GameData gameData = new GameData(); // Herní data
@@ -2021,7 +2021,7 @@ namespace Clicker
             using (FileStream fileStream = new FileStream(filePath, FileMode.Create, FileAccess.Write, FileShare.None))
             using (StreamWriter writer = new StreamWriter(fileStream))
             {
-                writer.Write(jsonData);
+                writer.Write(encryptedData);
             }
         }
         
@@ -2029,13 +2029,12 @@ namespace Clicker
         private void LoadData()
         {
             using (StreamReader reader = new StreamReader(filePath))
-            {/*
+            {
                 string encryptedData = reader.ReadToEnd();
                 string decryptedData = Decrypt(encryptedData, key, iv);
-                gameData_save = JsonConvert.DeserializeObject<GameData_save>(decryptedData);
-                */
-                string encryptedData = reader.ReadToEnd();
-                gameData = JsonConvert.DeserializeObject<GameData>(encryptedData);
+                //gameData_save = JsonConvert.DeserializeObject<GameData_save>(decryptedData);
+                
+                gameData = JsonConvert.DeserializeObject<GameData>(decryptedData);
                 update();
                 updateStorage();
                 UpdateAchievments();
