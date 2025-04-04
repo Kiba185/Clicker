@@ -25,15 +25,63 @@ namespace Clicker
         bool admin_rezim = false;
 
         //save / load game
-        private string filePath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), "Clicker", "clicker_save.enc");
+        private string filePath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), "Clicker", "clicker_save.json");
         private string key = "mysecretkey12345"; // 16-bajtový klíč
         private string iv = "1234567890123456";  // 16-bajtový IV
         private GameData gameData = new GameData(); // Herní data
 
+        public class GameData
+        {
+            public int Penize { get; set; }
+            public int Gemy { get; set; }
+            public int Wood { get; set; }
+            public int Stone { get; set; }
+            public int Wheat { get; set; }
+            public int Plank { get; set; }
+            public int WoodWait { get; set; }
+            public int StoneWait { get; set; }
+            public int WheatWait { get; set; }
+            public int PlankWait { get; set; }
+            public int TotalClicks { get; set; }
+            public int TotalEnergy { get; set; }
+            public int TotalPenize { get; set; }
+            public int Achievments { get; set; }
+            public int Machines { get; set; }
+            public int Resources { get; set; }
+            public int SellRecources { get; set; }
+            public int MaxEnergy { get; set; }
+            public int BaseEnergy { get; set; }
+            public int EnergyNasob { get; set; }
+            public int LastClick { get; set; }
+            public int MaxLastClick { get; set; }
+            public bool CheckClicksOn { get; set; }
+            public bool PenizeGiving { get; set; }
+            public int AutoEnergyUpgrade { get; set; }
+            public int ForestUpgrade { get; set; }
+            public int MineUpgrade { get; set; }
+            public int FarmUpgrade { get; set; }
+            public int UtilityBuildingUpgrade { get; set; }
+            public bool Aclick { get; set; }
+            public bool Abiggerclick { get; set; }
+            public bool Abiggercapacity { get; set; }
+            public bool Astovka { get; set; }
+            public bool Atisicovka { get; set; }
+            public bool Astotisicovka { get; set; }
+            public bool Alastclickupgrade { get; set; }
+            public bool Aautoclick { get; set; }
+            public bool Amaxenergy { get; set; }
+            public bool Atisicclicku { get; set; }
+            public bool Afinale { get; set; }
+            public bool Amachines { get; set; }
+            public bool AstoResources { get; set; }
+            public bool AsellResource { get; set; }
+            public bool A100Kprodej { get; set; }
+        }
 
-
+        
         //Baterka
         int energy = 0;
+        /*
         int maxEnergy = 100;
         int baseEnergy = 1;
         int energyNasob = 1;
@@ -74,7 +122,7 @@ namespace Clicker
 
 
         //Currency/Suroviny
-        int penize = 0;
+        private static int penize = 0;
         int basePenize = 1;
         int nasob = 1;
         int gemy = 0;
@@ -105,19 +153,20 @@ namespace Clicker
         //Other
         bool checkClicksOn = false;
         bool penizeGiving = false;
-
+        
         //Machines
         int autoEnergyUpgrade = 0;
         int forestUpgrade = 0;
         int mineUpgrade = 0;
         int farmUpgrade = 0;
-        int utilityBuildingUpgrade = 0;
+        int utilityBuildingUpgrade = 0
+        */
 
         void update()
         {
             float penizeText = penize;
-            tlacitko.Text = "Energy: " + energy + "/" + maxEnergy;
-            button6.Text = "Energy: " + energy + "/" + maxEnergy;
+            base_click_panel_2.Text = "Energy: " + energy + "/" + maxEnergy;
+            basa_click_panel_1.Text = "Energy: " + energy + "/" + maxEnergy;
             label15.Text = "" + gemy;
             button19.Text = "Větší klikání - " + 10 * (energyNasob * 3) + "$";
             button5.Text = "Double peníze - " + 50 * (nasob) + "$";
@@ -162,29 +211,29 @@ namespace Clicker
         void updateStorage()
         {
 
-            numericUpDown1.Maximum = wood;
-            numericUpDown2.Maximum = stone;
-            numericUpDown3.Maximum = wheat;
-            numericUpDown4.Maximum = plank;
+            numericUpDown1.Maximum = gameData.Wood;
+            numericUpDown2.Maximum = gameData.Stone;
+            numericUpDown3.Maximum = gameData.Wheat;
+            numericUpDown4.Maximum = gameData.Plank;
 
-            numericUpDown1.Value = wood;
-            numericUpDown2.Value = stone;
-            numericUpDown3.Value = wheat;
-            numericUpDown4.Value = plank;
+            numericUpDown1.Value = gameData.Wood;
+            numericUpDown2.Value = gameData.Stone;
+            numericUpDown3.Value = gameData.Wheat;
+            numericUpDown4.Value = gameData.Plank;
 
-            button25.Text = "Vyzvednout: " + woodWait;
-            button26.Text = "Vyzvednout: " + stoneWait;
-            button27.Text = "Vyzvednout: " + wheatWait;
-            button28.Text = "Vyzvednout: " + plankWait;
+            button25.Text = "Vyzvednout: " + gameData.WoodWait;
+            button26.Text = "Vyzvednout: " + gameData.StoneWait;
+            button27.Text = "Vyzvednout: " + gameData.WheatWait;
+            button28.Text = "Vyzvednout: " + gameData.PlankWait;
         }
 
         async Task autoEnergy()
         {
             while (true)
             {
-                energy += autoEnergyUpgrade;
-                totalEnergy += autoEnergyUpgrade;
-                if (energy > maxEnergy) { energy = maxEnergy; }
+                energy += gameData.AutoEnergyUpgrade;
+                gameData.TotalEnergy += gameData.AutoEnergyUpgrade;
+                if (energy > gameData.MaxEnergy) { energy = gameData.MaxEnergy; }
                 update();
                 await Task.Delay(1000);
             }
@@ -197,8 +246,8 @@ namespace Clicker
             {
                 if (energy > 100)
                 {
-                    woodWait += 1;
-                    resources += 1;
+                    gameData.WoodWait += 1;
+                    gameData.Resources += 1;
                     updateStorage();
                     energy -= 50;
                     await Task.Delay(5000);
@@ -213,8 +262,8 @@ namespace Clicker
             {
                 if (energy > 100)
                 {
-                    stoneWait += 1;
-                    resources += 1;
+                    gameData.StoneWait += 1;
+                    gameData.Resources += 1;
                     updateStorage();
                     energy -= 75;
                     await Task.Delay(5000);
@@ -229,8 +278,8 @@ namespace Clicker
             {
                 if (energy > 100)
                 {
-                    wheatWait += 1;
-                    resources += 1;
+                    gameData.WheatWait += 1;
+                    gameData.Resources += 1;
                     updateStorage();
                     energy -= 30;
                     await Task.Delay(5000);
@@ -243,13 +292,13 @@ namespace Clicker
         {
             while (true)
             {
-                if (wood >= 2)
+                if (gameData.Wood >= 2)
                 {
                     if (energy > 250)
                     {
-                        wood -= 2;
-                        plankWait += 1;
-                        resources += 1;
+                        gameData.Wood -= 2;
+                        gameData.PlankWait += 1;
+                        gameData.Resources += 1;
                         updateStorage();
                         energy -= 100;
                         await Task.Delay(5000);
@@ -334,8 +383,8 @@ namespace Clicker
                 penizeGiving = true;
                 await penizeGive();
             }
-            button6.Visible = true;
-            tlacitko.Visible = false;
+            basa_click_panel_1.Visible = true;
+            base_click_panel_2.Visible = false;
         }
 
         //SHOP
@@ -624,8 +673,8 @@ namespace Clicker
                 panel34.Size = new Size(474, 29);
                 panel34.Visible = true;
 
-                tlacitko.TextAlign = ContentAlignment.TopCenter;
-                tlacitko.BackgroundImage = global::Clicker.Properties.Resources._1378582;
+                base_click_panel_2.TextAlign = ContentAlignment.TopCenter;
+                base_click_panel_2.BackgroundImage = global::Clicker.Properties.Resources._1378582;
                 MessageBox.Show("GG Dohrál jsi hru!", "Clicker 0.06", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 panel3.Visible = false;
                 panel7.Visible = true;
@@ -804,7 +853,7 @@ namespace Clicker
             button8.Visible = true;
             button7.Visible = true;
             button1.Visible = false;
-            button6.Visible = false;
+            basa_click_panel_1.Visible = false;
             panel84.Visible = false;
             button13.Visible = false;
             label42.Visible = false;
@@ -853,7 +902,7 @@ namespace Clicker
             button8.Visible = false;
             button7.Visible = true;
             button1.Visible = false;
-            button6.Visible = false;
+            basa_click_panel_1.Visible = false;
             panel84.Visible = false;
             button13.Visible = false;
             label42.Visible = false;
@@ -877,7 +926,7 @@ namespace Clicker
             button8.Visible = true;
             button7.Visible = false;
             button1.Visible = false;
-            button6.Visible = false;
+            basa_click_panel_1.Visible = false;
             panel84.Visible = false;
             button13.Visible = false;
             label42.Visible = false;
@@ -904,7 +953,7 @@ namespace Clicker
             button8.Visible = true;
             button7.Visible = true;
             button1.Visible = false;
-            button6.Visible = false;
+            basa_click_panel_1.Visible = false;
             panel84.Visible = false;
             button13.Visible = false;
             label42.Visible = false;
@@ -931,7 +980,7 @@ namespace Clicker
             button8.Visible = true;
             button7.Visible = true;
             button1.Visible = false;
-            button6.Visible = false;
+            basa_click_panel_1.Visible = false;
             panel84.Visible = false;
             button13.Visible = false;
             label42.Visible = false;
@@ -1488,32 +1537,32 @@ namespace Clicker
         {
             //vyvednout button wood
 
-            wood += woodWait;
-            woodWait = 0;
+            gameData.Wood += gameData.WoodWait;
+            gameData.WoodWait = 0;
             updateStorage();
 
         }
 
         private void button26_Click(object sender, EventArgs e)
         {
-            stone += stoneWait;
-            stoneWait = 0;
+            gameData.Stone += gameData.StoneWait;
+            gameData.StoneWait = 0;
             updateStorage();
             //vyvednout button stone
         }
 
         private void button27_Click(object sender, EventArgs e)
         {
-            wheat += wheatWait;
-            wheatWait = 0;
+            gameData.Wheat += gameData.WheatWait;
+            gameData.WheatWait = 0;
             updateStorage();
             //vyvednout button wheet
         }
 
         private void button28_Click(object sender, EventArgs e)
         {
-            plank += plankWait;
-            plankWait = 0;
+            gameData.Plank += gameData.PlankWait;
+            gameData.PlankWait = 0;
             updateStorage();
             //vyvednout button planks
         }
@@ -1542,9 +1591,9 @@ namespace Clicker
         {
             //battery barel skin
             
-            if (gemy >= 6)
+            if (gameData.Gemy >= 6)
             {
-                gemy = gemy - 6;
+                gameData.Gemy = gameData.Gemy - 6;
                 button11.Visible = false;
                 radioButton2.Checked = radioButton2.Checked;
                 label27.Visible = true;
@@ -1557,9 +1606,9 @@ namespace Clicker
         {
             //battery fish skin
             
-            if (gemy >= 10)
+            if (gameData.Gemy >= 10)
             {
-                gemy = gemy - 10;
+                gameData.Gemy = gameData.Gemy - 10;
                 button29.Visible = false;
                 radioButton3.Visible = true;
             }
@@ -1569,9 +1618,9 @@ namespace Clicker
         {
             //battery coffe skin
             
-            if (gemy >= 12)
+            if (gameData.Gemy >= 12)
             {
-                gemy = gemy - 12;
+                gameData.Gemy = gameData.Gemy - 12;
                 button30.Visible = false;
                 radioButton4.Visible = true;
             }
@@ -1626,13 +1675,13 @@ namespace Clicker
 
         private void button31_Click_1(object sender, EventArgs e)
         {
-            penize = penize + 10000;
+            gameData.Penize = gameData.Penize + 10000;
             update();
         }
 
         private void button32_Click(object sender, EventArgs e)
         {
-            gemy = gemy + 100;
+            gameData.Gemy = gameData.Gemy + 100;
             update();
         }
 
@@ -1660,9 +1709,9 @@ namespace Clicker
             button8.Visible = true;
             button7.Visible = true;
             button1.Visible = true;
-            if (tlacitko.Visible == false)
+            if (base_click_panel_2.Visible == false)
             {
-                button6.Visible = true;
+                basa_click_panel_1.Visible = true;
             }
             button13.Visible = true;
             if (admin_rezim == true)
@@ -1742,23 +1791,23 @@ namespace Clicker
                 totalEnergy += baseEnergy * energyNasob;
                 if (energy > maxEnergy) { energy = maxEnergy; }
                 totalClicks += 1;
-                button6.Visible = false;
-                tlacitko.Visible = true;
+                basa_click_panel_1.Visible = false;
+                base_click_panel_2.Visible = true;
                 update();
             }
             if (checkClicksOn == false)
             {
                 checkClicksOn = true;
 
-                button6.Visible = false;
-                tlacitko.Visible = true;
+                basa_click_panel_1.Visible = false;
+                base_click_panel_2.Visible = true;
                 await checkClicks();
             }
             if (penizeGiving == false)
             {
                 penizeGiving = true;
-                button6.Visible = false;
-                tlacitko.Visible = true;
+                basa_click_panel_1.Visible = false;
+                base_click_panel_2.Visible = true;
                 await penizeGive();
             }
 
@@ -1942,7 +1991,7 @@ namespace Clicker
             using (FileStream fileStream = new FileStream(filePath, FileMode.Create, FileAccess.Write, FileShare.None))
             using (StreamWriter writer = new StreamWriter(fileStream))
             {
-                writer.Write(encryptedData);
+                writer.Write(jsonData);
             }
         }
         
@@ -1959,35 +2008,35 @@ namespace Clicker
         private void WriteData()
         {
             // Přenesení hodnot z objektu gameData do příslušných proměnných
-            penize = gameData.Penize;
-            gemy = gameData.Gemy;
-            wood = gameData.Wood;
-            stone = gameData.Stone;
-            wheat = gameData.Wheat;
-            plank = gameData.Plank;
-            woodWait = gameData.WoodWait;
-            stoneWait = gameData.StoneWait;
-            wheatWait = gameData.WheatWait;
-            plankWait = gameData.PlankWait;
-            totalClicks = gameData.TotalClicks;
-            totalEnergy = gameData.TotalEnergy;
-            totalPenize = gameData.TotalPenize;
-            achievments = gameData.Achievments;
-            machines = gameData.Machines;
-            resources = gameData.Resources;
-            sellRecources = gameData.SellRecources;
-            maxEnergy = gameData.MaxEnergy;
-            baseEnergy = gameData.BaseEnergy;
-            energyNasob = gameData.EnergyNasob;
-            lastClick = gameData.LastClick;
-            maxLastClick = gameData.MaxLastClick;
-            checkClicksOn = gameData.CheckClicksOn;
-            penizeGiving = gameData.PenizeGiving;
-            autoEnergyUpgrade = gameData.AutoEnergyUpgrade;
-            forestUpgrade = gameData.ForestUpgrade;
-            mineUpgrade = gameData.MineUpgrade;
-            farmUpgrade = gameData.FarmUpgrade;
-            utilityBuildingUpgrade = gameData.UtilityBuildingUpgrade;
+            gameData.Penize = gameData.Penize;
+            gameData.Gemy = gameData.Gemy;
+            gameData.Wood = gameData.Wood;
+            gameData.Stone = gameData.Stone;
+            gameData.Wheat = gameData.Wheat;
+            gameData.Plank = gameData.Plank;
+            gameData.WoodWait = gameData.WoodWait;
+            gameData.StoneWait = gameData.StoneWait;
+            gameData.WheatWait = gameData.WheatWait;
+            gameData.PlankWait = gameData.PlankWait;
+            gameData.TotalClicks = gameData.TotalClicks;
+            gameData.TotalEnergy = gameData.TotalEnergy;
+            gameData.TotalPenize = gameData.TotalPenize;
+            gameData.Achievments = gameData.Achievments;
+            gameData.Machines = gameData.Machines;
+            gameData.Resources = gameData.Resources;
+            gameData.SellRecources = gameData.SellRecources;
+            gameData.MaxEnergy = gameData.MaxEnergy;
+            gameData.BaseEnergy = gameData.BaseEnergy;
+            gameData.EnergyNasob = gameData.EnergyNasob;
+            gameData.LastClick = gameData.LastClick;
+            gameData.MaxLastClick = gameData.MaxLastClick;
+            gameData.CheckClicksOn = gameData.CheckClicksOn;
+            gameData.PenizeGiving = gameData.PenizeGiving;
+            gameData.AutoEnergyUpgrade = gameData.AutoEnergyUpgrade;
+            gameData.ForestUpgrade = gameData.ForestUpgrade;
+            gameData.MineUpgrade = gameData.MineUpgrade;
+            gameData.FarmUpgrade = gameData.FarmUpgrade;
+            gameData.UtilityBuildingUpgrade = gameData.UtilityBuildingUpgrade;
             Aclick = gameData.Aclick;
             Abiggerclick = gameData.Abiggerclick;
             Abiggercapacity = gameData.Abiggercapacity;
@@ -2042,52 +2091,6 @@ namespace Clicker
                 }
             }
         }
-        public class GameData
-        {
-            public int Penize { get; set; }
-            public int Gemy { get; set; }
-            public int Wood { get; set; }
-            public int Stone { get; set; }
-            public int Wheat { get; set; }
-            public int Plank { get; set; }
-            public int WoodWait { get; set; }
-            public int StoneWait { get; set; }
-            public int WheatWait { get; set; }
-            public int PlankWait { get; set; }
-            public int TotalClicks { get; set; }
-            public int TotalEnergy { get; set; }
-            public int TotalPenize { get; set; }
-            public int Achievments { get; set; }
-            public int Machines { get; set; }
-            public int Resources { get; set; }
-            public int SellRecources { get; set; }
-            public int MaxEnergy { get; set; }
-            public int BaseEnergy { get; set; }
-            public int EnergyNasob { get; set; }
-            public int LastClick { get; set; }
-            public int MaxLastClick { get; set; }
-            public bool CheckClicksOn { get; set; }
-            public bool PenizeGiving { get; set; }
-            public int AutoEnergyUpgrade { get; set; }
-            public int ForestUpgrade { get; set; }
-            public int MineUpgrade { get; set; }
-            public int FarmUpgrade { get; set; }
-            public int UtilityBuildingUpgrade { get; set; }
-            public bool Aclick { get; set; }
-            public bool Abiggerclick { get; set; }
-            public bool Abiggercapacity { get; set; }
-            public bool Astovka { get; set; }
-            public bool Atisicovka { get; set; }
-            public bool Astotisicovka { get; set; }
-            public bool Alastclickupgrade { get; set; }
-            public bool Aautoclick { get; set; }
-            public bool Amaxenergy { get; set; }
-            public bool Atisicclicku { get; set; }
-            public bool Afinale { get; set; }
-            public bool Amachines { get; set; }
-            public bool AstoResources { get; set; }
-            public bool AsellResource { get; set; }
-            public bool A100Kprodej { get; set; }
-        }
+        
     }
 }

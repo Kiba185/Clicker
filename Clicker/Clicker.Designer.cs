@@ -37,17 +37,17 @@ namespace Clicker
             this.button36 = new System.Windows.Forms.Button();
             this.label32 = new System.Windows.Forms.Label();
             this.button33 = new System.Windows.Forms.Button();
+            this.button13 = new System.Windows.Forms.Button();
+            this.panel84 = new System.Windows.Forms.Panel();
+            this.label29 = new System.Windows.Forms.Label();
+            this.button14 = new System.Windows.Forms.Button();
+            this.textBox1 = new System.Windows.Forms.TextBox();
             this.button32 = new System.Windows.Forms.Button();
             this.button31 = new System.Windows.Forms.Button();
             this.panel85 = new System.Windows.Forms.Panel();
             this.label43 = new System.Windows.Forms.Label();
             this.button15 = new System.Windows.Forms.Button();
-            this.panel84 = new System.Windows.Forms.Panel();
-            this.label29 = new System.Windows.Forms.Label();
-            this.button14 = new System.Windows.Forms.Button();
-            this.textBox1 = new System.Windows.Forms.TextBox();
             this.label42 = new System.Windows.Forms.Label();
-            this.button13 = new System.Windows.Forms.Button();
             this.label28 = new System.Windows.Forms.Label();
             this.panel10 = new System.Windows.Forms.Panel();
             this.panel78 = new System.Windows.Forms.Panel();
@@ -174,7 +174,7 @@ namespace Clicker
             this.label16 = new System.Windows.Forms.Label();
             this.panel50 = new System.Windows.Forms.Panel();
             this.panel49 = new System.Windows.Forms.Panel();
-            this.button6 = new System.Windows.Forms.Button();
+            this.basa_click_panel_1 = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
             this.button35 = new System.Windows.Forms.Button();
             this.button8 = new System.Windows.Forms.Button();
@@ -199,12 +199,12 @@ namespace Clicker
             this.label1 = new System.Windows.Forms.Label();
             this.panel8 = new System.Windows.Forms.Panel();
             this.panel7 = new System.Windows.Forms.Panel();
-            this.tlacitko = new System.Windows.Forms.Button();
+            this.base_click_panel_2 = new System.Windows.Forms.Button();
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
             this.panel1.SuspendLayout();
             this.panel66.SuspendLayout();
-            this.panel85.SuspendLayout();
             this.panel84.SuspendLayout();
+            this.panel85.SuspendLayout();
             this.panel10.SuspendLayout();
             this.panel78.SuspendLayout();
             this.panel75.SuspendLayout();
@@ -264,7 +264,7 @@ namespace Clicker
             this.panel1.Controls.Add(this.panel3);
             this.panel1.Controls.Add(this.panel51);
             this.panel1.Controls.Add(this.panel48);
-            this.panel1.Controls.Add(this.button6);
+            this.panel1.Controls.Add(this.basa_click_panel_1);
             this.panel1.Controls.Add(this.button1);
             this.panel1.Controls.Add(this.button35);
             this.panel1.Controls.Add(this.button8);
@@ -283,7 +283,7 @@ namespace Clicker
             this.panel1.Controls.Add(this.label1);
             this.panel1.Controls.Add(this.panel8);
             this.panel1.Controls.Add(this.panel7);
-            this.panel1.Controls.Add(this.tlacitko);
+            this.panel1.Controls.Add(this.base_click_panel_2);
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(837, 529);
@@ -354,6 +354,65 @@ namespace Clicker
             this.button33.UseVisualStyleBackColor = false;
             this.button33.Click += new System.EventHandler(this.button33_Click_1);
             // 
+            // button13
+            // 
+            this.button13.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.button13.BackColor = System.Drawing.Color.LightGray;
+            this.button13.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.button13.Cursor = System.Windows.Forms.Cursors.Default;
+            this.button13.FlatAppearance.BorderColor = System.Drawing.Color.LightGray;
+            this.button13.FlatAppearance.MouseDownBackColor = System.Drawing.Color.LightGray;
+            this.button13.FlatAppearance.MouseOverBackColor = System.Drawing.Color.LightGray;
+            this.button13.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button13.Location = new System.Drawing.Point(814, 0);
+            this.button13.Name = "button13";
+            this.button13.Size = new System.Drawing.Size(23, 23);
+            this.button13.TabIndex = 38;
+            this.button13.UseVisualStyleBackColor = false;
+            this.button13.Click += new System.EventHandler(this.button13_Click_1);
+            // 
+            // panel84
+            // 
+            this.panel84.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.panel84.Controls.Add(this.label29);
+            this.panel84.Controls.Add(this.button14);
+            this.panel84.Controls.Add(this.textBox1);
+            this.panel84.Location = new System.Drawing.Point(817, 134);
+            this.panel84.Name = "panel84";
+            this.panel84.Size = new System.Drawing.Size(232, 152);
+            this.panel84.TabIndex = 39;
+            this.panel84.Visible = false;
+            this.panel84.Paint += new System.Windows.Forms.PaintEventHandler(this.panel84_Paint);
+            // 
+            // label29
+            // 
+            this.label29.AutoSize = true;
+            this.label29.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.label29.Location = new System.Drawing.Point(60, 21);
+            this.label29.Name = "label29";
+            this.label29.Size = new System.Drawing.Size(121, 24);
+            this.label29.TabIndex = 2;
+            this.label29.Text = "Admin heslo:";
+            this.label29.Click += new System.EventHandler(this.label29_Click_2);
+            // 
+            // button14
+            // 
+            this.button14.Location = new System.Drawing.Point(77, 108);
+            this.button14.Name = "button14";
+            this.button14.Size = new System.Drawing.Size(75, 23);
+            this.button14.TabIndex = 1;
+            this.button14.Text = "OK";
+            this.button14.UseVisualStyleBackColor = true;
+            this.button14.Click += new System.EventHandler(this.button14_Click_3);
+            // 
+            // textBox1
+            // 
+            this.textBox1.Location = new System.Drawing.Point(68, 77);
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(100, 20);
+            this.textBox1.TabIndex = 0;
+            this.textBox1.TextChanged += new System.EventHandler(this.textBox1_TextChanged_1);
+            // 
             // button32
             // 
             this.button32.Location = new System.Drawing.Point(602, 107);
@@ -409,48 +468,6 @@ namespace Clicker
             this.button15.UseVisualStyleBackColor = true;
             this.button15.Click += new System.EventHandler(this.button15_Click_1);
             // 
-            // panel84
-            // 
-            this.panel84.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.panel84.Controls.Add(this.label29);
-            this.panel84.Controls.Add(this.button14);
-            this.panel84.Controls.Add(this.textBox1);
-            this.panel84.Location = new System.Drawing.Point(817, 134);
-            this.panel84.Name = "panel84";
-            this.panel84.Size = new System.Drawing.Size(232, 152);
-            this.panel84.TabIndex = 39;
-            this.panel84.Visible = false;
-            this.panel84.Paint += new System.Windows.Forms.PaintEventHandler(this.panel84_Paint);
-            // 
-            // label29
-            // 
-            this.label29.AutoSize = true;
-            this.label29.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.label29.Location = new System.Drawing.Point(60, 21);
-            this.label29.Name = "label29";
-            this.label29.Size = new System.Drawing.Size(121, 24);
-            this.label29.TabIndex = 2;
-            this.label29.Text = "Admin heslo:";
-            this.label29.Click += new System.EventHandler(this.label29_Click_2);
-            // 
-            // button14
-            // 
-            this.button14.Location = new System.Drawing.Point(77, 108);
-            this.button14.Name = "button14";
-            this.button14.Size = new System.Drawing.Size(75, 23);
-            this.button14.TabIndex = 1;
-            this.button14.Text = "OK";
-            this.button14.UseVisualStyleBackColor = true;
-            this.button14.Click += new System.EventHandler(this.button14_Click_3);
-            // 
-            // textBox1
-            // 
-            this.textBox1.Location = new System.Drawing.Point(68, 77);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(100, 20);
-            this.textBox1.TabIndex = 0;
-            this.textBox1.TextChanged += new System.EventHandler(this.textBox1_TextChanged_1);
-            // 
             // label42
             // 
             this.label42.BackColor = System.Drawing.Color.Transparent;
@@ -463,23 +480,6 @@ namespace Clicker
             this.label42.Text = "admin mode";
             this.label42.Visible = false;
             this.label42.Click += new System.EventHandler(this.label42_Click);
-            // 
-            // button13
-            // 
-            this.button13.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.button13.BackColor = System.Drawing.Color.LightGray;
-            this.button13.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.button13.Cursor = System.Windows.Forms.Cursors.Default;
-            this.button13.FlatAppearance.BorderColor = System.Drawing.Color.LightGray;
-            this.button13.FlatAppearance.MouseDownBackColor = System.Drawing.Color.LightGray;
-            this.button13.FlatAppearance.MouseOverBackColor = System.Drawing.Color.LightGray;
-            this.button13.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button13.Location = new System.Drawing.Point(814, 0);
-            this.button13.Name = "button13";
-            this.button13.Size = new System.Drawing.Size(23, 23);
-            this.button13.TabIndex = 38;
-            this.button13.UseVisualStyleBackColor = false;
-            this.button13.Click += new System.EventHandler(this.button13_Click_1);
             // 
             // label28
             // 
@@ -1556,7 +1556,7 @@ namespace Clicker
             this.button5.Name = "button5";
             this.button5.Size = new System.Drawing.Size(144, 70);
             this.button5.TabIndex = 16;
-            this.button5.Text = "Double penize - 50$";
+            this.button5.Text = "Double Penize - 50$";
             this.button5.UseVisualStyleBackColor = false;
             this.button5.Click += new System.EventHandler(this.button5_Click_1);
             // 
@@ -2037,29 +2037,29 @@ namespace Clicker
             this.panel49.TabIndex = 0;
             this.panel49.Paint += new System.Windows.Forms.PaintEventHandler(this.panel49_Paint);
             // 
-            // button6
+            // basa_click_panel_1
             // 
-            this.button6.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.basa_click_panel_1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.button6.BackColor = System.Drawing.SystemColors.AppWorkspace;
-            this.button6.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.button6.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.button6.FlatAppearance.BorderColor = System.Drawing.Color.Gray;
-            this.button6.FlatAppearance.BorderSize = 0;
-            this.button6.FlatAppearance.CheckedBackColor = System.Drawing.Color.White;
-            this.button6.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Gray;
-            this.button6.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Gray;
-            this.button6.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button6.Font = new System.Drawing.Font("Agency FB", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button6.Location = new System.Drawing.Point(113, 167);
-            this.button6.Name = "button6";
-            this.button6.Size = new System.Drawing.Size(406, 350);
-            this.button6.TabIndex = 8;
-            this.button6.Text = "Klikni";
-            this.button6.UseVisualStyleBackColor = false;
-            this.button6.Visible = false;
-            this.button6.Click += new System.EventHandler(this.button6_Click_1);
+            this.basa_click_panel_1.BackColor = System.Drawing.SystemColors.AppWorkspace;
+            this.basa_click_panel_1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.basa_click_panel_1.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.basa_click_panel_1.FlatAppearance.BorderColor = System.Drawing.Color.Gray;
+            this.basa_click_panel_1.FlatAppearance.BorderSize = 0;
+            this.basa_click_panel_1.FlatAppearance.CheckedBackColor = System.Drawing.Color.White;
+            this.basa_click_panel_1.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Gray;
+            this.basa_click_panel_1.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Gray;
+            this.basa_click_panel_1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.basa_click_panel_1.Font = new System.Drawing.Font("Agency FB", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.basa_click_panel_1.Location = new System.Drawing.Point(113, 167);
+            this.basa_click_panel_1.Name = "basa_click_panel_1";
+            this.basa_click_panel_1.Size = new System.Drawing.Size(406, 350);
+            this.basa_click_panel_1.TabIndex = 8;
+            this.basa_click_panel_1.Text = "Klikni";
+            this.basa_click_panel_1.UseVisualStyleBackColor = false;
+            this.basa_click_panel_1.Visible = false;
+            this.basa_click_panel_1.Click += new System.EventHandler(this.button6_Click_1);
             // 
             // button1
             // 
@@ -2393,28 +2393,28 @@ namespace Clicker
             this.panel7.TabIndex = 22;
             this.panel7.Paint += new System.Windows.Forms.PaintEventHandler(this.panel7_Paint);
             // 
-            // tlacitko
+            // base_click_panel_2
             // 
-            this.tlacitko.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.base_click_panel_2.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.tlacitko.BackColor = System.Drawing.SystemColors.AppWorkspace;
-            this.tlacitko.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.tlacitko.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.tlacitko.FlatAppearance.BorderColor = System.Drawing.Color.Gray;
-            this.tlacitko.FlatAppearance.BorderSize = 0;
-            this.tlacitko.FlatAppearance.CheckedBackColor = System.Drawing.Color.White;
-            this.tlacitko.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Gray;
-            this.tlacitko.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Gray;
-            this.tlacitko.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.tlacitko.Font = new System.Drawing.Font("Agency FB", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tlacitko.Location = new System.Drawing.Point(113, 167);
-            this.tlacitko.Name = "tlacitko";
-            this.tlacitko.Size = new System.Drawing.Size(406, 350);
-            this.tlacitko.TabIndex = 9;
-            this.tlacitko.Text = "Klikni";
-            this.tlacitko.UseVisualStyleBackColor = false;
-            this.tlacitko.Click += new System.EventHandler(this.button1_Click);
+            this.base_click_panel_2.BackColor = System.Drawing.SystemColors.AppWorkspace;
+            this.base_click_panel_2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.base_click_panel_2.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.base_click_panel_2.FlatAppearance.BorderColor = System.Drawing.Color.Gray;
+            this.base_click_panel_2.FlatAppearance.BorderSize = 0;
+            this.base_click_panel_2.FlatAppearance.CheckedBackColor = System.Drawing.Color.White;
+            this.base_click_panel_2.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Gray;
+            this.base_click_panel_2.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Gray;
+            this.base_click_panel_2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.base_click_panel_2.Font = new System.Drawing.Font("Agency FB", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.base_click_panel_2.Location = new System.Drawing.Point(113, 167);
+            this.base_click_panel_2.Name = "base_click_panel_2";
+            this.base_click_panel_2.Size = new System.Drawing.Size(406, 350);
+            this.base_click_panel_2.TabIndex = 9;
+            this.base_click_panel_2.Text = "Klikni";
+            this.base_click_panel_2.UseVisualStyleBackColor = false;
+            this.base_click_panel_2.Click += new System.EventHandler(this.button1_Click);
             // 
             // openFileDialog1
             // 
@@ -2439,10 +2439,10 @@ namespace Clicker
             this.panel1.PerformLayout();
             this.panel66.ResumeLayout(false);
             this.panel66.PerformLayout();
-            this.panel85.ResumeLayout(false);
-            this.panel85.PerformLayout();
             this.panel84.ResumeLayout(false);
             this.panel84.PerformLayout();
+            this.panel85.ResumeLayout(false);
+            this.panel85.PerformLayout();
             this.panel10.ResumeLayout(false);
             this.panel78.ResumeLayout(false);
             this.panel78.PerformLayout();
@@ -2503,7 +2503,7 @@ namespace Clicker
 
         #endregion
 
-        private System.Windows.Forms.Button tlacitko;
+        private System.Windows.Forms.Button base_click_panel_2;
         private System.Windows.Forms.Button button19;
         private System.Windows.Forms.Button autoClick;
         private System.Windows.Forms.Button button3;
@@ -2656,7 +2656,7 @@ namespace Clicker
         private System.Windows.Forms.Button button31;
         private System.Windows.Forms.Button button35;
         private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Button button6;
+        private System.Windows.Forms.Button basa_click_panel_1;
         private System.Windows.Forms.Label label28;
         private System.Windows.Forms.Button button13;
         private System.Windows.Forms.Panel panel84;
